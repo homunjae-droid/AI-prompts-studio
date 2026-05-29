@@ -395,10 +395,95 @@ function closeCameraMovementPage() {
 function searchPage() {
     alert("搜索功能测试成功");
 }
-const cameraMovementList =
-document.getElementById("cameraMovementList");
+const prompts = [
+{cn:"推进镜头",en:"Dolly In"},
+{cn:"拉远镜头",en:"Dolly Out"},
+{cn:"横移镜头",en:"Truck Shot"},
+{cn:"升降镜头",en:"Crane Shot"},
+{cn:"环绕镜头",en:"Orbit Shot"},
+{cn:"跟随镜头",en:"Follow Shot"},
+{cn:"摇镜头",en:"Pan Shot"},
+{cn:"俯仰镜头",en:"Tilt Shot"},
+{cn:"变焦镜头",en:"Zoom Shot"},
+{cn:"手持镜头",en:"Handheld Shot"},
+{cn:"第一人称",en:"POV Shot"},
+{cn:"无人机镜头",en:"Drone Shot"}
+];
 
-cameraMovementList.innerHTML = `
+let currentPage = 1;
+const perPage = 10;
+
+function renderPrompts(){
+
+const start=(currentPage-1)*perPage;
+const end=start+perPage;
+
+const pageData=prompts.slice(start,end);
+
+cameraMovementList.innerHTML=
+pageData.map(item=>`
+
+<div class="card">
+
+<div class="cn">${item.cn}</div>
+
+<div class="en">${item.en}</div>
+
+<button
+class="copy-btn"
+onclick="copyPrompt('${item.en}')">
+复制 Copy
+</button>
+
+</div>
+
+`).join("");
+
+document.getElementById("pagination").innerHTML=`
+
+<button onclick="prevPage()">上一页</button>
+
+<span>
+第 ${currentPage} 页 /
+共 ${Math.ceil(prompts.length/perPage)} 页
+</span>
+
+<button onclick="nextPage()">下一页</button>
+
+`;
+
+}
+
+function copyPrompt(text){
+
+navigator.clipboard.writeText(text);
+
+alert("已复制："+text);
+
+}
+
+function nextPage(){
+
+if(
+currentPage<
+Math.ceil(prompts.length/perPage)
+){
+currentPage++;
+renderPrompts();
+}
+
+}
+
+function prevPage(){
+
+if(currentPage>1){
+currentPage--;
+renderPrompts();
+}
+
+}
+
+renderPrompts();
 <div class="card">
 <div class="cn">推进镜头</div>
 <div class="en">Dolly In</div>
