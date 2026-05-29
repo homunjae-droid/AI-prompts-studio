@@ -506,31 +506,22 @@ renderPrompts();
 }
 
 renderPrompts();
-<div class="card">
-<div class="cn">推进镜头</div>
-<div class="en">Dolly In</div>
-</div>
 
-<div class="card">
-<div class="cn">拉远镜头</div>
-<div class="en">Dolly Out</div>
-</div>
+function searchPage(){
 
-<div class="card">
-<div class="cn">横移镜头</div>
-<div class="en">Truck Shot</div>
-</div>
+const page=parseInt(
+document.getElementById("pageSearchInput").value
+);
 
-<div class="card">
-<div class="cn">升降镜头</div>
-<div class="en">Crane Shot</div>
-</div>
+if(
+page>=1 &&
+page<=Math.ceil(prompts.length/perPage)
+){
+currentPage=page;
+renderPrompts();
+}
 
-<div class="card">
-<div class="cn">环绕镜头</div>
-<div class="en">Orbit Shot</div>
-</div>
-`;
+}
 </script>
 </body>
 </html>
