@@ -360,6 +360,35 @@ function closeCameraMovementPage() {
 function searchPage() {
     alert("搜索功能测试成功");
 }
+const cameraMovementList =
+document.getElementById("cameraMovementList");
+
+cameraMovementList.innerHTML = `
+<div class="card">
+<div class="cn">推进镜头</div>
+<div class="en">Dolly In</div>
+</div>
+
+<div class="card">
+<div class="cn">拉远镜头</div>
+<div class="en">Dolly Out</div>
+</div>
+
+<div class="card">
+<div class="cn">横移镜头</div>
+<div class="en">Truck Shot</div>
+</div>
+
+<div class="card">
+<div class="cn">升降镜头</div>
+<div class="en">Crane Shot</div>
+</div>
+
+<div class="card">
+<div class="cn">环绕镜头</div>
+<div class="en">Orbit Shot</div>
+</div>
+`;
 </script>
 </body>
 </html>
