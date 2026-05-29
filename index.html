@@ -407,7 +407,13 @@ https://ai-prompts-studio.vercel.app
 </div>
 <script>
 function openCameraMovementPage() {
-    document.getElementById("cameraMovementModal").style.display = "flex";
+
+document.getElementById(
+"cameraMovementModal"
+).style.display="flex";
+
+renderPrompts();
+
 }
 
 function closeCameraMovementPage() {
@@ -416,7 +422,6 @@ function closeCameraMovementPage() {
 
 function searchPage() {
     alert("搜索功能测试成功");
-}
 const prompts = [
 {cn:"推进镜头",en:"Dolly In"},
 {cn:"拉远镜头",en:"Dolly Out"},
@@ -428,12 +433,30 @@ const prompts = [
 {cn:"俯仰镜头",en:"Tilt Shot"},
 {cn:"变焦镜头",en:"Zoom Shot"},
 {cn:"手持镜头",en:"Handheld Shot"},
-{cn:"第一人称",en:"POV Shot"},
-{cn:"无人机镜头",en:"Drone Shot"}
+{cn:"第一人称镜头",en:"POV Shot"},
+{cn:"无人机镜头",en:"Drone Shot"},
+{cn:"快速推进",en:"Fast Dolly In"},
+{cn:"快速拉远",en:"Fast Dolly Out"},
+{cn:"缓慢推进",en:"Slow Dolly In"},
+{cn:"缓慢拉远",en:"Slow Dolly Out"},
+{cn:"左移镜头",en:"Move Left"},
+{cn:"右移镜头",en:"Move Right"},
+{cn:"镜头上升",en:"Move Up"},
+{cn:"镜头下降",en:"Move Down"},
+{cn:"顺时针环绕",en:"Clockwise Orbit"},
+{cn:"逆时针环绕",en:"Counterclockwise Orbit"},
+{cn:"镜头旋转",en:"Camera Roll"},
+{cn:"跟拍镜头",en:"Tracking Shot"},
+{cn:"低角度跟拍",en:"Low Tracking Shot"},
+{cn:"高角度俯拍",en:"High Angle Shot"},
+{cn:"低角度仰拍",en:"Low Angle Shot"},
+{cn:"鸟瞰镜头",en:"Bird Eye View"},
+{cn:"航拍镜头",en:"Aerial Shot"},
+{cn:"电影运镜",en:"Cinematic Camera Movement"}
 ];
 
 let currentPage = 1;
-const perPage = 10;
+const perPage = 6;
 
 function renderPrompts(){
 
@@ -478,9 +501,13 @@ document.getElementById("pagination").innerHTML=`
 
 function copyPrompt(text){
 
-navigator.clipboard.writeText(text);
-
-alert("已复制："+text);
+navigator.clipboard.writeText(text)
+.then(()=>{
+alert("复制成功：\n"+text);
+})
+.catch(()=>{
+alert("复制失败");
+});
 
 }
 
