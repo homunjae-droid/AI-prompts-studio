@@ -523,14 +523,15 @@ renderPrompts();
 }
 function searchPrompts(){
 
-const keyword = document.getElementById("searchInput").value.trim();
+const keyword =
+document.getElementById("searchInput").value.trim();
 
 if(keyword===""){
 document.getElementById("searchResults").innerHTML="";
 return;
 }
 
-const result = prompts.filter(item =>
+const result = prompts.filter(item=>
 item.cn.includes(keyword) ||
 item.en.toLowerCase().includes(keyword.toLowerCase())
 );
