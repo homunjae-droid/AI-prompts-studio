@@ -426,70 +426,6 @@ style="margin:0;">
 <div class="en">Trending Search</div>
 </div>
 
-<div class="card" onclick="openQualityTest()">
-<div class="cn">画质描述</div>
-<div class="en">Quality Description</div>
-</div>
-
-<div class="card">
-<div class="cn">动作描述</div>
-<div class="en">Action Description</div>
-</div>
-
-<div class="card" onclick="openCameraMovementPage()">
-  <div class="cn">运镜描述</div>
-  <div class="en">Camera Movement</div>
-</div>
-
-<div class="card">
-<div class="cn">风格描述</div>
-<div class="en">Style Description</div>
-</div>
-
-<div class="card">
-<div class="cn">人物描述</div>
-<div class="en">Character Description</div>
-</div>
-
-<div class="card">
-<div class="cn">特效描述</div>
-<div class="en">Effects Description</div>
-</div>
-
-<div class="card">
-<div class="cn">场景描述</div>
-<div class="en">Scene Description</div>
-</div>
-
-<div class="card">
-<div class="cn">防负描述</div>
-<div class="en">Negative Prompt</div>
-</div>
-
-<div class="card">
-<div class="cn">防穿模描述</div>
-<div class="en">Anti Distortion</div>
-</div>
-
-<div class="card">
-<div class="cn">防乱码描述</div>
-<div class="en">Anti Gibberish</div>
-</div>
-
-<div class="card">
-<div class="cn">防崩坏描述</div>
-<div class="en">Anti Collapse</div>
-</div>
-
-<div class="card">
-<div class="cn">防串词描述</div>
-<div class="en">Anti Prompt Conflict</div>
-</div>
-
-<div class="card">
-<div class="cn">防BUG描述</div>
-<div class="en">Anti Bug Prompt</div>
-</div>
 
 </div>
 
@@ -552,13 +488,7 @@ function openCameraMovementPage() {
 
 currentMode = "camera";
 
-document.getElementById(
-"cameraMovementModal"
-).style.display="flex";
-
 currentPage = 1;
-
-renderPrompts();
 
 }
 function openQualityTest() {
