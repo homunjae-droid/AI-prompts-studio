@@ -550,34 +550,33 @@ alert("画质描述开发中");
 }
 function openCameraMovementPage() {
 
+currentMode = "camera";
+
+document.getElementById(
+"cameraMovementModal"
+).style.display="flex";
+
+renderPrompts();
+
+}function openQualityTest() {
+
+currentMode = "quality";
+
+document.getElementById(
+"cameraMovementModal"
+).style.display="flex";
+
+renderPrompts();
+
+}
+
 document.getElementById(
 "cameraMovementModal"
 ).style.display="flex";
 
 renderPrompts();
 }
-function openQualityTest(){
 
-document.getElementById(
-"cameraMovementModal"
-).style.display="flex";
-
-cameraMovementList.innerHTML =
-qualityPrompts.map(item=>`
-
-<div class="card">
-
-<div class="cn">${item.cn}</div>
-
-<div class="en">${item.en}</div>
-
-</div>
-
-`).join("");
-
-pagination.innerHTML="";
-
-}
 function searchPrompts(){
 
 const keyword =
@@ -788,7 +787,7 @@ const qualityPrompts = [
 {cn:"动态光线表现",en:"Dynamic Lighting"},
 {cn:"高端摄影灯光",en:"Professional Studio Lighting"}
 ];
-
+let currentMode = "camera";
 let currentPage = 1;
 let currentQualityPage = 1;
 const perPage = 10;
@@ -798,7 +797,13 @@ function renderPrompts(){
 const start=(currentPage-1)*perPage;
 const end=start+perPage;
 
-const pageData=prompts.slice(start,end);
+const data =
+currentMode==="quality"
+? qualityPrompts
+: prompts;
+
+const pageData =
+data.slice(start,end);
 
 if(currentPage > 5){
 
@@ -879,7 +884,15 @@ ${currentPage > 5 ? " 🔒" : ""}
 
 /
 
-共 ${Math.ceil(prompts.length/perPage)} 页
+共 ${
+Math.ceil(
+(
+currentMode==="quality"
+? qualityPrompts
+: prompts
+).length/perPage
+)
+} 页
 </span>
 
 <button onclick="nextPage()">下一页</button>
@@ -920,7 +933,13 @@ function nextPage(){
 
 if(
 currentPage<
-Math.ceil(prompts.length/perPage)
+Math.ceil(
+(
+currentMode==="quality"
+? qualityPrompts
+: prompts
+).length/perPage
+)
 ){
 currentPage++;
 renderPrompts();
