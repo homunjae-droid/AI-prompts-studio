@@ -421,7 +421,7 @@ style="margin:0;">
 
 <div class="grid">
 
-<div class="card">
+<div class="card" onclick="openCategory('camera')">
 <div class="cn">热门搜索</div>
 <div class="en">Trending Search</div>
 </div>
@@ -552,6 +552,18 @@ function openQualityPage(){
 alert("画质描述开发中");
 
 }
+function openCategory(mode){
+
+currentMode = mode;
+currentPage = 1;
+
+document.getElementById(
+"cameraMovementModal"
+).style.display="flex";
+
+renderPrompts();
+
+}
 function openCameraMovementPage() {
 
 currentMode = "camera";
@@ -604,11 +616,6 @@ ${item.en}
 </div>
 
 `).join("");
-}
-function openVipModal(){
-
-alert("VIP功能开发中，即将开放");
-
 }
 
 function closeVipModal(){
@@ -2042,6 +2049,55 @@ let currentMode = "camera";
 let currentPage = 1;
 let currentQualityPage = 1;
 const perPage = 10;
+function getCurrentData(){
+
+switch(currentMode){
+
+case "camera":
+return prompts;
+
+case "quality":
+return qualityPrompts;
+
+case "action":
+return actionPrompts;
+
+case "style":
+return stylePrompts;
+
+case "character":
+return characterPrompts;
+
+case "effect":
+return effectPrompts;
+
+case "scene":
+return scenePrompts;
+
+case "negative":
+return negativePrompts;
+
+case "antiMorph":
+return antiMorphPrompts;
+
+case "antiText":
+return antiTextPrompts;
+
+case "antiCollapse":
+return antiCollapsePrompts;
+
+case "antiConflict":
+return antiConflictPrompts;
+
+case "antiBug":
+return antiBugPrompts;
+
+default:
+return prompts;
+
+}
+
+}
 
 function renderPrompts(){
 
@@ -2133,11 +2189,7 @@ ${currentPage > 5 ? " 🔒" : ""}
 
 共 ${
 Math.ceil(
-(
-currentMode==="quality"
-? qualityPrompts
-: prompts
-).length/perPage
+getCurrentData().length/perPage
 )
 } 页
 </span>
@@ -2189,52 +2241,6 @@ renderPrompts();
 }
 
 }
-switch(currentMode){
-
-case "camera":
-return prompts;
-
-case "quality":
-return qualityPrompts;
-
-case "action":
-return actionPrompts;
-
-case "style":
-return stylePrompts;
-
-case "character":
-return characterPrompts;
-
-case "effect":
-return effectPrompts;
-
-case "scene":
-return scenePrompts;
-
-case "negative":
-return negativePrompts;
-
-case "antiMorph":
-return antiMorphPrompts;
-
-case "antiText":
-return antiTextPrompts;
-
-case "antiCollapse":
-return antiCollapsePrompts;
-
-case "antiConflict":
-return antiConflictPrompts;
-
-case "antiBug":
-return antiBugPrompts;
-
-default:
-return prompts;
-}
-
-}
 
 function prevPage(){
 
@@ -2255,7 +2261,9 @@ document.getElementById("pageSearchInput").value
 
 if(
 page>=1 &&
-page<=Math.ceil(prompts.length/perPage)
+page<=Math.ceil(
+getCurrentData().length/perPage
+)
 ){
 currentPage=page;
 renderPrompts();
