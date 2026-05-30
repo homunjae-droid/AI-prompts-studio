@@ -589,13 +589,29 @@ document.getElementById("pagination").innerHTML=`
 
 function copyPrompt(text){
 
+// 第1-2页免费复制
+if(currentPage <= 2){
+
 navigator.clipboard.writeText(text)
 .then(()=>{
 alert("复制成功：\n"+text);
-})
-.catch(()=>{
-alert("复制失败");
 });
+
+return;
+
+}
+
+// 第3-5页弹会员
+if(currentPage <= 5){
+
+openVipModal();
+
+return;
+
+}
+
+// 第6页以后弹会员
+openVipModal();
 
 }
 
