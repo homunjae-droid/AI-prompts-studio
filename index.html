@@ -556,9 +556,12 @@ document.getElementById(
 "cameraMovementModal"
 ).style.display="flex";
 
+currentPage = 1;
+
 renderPrompts();
 
-}function openQualityTest() {
+}
+function openQualityTest() {
 
 currentMode = "quality";
 
@@ -566,17 +569,11 @@ document.getElementById(
 "cameraMovementModal"
 ).style.display="flex";
 
+currentPage = 1;
+
 renderPrompts();
 
 }
-
-document.getElementById(
-"cameraMovementModal"
-).style.display="flex";
-
-renderPrompts();
-}
-
 function searchPrompts(){
 
 const keyword =
