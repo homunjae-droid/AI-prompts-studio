@@ -441,6 +441,7 @@ function closeCameraMovementPage() {
 
 
 const prompts = [
+
 {cn:"推进镜头",en:"Dolly In"},
 {cn:"拉远镜头",en:"Dolly Out"},
 {cn:"横移镜头",en:"Truck Shot"},
@@ -451,6 +452,7 @@ const prompts = [
 {cn:"俯仰镜头",en:"Tilt Shot"},
 {cn:"变焦镜头",en:"Zoom Shot"},
 {cn:"手持镜头",en:"Handheld Shot"},
+
 {cn:"第一人称镜头",en:"POV Shot"},
 {cn:"无人机镜头",en:"Drone Shot"},
 {cn:"快速推进",en:"Fast Dolly In"},
@@ -461,6 +463,7 @@ const prompts = [
 {cn:"右移镜头",en:"Move Right"},
 {cn:"镜头上升",en:"Move Up"},
 {cn:"镜头下降",en:"Move Down"},
+
 {cn:"顺时针环绕",en:"Clockwise Orbit"},
 {cn:"逆时针环绕",en:"Counterclockwise Orbit"},
 {cn:"镜头旋转",en:"Camera Roll"},
@@ -470,11 +473,78 @@ const prompts = [
 {cn:"低角度仰拍",en:"Low Angle Shot"},
 {cn:"鸟瞰镜头",en:"Bird Eye View"},
 {cn:"航拍镜头",en:"Aerial Shot"},
-{cn:"电影运镜",en:"Cinematic Camera Movement"}
+{cn:"电影运镜",en:"Cinematic Camera Movement"},
+
+{cn:"推拉镜头",en:"Dolly Zoom"},
+{cn:"穿越镜头",en:"Fly Through"},
+{cn:"穿窗镜头",en:"Window Pass"},
+{cn:"穿门镜头",en:"Door Pass"},
+{cn:"绕人物环拍",en:"Character Orbit"},
+{cn:"360度环拍",en:"360 Orbit"},
+{cn:"快速摇镜",en:"Whip Pan"},
+{cn:"镜头跟焦",en:"Rack Focus"},
+{cn:"镜头漂移",en:"Floating Camera"},
+{cn:"稳定器运镜",en:"Gimbal Shot"},
+
+{cn:"电影跟拍",en:"Cinematic Tracking"},
+{cn:"慢动作推进",en:"Slow Motion Push In"},
+{cn:"慢动作拉远",en:"Slow Motion Pull Out"},
+{cn:"快速跟随",en:"Fast Tracking"},
+{cn:"侧面跟拍",en:"Side Tracking"},
+{cn:"背后跟拍",en:"Rear Tracking"},
+{cn:"正面跟拍",en:"Front Tracking"},
+{cn:"人物特写推进",en:"Close Up Push In"},
+{cn:"环境拉远",en:"Environment Pull Out"},
+{cn:"高空俯冲",en:"Drone Dive"},
+
+{cn:"无人机上升",en:"Drone Rise"},
+{cn:"无人机下降",en:"Drone Drop"},
+{cn:"无人机环绕",en:"Drone Orbit"},
+{cn:"无人机追踪",en:"Drone Tracking"},
+{cn:"无人机穿越",en:"Drone Fly Through"},
+{cn:"高速飞行",en:"High Speed Fly"},
+{cn:"镜头摆动",en:"Swing Camera"},
+{cn:"镜头震动",en:"Camera Shake"},
+{cn:"战斗跟拍",en:"Action Tracking"},
+{cn:"赛车跟拍",en:"Car Tracking"},
+
+{cn:"人物转场跟拍",en:"Character Transition Tracking"},
+{cn:"城市穿梭",en:"City Fly Through"},
+{cn:"建筑环绕",en:"Building Orbit"},
+{cn:"街景推进",en:"Street Push In"},
+{cn:"街景拉远",en:"Street Pull Out"},
+{cn:"长镜头运镜",en:"Long Take"},
+{cn:"连续跟拍",en:"Continuous Tracking"},
+{cn:"镜头滑轨",en:"Slider Shot"},
+{cn:"镜头漂浮",en:"Floating Motion"},
+{cn:"稳定跟拍",en:"Smooth Tracking"},
+
+{cn:"镜头快速切入",en:"Quick Push In"},
+{cn:"镜头快速切出",en:"Quick Pull Out"},
+{cn:"镜头左右摆动",en:"Side Sway"},
+{cn:"镜头上下摆动",en:"Vertical Sway"},
+{cn:"镜头环形轨道",en:"Circular Track"},
+{cn:"镜头弧线运动",en:"Arc Shot"},
+{cn:"镜头冲刺推进",en:"Rush In"},
+{cn:"镜头高速后退",en:"Rush Out"},
+{cn:"跟随奔跑",en:"Running Follow"},
+{cn:"人物追踪",en:"Character Tracking"},
+
+{cn:"产品环拍",en:"Product Orbit"},
+{cn:"产品推进",en:"Product Push In"},
+{cn:"产品拉远",en:"Product Pull Out"},
+{cn:"商品展示运镜",en:"Product Showcase"},
+{cn:"镜头抬升",en:"Lift Up"},
+{cn:"镜头压低",en:"Drop Down"},
+{cn:"镜头扫过",en:"Sweep Shot"},
+{cn:"镜头滑行",en:"Glide Shot"},
+{cn:"镜头盘旋",en:"Hover Orbit"},
+{cn:"镜头悬停",en:"Hover Shot"}
+
 ];
 
 let currentPage = 1;
-const perPage = 6;
+const perPage = 10;
 
 function renderPrompts(){
 
