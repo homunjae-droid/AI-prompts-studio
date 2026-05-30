@@ -537,6 +537,37 @@ https://ai-prompts-studio.vercel.app
       <span onclick="closeCameraMovementPage()" class="close-btn">&times;</span>
     </div>
 
+ <div id="qualityModal" class="modal">
+  <div class="modal-content">
+
+    <div class="modal-header">
+
+      <input
+        type="number"
+        id="qualitySearchInput"
+        placeholder="搜索页码 Search page..."
+        min="1"
+      />
+
+      <button onclick="searchQualityPage()">
+        搜索
+      </button>
+
+      <span
+        onclick="closeQualityPage()"
+        class="close-btn"
+      >
+        ×
+      </span>
+
+    </div>
+
+    <div id="qualityList" class="prompt-grid"></div>
+
+    <div id="qualityPagination" class="pagination"></div>
+
+  </div>
+</div>
     <div id="cameraMovementList" class="prompt-grid"></div>
 
     <div id="pagination" class="pagination"></div>
@@ -545,7 +576,11 @@ https://ai-prompts-studio.vercel.app
 <script>
 function openQualityPage(){
 
-alert("画质描述测试成功");
+document.getElementById(
+"qualityModal"
+).style.display="flex";
+
+renderQualityPrompts();
 
 }
 function openCameraMovementPage() {
@@ -768,6 +803,7 @@ const qualityPrompts = [
 ];
 
 let currentPage = 1;
+let currentQualityPage = 1;
 const perPage = 10;
 
 function renderPrompts(){
