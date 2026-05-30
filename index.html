@@ -261,15 +261,7 @@ margin-left:auto;
 
 <div class="container">
 
-<div class="top-bar">
-
 <h1>AI提示词大全</h1>
-
-<button class="vip-btn" onclick="alert('VIP会员功能正常')">
-👑 VIP会员
-</button>
-
-</div>
 
 <div class="subtitle">
 Professional Prompt Library<br>
@@ -286,8 +278,27 @@ AI提示词大全 · Prompt Library · 一站式搜索 · One-stop Search · 最
 <input type="text" placeholder="搜索提示词 Search prompts...">
 </div>
 
-<div class="section-title">
+<div
+style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:36px;
+margin-bottom:18px;
+">
+
+<div
+class="section-title"
+style="margin:0;">
 分类 Categories
+</div>
+
+<button
+class="vip-btn"
+onclick="openVipModal()">
+👑 开通VIP
+</button>
+
 </div>
 
 <div class="grid">
