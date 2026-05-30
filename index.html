@@ -553,7 +553,7 @@ function closeCameraMovementPage() {
     document.getElementById("cameraMovementModal").style.display = "none";
 }
 
-const qualityPrompts = [
+const result = allPrompts.filter(...)
 {cn:"超高清画质",en:"Ultra High Definition"},
 {cn:"8K超清",en:"8K Resolution"},
 {cn:"12K电影级画质",en:"12K Cinematic Resolution"},
@@ -1070,119 +1070,7 @@ const characterPrompts = [
 {cn:"电影级人物塑造",en:"Cinematic Character Design"}
 
 ];
-const characterPrompts = [
 
-{cn:"年轻男性",en:"Young Male"},
-{cn:"年轻女性",en:"Young Female"},
-{cn:"成年男性",en:"Adult Male"},
-{cn:"成年女性",en:"Adult Female"},
-{cn:"成熟男性",en:"Mature Male"},
-{cn:"成熟女性",en:"Mature Female"},
-{cn:"中年男性",en:"Middle-Aged Male"},
-{cn:"中年女性",en:"Middle-Aged Female"},
-{cn:"老年男性",en:"Elderly Male"},
-{cn:"老年女性",en:"Elderly Female"},
-
-{cn:"亚洲男性",en:"Asian Male"},
-{cn:"亚洲女性",en:"Asian Female"},
-{cn:"东亚男性",en:"East Asian Male"},
-{cn:"东亚女性",en:"East Asian Female"},
-{cn:"欧美男性",en:"Western Male"},
-{cn:"欧美女性",en:"Western Female"},
-{cn:"混血男性",en:"Mixed-Race Male"},
-{cn:"混血女性",en:"Mixed-Race Female"},
-{cn:"国际超模男性",en:"Male Supermodel"},
-{cn:"国际超模女性",en:"Female Supermodel"},
-
-{cn:"时尚男模",en:"Fashion Male Model"},
-{cn:"时尚女模",en:"Fashion Female Model"},
-{cn:"商业广告模特",en:"Commercial Model"},
-{cn:"杂志封面模特",en:"Magazine Cover Model"},
-{cn:"高端品牌代言人",en:"Luxury Brand Ambassador"},
-{cn:"明星气质男性",en:"Celebrity-Like Male"},
-{cn:"明星气质女性",en:"Celebrity-Like Female"},
-{cn:"电影男主角形象",en:"Leading Man Appearance"},
-{cn:"电影女主角形象",en:"Leading Lady Appearance"},
-{cn:"国际明星气场",en:"Global Celebrity Presence"},
-
-{cn:"五官立体",en:"Well-Defined Facial Features"},
-{cn:"精致五官",en:"Delicate Facial Features"},
-{cn:"完美脸部比例",en:"Perfect Facial Proportions"},
-{cn:"对称面部结构",en:"Symmetrical Face Structure"},
-{cn:"高颅顶",en:"High Cranial Structure"},
-{cn:"流畅脸部轮廓",en:"Smooth Facial Contours"},
-{cn:"立体下颌线",en:"Defined Jawline"},
-{cn:"精致鼻梁",en:"Refined Nose Bridge"},
-{cn:"深邃眼神",en:"Deep Expressive Eyes"},
-{cn:"明亮双眼",en:"Bright Eyes"},
-
-{cn:"浓密睫毛",en:"Long Thick Eyelashes"},
-{cn:"自然眉形",en:"Natural Eyebrows"},
-{cn:"高级脸特征",en:"High-Fashion Facial Features"},
-{cn:"电影脸",en:"Cinematic Face"},
-{cn:"杂志脸",en:"Editorial Face"},
-{cn:"自然肤质",en:"Natural Skin Texture"},
-{cn:"细腻肌肤",en:"Smooth Skin"},
-{cn:"健康肤色",en:"Healthy Skin Tone"},
-{cn:"真实毛孔细节",en:"Visible Skin Pores"},
-{cn:"高端护肤质感",en:"Luxury Skincare Look"},
-
-{cn:"短发造型",en:"Short Hairstyle"},
-{cn:"长发造型",en:"Long Hairstyle"},
-{cn:"中长发造型",en:"Medium-Length Hair"},
-{cn:"黑色头发",en:"Black Hair"},
-{cn:"棕色头发",en:"Brown Hair"},
-{cn:"金色头发",en:"Blonde Hair"},
-{cn:"银色头发",en:"Silver Hair"},
-{cn:"微卷长发",en:"Soft Wavy Hair"},
-{cn:"直发造型",en:"Straight Hair"},
-{cn:"自然发丝细节",en:"Natural Hair Strands"},
-
-{cn:"职业商务人士",en:"Business Professional"},
-{cn:"企业高管",en:"Corporate Executive"},
-{cn:"创业者形象",en:"Entrepreneur"},
-{cn:"商业精英",en:"Business Elite"},
-{cn:"金融人士",en:"Finance Professional"},
-{cn:"律师形象",en:"Lawyer Appearance"},
-{cn:"医生形象",en:"Doctor Appearance"},
-{cn:"建筑师形象",en:"Architect Appearance"},
-{cn:"设计师形象",en:"Designer Appearance"},
-{cn:"艺术家形象",en:"Artist Appearance"},
-
-{cn:"运动员身材",en:"Athletic Build"},
-{cn:"健美身材",en:"Muscular Physique"},
-{cn:"修长身材",en:"Tall Slim Figure"},
-{cn:"标准模特身材",en:"Model Proportions"},
-{cn:"健康体态",en:"Healthy Body Shape"},
-{cn:"优雅体态",en:"Elegant Posture"},
-{cn:"挺拔站姿",en:"Confident Standing Posture"},
-{cn:"自然身体比例",en:"Natural Body Proportions"},
-{cn:"流畅身体线条",en:"Smooth Body Lines"},
-{cn:"高挑身形",en:"Tall Figure"},
-
-{cn:"自然微笑",en:"Natural Smile"},
-{cn:"自信微笑",en:"Confident Smile"},
-{cn:"温暖笑容",en:"Warm Smile"},
-{cn:"平静表情",en:"Calm Expression"},
-{cn:"沉思表情",en:"Thoughtful Expression"},
-{cn:"坚定眼神",en:"Determined Gaze"},
-{cn:"专注神情",en:"Focused Expression"},
-{cn:"友善表情",en:"Friendly Expression"},
-{cn:"成熟稳重气质",en:"Mature Presence"},
-{cn:"优雅气质",en:"Elegant Presence"},
-
-{cn:"高级时尚气质",en:"High Fashion Aura"},
-{cn:"商业精英气场",en:"Executive Presence"},
-{cn:"电影主角气场",en:"Main Character Presence"},
-{cn:"国际明星气质",en:"Celebrity Aura"},
-{cn:"强大个人魅力",en:"Strong Charisma"},
-{cn:"高贵气质",en:"Noble Presence"},
-{cn:"精英阶层气质",en:"Elite-Class Appearance"},
-{cn:"高级审美气质",en:"Sophisticated Aesthetic Presence"},
-{cn:"世界级模特气场",en:"World-Class Model Presence"},
-{cn:"电影级人物塑造",en:"Cinematic Character Design"}
-
-];
 const effectPrompts = [
 
 {cn:"发光粒子特效",en:"Glowing Particles"},
@@ -2093,11 +1981,7 @@ function renderPrompts(){
 const start=(currentPage-1)*perPage;
 const end=start+perPage;
 
-const data =
-currentMode==="quality"
-? qualityPrompts
-: prompts;
-
+const data = getCurrentData();
 const pageData =
 data.slice(start,end);
 
@@ -2238,7 +2122,51 @@ currentMode==="quality"
 )
 ){
 currentPage++;
-renderPrompts();
+function getCurrentData(){
+
+switch(currentMode){
+
+case "camera":
+return prompts;
+
+case "quality":
+return qualityPrompts;
+
+case "action":
+return actionPrompts;
+
+case "style":
+return stylePrompts;
+
+case "character":
+return characterPrompts;
+
+case "effect":
+return effectPrompts;
+
+case "scene":
+return scenePrompts;
+
+case "negative":
+return negativePrompts;
+
+case "antiMorph":
+return antiMorphPrompts;
+
+case "antiText":
+return antiTextPrompts;
+
+case "antiCollapse":
+return antiCollapsePrompts;
+
+case "antiConflict":
+return antiConflictPrompts;
+
+case "antiBug":
+return antiBugPrompts;
+
+default:
+return prompts;
 }
 
 }
