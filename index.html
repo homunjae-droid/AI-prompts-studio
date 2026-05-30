@@ -571,7 +571,6 @@ function closeVipModal(){
 document.getElementById("vipModal").style.display="none";
 
 }
-}
 
 function closeCameraMovementPage() {
     document.getElementById("cameraMovementModal").style.display = "none";
@@ -853,38 +852,7 @@ document.getElementById("vipModal").style.display="flex";
 function closeVipModal(){
 document.getElementById("vipModal").style.display="none";
 }
-function searchPrompts(){
 
-const keyword =
-document.getElementById("searchInput")
-.value
-.toLowerCase()
-.trim();
-
-const results =
-document.getElementById("searchResults");
-
-if(keyword===""){
-results.innerHTML="";
-return;
-}
-
-const matched =
-prompts.filter(item =>
-item.toLowerCase().includes(keyword)
-);
-
-results.innerHTML =
-matched.slice(0,20)
-.map(item => `
-<div class="search-item"
-onclick="copyPrompt('${item.replace(/'/g,"\\'")}')">
-${item}
-</div>
-`)
-.join("");
-
-}
 </script>
   <div id="vipModal"
 style="
