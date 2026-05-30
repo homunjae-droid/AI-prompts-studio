@@ -426,7 +426,7 @@ style="margin:0;">
 <div class="en">Trending Search</div>
 </div>
 
-<div class="card" onclick="openQualityPage()">
+<div class="card" onclick="openQualityTest()">
 <div class="cn">画质描述</div>
 <div class="en">Quality Description</div>
 </div>
@@ -555,6 +555,28 @@ document.getElementById(
 ).style.display="flex";
 
 renderPrompts();
+}
+function openQualityTest(){
+
+document.getElementById(
+"cameraMovementModal"
+).style.display="flex";
+
+cameraMovementList.innerHTML =
+qualityPrompts.map(item=>`
+
+<div class="card">
+
+<div class="cn">${item.cn}</div>
+
+<div class="en">${item.en}</div>
+
+</div>
+
+`).join("");
+
+pagination.innerHTML="";
+
 }
 function searchPrompts(){
 
