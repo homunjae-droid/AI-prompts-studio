@@ -627,7 +627,11 @@ document.getElementById("pagination").innerHTML=`
 <button onclick="prevPage()">上一页</button>
 
 <span>
-第 ${currentPage} 页 /
+第 ${currentPage} 页
+${currentPage > 5 ? " 🔒" : ""}
+
+/
+
 共 ${Math.ceil(prompts.length/perPage)} 页
 </span>
 
