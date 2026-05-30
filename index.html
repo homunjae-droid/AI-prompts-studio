@@ -426,7 +426,7 @@ style="margin:0;">
 <div class="en">Trending Search</div>
 </div>
 
-<div class="card">
+<div class="card" onclick="openQualityPage()">
 <div class="cn">画质描述</div>
 <div class="en">Quality Description</div>
 </div>
@@ -703,6 +703,63 @@ const prompts = [
 {cn:"镜头盘旋",en:"Hover Orbit"},
 {cn:"镜头悬停",en:"Hover Shot"}
 
+];
+
+const qualityPrompts = [
+{cn:"超高清画质",en:"Ultra High Definition"},
+{cn:"8K超清",en:"8K Resolution"},
+{cn:"12K电影级画质",en:"12K Cinematic Resolution"},
+{cn:"极致细节",en:"Extreme Detail"},
+{cn:"超高细节保留",en:"Ultra Detailed"},
+{cn:"锐利焦点",en:"Razor Sharp Focus"},
+{cn:"超精细纹理",en:"Highly Detailed Texture"},
+{cn:"高解析度",en:"High Resolution"},
+{cn:"专业摄影级细节",en:"Professional Photography Detail"},
+{cn:"微观级细节",en:"Microscopic Detail"},
+
+{cn:"真实纹理表现",en:"Realistic Texture Rendering"},
+{cn:"超真实细节",en:"Hyper Detailed"},
+{cn:"高清商业画质",en:"Commercial Grade Quality"},
+{cn:"电影级解析力",en:"Cinematic Clarity"},
+{cn:"清晰边缘表现",en:"Sharp Edge Definition"},
+{cn:"极高像素密度",en:"Ultra High Pixel Density"},
+{cn:"专业广告级画面",en:"Advertising Quality Visuals"},
+{cn:"无损细节呈现",en:"Lossless Detail Rendering"},
+{cn:"高保真图像",en:"High Fidelity Imagery"},
+{cn:"旗舰级画质",en:"Premium Visual Quality"},
+
+{cn:"照片级真实感",en:"Photorealistic"},
+{cn:"超写实风格",en:"Hyper Realistic"},
+{cn:"真实摄影质感",en:"Real Photography Look"},
+{cn:"自然光真实表现",en:"Natural Light Realism"},
+{cn:"真实材质渲染",en:"Physically Accurate Materials"},
+{cn:"真实反射效果",en:"Realistic Reflections"},
+{cn:"真实阴影细节",en:"Accurate Shadow Rendering"},
+{cn:"真实环境光",en:"Natural Ambient Lighting"},
+{cn:"真实肤质表现",en:"Realistic Skin Texture"},
+{cn:"真实景深",en:"Natural Depth of Field"},
+
+{cn:"真实镜头表现",en:"Authentic Lens Rendering"},
+{cn:"真实空间感",en:"Natural Spatial Depth"},
+{cn:"影视级真实感",en:"Cinema Realism"},
+{cn:"专业摄影棚质感",en:"Studio Photography Quality"},
+{cn:"物理级真实渲染",en:"Physically Based Rendering"},
+{cn:"高度拟真",en:"Highly Photorealistic"},
+{cn:"自然色彩还原",en:"Accurate Color Reproduction"},
+{cn:"真实动态范围",en:"Realistic Dynamic Range"},
+{cn:"真实光线追踪",en:"Ray Traced Realism"},
+{cn:"无AI痕迹",en:"Natural Non-AI Look"},
+
+{cn:"电影级光影",en:"Cinematic Lighting"},
+{cn:"柔和自然光",en:"Soft Natural Lighting"},
+{cn:"高级商业布光",en:"Commercial Lighting Setup"},
+{cn:"体积光效果",en:"Volumetric Lighting"},
+{cn:"电影轮廓光",en:"Cinematic Rim Lighting"},
+{cn:"柔光质感",en:"Soft Light Rendering"},
+{cn:"高级阴影层次",en:"Rich Shadow Detail"},
+{cn:"全局光照",en:"Global Illumination"},
+{cn:"动态光线表现",en:"Dynamic Lighting"},
+{cn:"高端摄影灯光",en:"Professional Studio Lighting"}
 ];
 
 let currentPage = 1;
