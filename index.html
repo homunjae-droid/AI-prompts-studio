@@ -303,6 +303,22 @@ font-size:30px;
 cursor:pointer;
 margin-left:auto;
 }
+#searchResults{
+margin-top:12px;
+}
+
+.search-item{
+background:white;
+padding:14px;
+margin-top:8px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,.05);
+cursor:pointer;
+}
+
+.search-item:hover{
+background:#f5f5f5;
+}
 </style>
 </head>
 
@@ -324,7 +340,15 @@ AI提示词大全 · Prompt Library · 一站式搜索 · One-stop Search · 最
 </div>
 
 <div class="search">
-<input type="text" placeholder="搜索提示词 Search prompts...">
+
+<input
+type="text"
+id="searchInput"
+placeholder="搜索提示词 Search prompts..."
+onkeyup="searchPrompts()">
+
+<div id="searchResults"></div>
+
 </div>
 <div class="vip-banner" onclick="openVipModal()">
 
