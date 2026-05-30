@@ -620,8 +620,7 @@ document.getElementById("vipModal").style.display="none";
 function closeCameraMovementPage() {
     document.getElementById("cameraMovementModal").style.display = "none";
 }
-
-const result = allPrompts.filter(...)
+const qualityPrompts = [
 {cn:"超高清画质",en:"Ultra High Definition"},
 {cn:"8K超清",en:"8K Resolution"},
 {cn:"12K电影级画质",en:"12K Cinematic Resolution"},
@@ -2179,19 +2178,17 @@ openVipModal();
 
 function nextPage(){
 
-if(
-currentPage<
+const totalPages =
 Math.ceil(
-(
-currentMode==="quality"
-? qualityPrompts
-: prompts
-).length/perPage
-)
-){
-currentPage++;
-function getCurrentData(){
+getCurrentData().length / perPage
+);
 
+if(currentPage < totalPages){
+currentPage++;
+renderPrompts();
+}
+
+}
 switch(currentMode){
 
 case "camera":
