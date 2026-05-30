@@ -425,7 +425,6 @@ style="margin:0;">
 <div class="cn">热门搜索</div>
 <div class="en">Trending Search</div>
 </div>
-<div class="grid">
 
 <div class="card" onclick="openCategory('camera')">
 <div class="cn">运镜描述</div>
@@ -594,11 +593,15 @@ document.getElementById("searchResults").innerHTML="";
 return;
 }
 
-const freePrompts = prompts.slice(0,50);
+const freePrompts = allPrompts;
 
 const result = freePrompts.filter(item =>
-item.cn.startsWith(keyword) ||
-item.en.toLowerCase().includes(keyword.toLowerCase())
+
+item.cn.includes(keyword) ||
+
+item.en.toLowerCase()
+.includes(keyword.toLowerCase())
+
 );
 document.getElementById("searchResults").innerHTML =
 result.slice(0,5).map(item=>`
@@ -2045,6 +2048,25 @@ const antiBugPrompts = [
 {cn:"专业级生成质量",en:"Professional Generation Quality"}
 
 ];
+
+const allPrompts = [
+
+...prompts,
+...qualityPrompts,
+...actionPrompts,
+...stylePrompts,
+...characterPrompts,
+...effectPrompts,
+...scenePrompts,
+...negativePrompts,
+...antiMorphPrompts,
+...antiTextPrompts,
+...antiCollapsePrompts,
+...antiConflictPrompts,
+...antiBugPrompts
+
+];
+
 let currentMode = "camera";
 let currentPage = 1;
 let currentQualityPage = 1;
