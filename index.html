@@ -564,12 +564,11 @@ return;
 const freePrompts = prompts.slice(0,50);
 
 const result = freePrompts.filter(item =>
-item.cn.includes(keyword) ||
+item.cn.startsWith(keyword) ||
 item.en.toLowerCase().includes(keyword.toLowerCase())
 );
-
 document.getElementById("searchResults").innerHTML =
-result.slice(0,8).map(item=>`
+result.slice(0,5).map(item=>`
 
 <div class="search-item">
 
