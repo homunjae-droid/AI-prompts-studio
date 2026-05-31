@@ -569,8 +569,6 @@ style="margin:0;">
 </div>
 
 
-</div>
-
 <div class="section-title">
 最新更新 Latest Updates
 </div>
@@ -2464,6 +2462,11 @@ return prompts;
 }
 function renderTrending(){
 
+const cameraMovementList =
+document.getElementById(
+"cameraMovementList"
+);
+
 cameraMovementList.innerHTML =
 trendingPrompts.map((item,index)=>{
 
@@ -2538,6 +2541,11 @@ document.getElementById(
 
 }
 function renderPrompts(){
+
+const cameraMovementList =
+document.getElementById(
+"cameraMovementList"
+);
 
 const start=(currentPage-1)*perPage;
 const end=start+perPage;
@@ -2797,7 +2805,11 @@ renderPrompts();
 
 }
 
+window.onload = function(){
+
 renderPrompts();
+
+}
 
 function searchPage(){
 
