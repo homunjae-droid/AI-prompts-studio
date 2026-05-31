@@ -2950,7 +2950,9 @@ alert(error.message);
 return;
 }
 
+localStorage.setItem("vipUser", "true");
 alert("登录成功");
+closeVipModal();
 }
 
 async function logoutUser(){
