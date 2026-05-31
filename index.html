@@ -2263,6 +2263,15 @@ const antiBugPrompts = [
 {cn:"专业级生成质量",en:"Professional Generation Quality"}
 
 ];
+const freePrompts = [];
+
+promptCategories.forEach(category => {
+
+    freePrompts.push(
+        ...category.data.slice(0,20)
+    );
+
+});
 
 const updateVersion = "2026-05-31";
 
@@ -2372,15 +2381,25 @@ return [...arr]
 
 function openTrending(){
 
-trendingPrompts =
-shuffleArray(allPrompts)
-.slice(0,10);
+    if(isVip){
 
-document.getElementById(
-"cameraMovementModal"
-).style.display="flex";
+        trendingPrompts =
+        shuffleArray(allPrompts)
+        .slice(0,10);
 
-renderTrending();
+    }else{
+
+        trendingPrompts =
+        shuffleArray(freePrompts)
+        .slice(0,4);
+
+    }
+
+    document.getElementById(
+        "cameraMovementModal"
+    ).style.display="flex";
+
+    renderTrending();
 
 }
 
@@ -2470,8 +2489,7 @@ document.getElementById(
 cameraMovementList.innerHTML =
 trendingPrompts.map((item,index)=>{
 
-const locked =
-!isVip && index >= 4;
+
 
 return `
 
