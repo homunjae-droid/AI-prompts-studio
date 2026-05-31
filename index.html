@@ -2837,7 +2837,7 @@ document.getElementById("vipModal").style.display="none";
 }
 
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
   <div id="vipModal"
 style="
 display:none;
@@ -2874,5 +2874,26 @@ max-width:320px;
 </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+
+const supabaseUrl =
+"https://xwdahygnqrpmojakjbic.supabase.co";
+
+const supabaseKey =
+"sb_publishable__KTGaRsUOw6Nek9eK2F1XQ_bY8lUSci";
+
+const {
+createClient
+} = supabase;
+
+const client =
+createClient(
+supabaseUrl,
+supabaseKey
+);
+
+</script>
 </body>
 </html>
