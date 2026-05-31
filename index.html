@@ -2838,7 +2838,7 @@ document.getElementById("vipModal").style.display="none";
 
 </script>
 
-  <div id="vipModal"
+<div id="vipModal"
 style="
 display:none;
 position:fixed;
@@ -2858,14 +2858,33 @@ background:white;
 padding:30px;
 border-radius:20px;
 text-align:center;
-max-width:320px;
+max-width:360px;
+width:90%;
 ">
 
-<h2>👑 VIP会员</h2>
+<h2>👑 VIP会员登录</h2>
 
-<p style="margin:15px 0;">
-开通后解锁全部提示词
-</p >
+<input
+id="email"
+type="email"
+placeholder="邮箱">
+
+<input
+id="password"
+type="password"
+placeholder="密码">
+
+<button onclick="registerUser()">
+注册
+</button>
+
+<button onclick="loginUser()">
+登录
+</button>
+
+<button onclick="logoutUser()">
+退出登录
+</button>
 
 <button onclick="closeVipModal()">
 关闭
