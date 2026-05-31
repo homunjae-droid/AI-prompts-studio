@@ -349,6 +349,19 @@ background:rgba(255,255,255,.9);
 
 }
 
+.blur-card{
+
+filter:blur(6px);
+position:relative;
+
+}
+
+.blur-card button{
+
+filter:none;
+
+}
+
 </style>
 </head>
 
@@ -421,7 +434,7 @@ style="margin:0;">
 
 <div class="grid">
 
-<div class="card" onclick="openCategory('camera')">
+<div class="card" onclick="openTrending()">
 <div class="cn">热门搜索</div>
 <div class="en">Trending Search</div>
 </div>
@@ -530,13 +543,7 @@ https://ai-prompts-studio.vercel.app
 <div id="cameraMovementModal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
-      <input
-        type="number"
-        id="pageSearchInput"
-        placeholder="搜索页码 Search page..."
-        min="1"
-      />
-      <button onclick="searchPage()">搜索</button>
+     
       <span onclick="closeCameraMovementPage()" class="close-btn">&times;</span>
     </div>
 
@@ -2066,7 +2073,30 @@ const allPrompts = [
 ...antiBugPrompts
 
 ];
+function shuffleArray(arr){
 
+return [...arr]
+.sort(()=>Math.random()-0.5);
+
+}
+
+function openTrending(){
+
+trendingPrompts =
+shuffleArray(allPrompts)
+.slice(0,10);
+
+document.getElementById(
+"cameraMovementModal"
+).style.display="flex";
+
+renderTrending();
+
+}
+
+let isVip = false;
+
+let trendingPrompts = [];
 let currentMode = "camera";
 let currentPage = 1;
 let currentQualityPage = 1;
@@ -2120,7 +2150,81 @@ return prompts;
 }
 
 }
+function renderTrending(){
 
+cameraMovementList.innerHTML =
+trendingPrompts.map((item,index)=>{
+
+const locked =
+!isVip && index >= 4;
+
+return `
+
+<div class="card ${locked?'blur-card':''}">
+
+<div class="cn">
+${locked ? "＊＊＊＊＊＊" : item.cn}
+</div>
+
+<div class="en">
+${locked ? "VIP ONLY" : item.en}
+</div>
+
+${
+locked
+?
+`<button
+class="copy-btn"
+onclick="openVipModal()">
+开通VIP
+</button>`
+:
+`<button
+class="copy-btn"
+onclick="copyPrompt('${item.en}')">
+复制 Copy
+</button>`
+}
+
+</div>
+
+`;
+
+}).join("");
+
+if(!isVip){
+
+cameraMovementList.innerHTML += `
+
+<div
+style="
+grid-column:1/3;
+text-align:center;
+padding:20px;
+">
+
+<div
+style="
+font-size:20px;
+font-weight:700;
+color:#FF9500;
+">
+
+👑 开通VIP解锁全部提示词
+
+</div>
+
+</div>
+
+`;
+
+}
+
+document.getElementById(
+"pagination"
+).innerHTML = "";
+
+}
 function renderPrompts(){
 
 const start=(currentPage-1)*perPage;
