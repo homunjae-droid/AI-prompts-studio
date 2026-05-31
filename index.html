@@ -497,7 +497,7 @@ style="margin:0;">
 <div class="grid">
 
 <div class="card" onclick="openTrending()">
-<div class="cn">热门搜索</div>
+<div class="cn">热门推荐</div>
 <div class="en">Trending Search</div>
 </div>
 
@@ -2263,15 +2263,7 @@ const antiBugPrompts = [
 {cn:"专业级生成质量",en:"Professional Generation Quality"}
 
 ];
-const freePrompts = [];
 
-promptCategories.forEach(category => {
-
-    freePrompts.push(
-        ...category.data.slice(0,20)
-    );
-
-});
 
 const updateVersion = "2026-05-31";
 
@@ -2354,6 +2346,15 @@ data:antiBugPrompts
 }
 
 ];
+const freePrompts = [];
+
+promptCategories.forEach(category => {
+
+freePrompts.push(
+...category.data.slice(0,20)
+);
+
+});
 
 const allPrompts = [
 
@@ -2380,6 +2381,8 @@ return [...arr]
 }
 
 function openTrending(){
+  
+  currentPage = 1;
 
     if(isVip){
 
@@ -2487,71 +2490,29 @@ document.getElementById(
 );
 
 cameraMovementList.innerHTML =
-trendingPrompts.map((item,index)=>{
+trendingPrompts.map(item=>`
 
-
-
-return `
-
-<div class="card ${locked?'blur-card':''}">
+<div class="card">
 
 <div class="cn">
-${locked ? "＊＊＊＊＊＊" : item.cn}
+${item.cn}
 </div>
 
 <div class="en">
-${locked ? "VIP ONLY" : item.en}
+${item.en}
 </div>
 
-${
-locked
-?
-`<button
-class="copy-btn"
-onclick="openVipModal()">
-开通VIP
-</button>`
-:
-`<button
+<button
 class="copy-btn"
 onclick="copyPrompt('${item.en}')">
+
 复制 Copy
-</button>`
-}
+
+</button>
 
 </div>
 
-`;
-
-}).join("");
-
-if(!isVip){
-
-cameraMovementList.innerHTML += `
-
-<div
-style="
-grid-column:1/3;
-text-align:center;
-padding:20px;
-">
-
-<div
-style="
-font-size:20px;
-font-weight:700;
-color:#FF9500;
-">
-
-👑 开通VIP解锁全部提示词
-
-</div>
-
-</div>
-
-`;
-
-}
+`).join("");
 
 document.getElementById(
 "pagination"
