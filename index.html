@@ -363,6 +363,54 @@ background:rgba(255,255,255,.9);
 
 }
 
+.update-item{
+
+padding:14px 0;
+
+border-bottom:1px solid #eee;
+
+}
+
+.update-title{
+
+font-size:16px;
+
+font-weight:700;
+
+margin-bottom:8px;
+
+}
+
+.update-list{
+
+font-size:13px;
+
+color:#666;
+
+line-height:1.8;
+
+}
+
+.more-btn{
+
+margin-top:10px;
+
+background:#111;
+
+color:white;
+
+border:none;
+
+padding:6px 14px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:12px;
+
+}
+  
 .blur-card{
 
 filter:blur(6px);
@@ -527,11 +575,21 @@ style="margin:0;">
 最新更新 Latest Updates
 </div>
 
-<div class="update">
-<div class="dot"></div>
+<div
+class="update"
+onclick="openUpdateLog()"
+style="cursor:pointer;"
+>
+
+<div
+class="dot"
+id="updateDot">
+</div>
+
 <div>
 新增 New Prompts Added · 点击进入查看更新内容
 </div>
+
 </div>
 
 <div class="footer-text">
@@ -550,6 +608,31 @@ Professional
 
 <div class="site">
 https://ai-prompts-studio.vercel.app
+</div>
+
+</div>
+<div id="updateModal" class="modal">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h2>
+📅 最新更新
+</h2>
+
+<span
+onclick="closeUpdateLog()"
+class="close-btn">
+
+&times;
+
+</span>
+
+</div>
+
+<div id="updateContent"></div>
+
 </div>
 
 </div>
@@ -2183,6 +2266,26 @@ const antiBugPrompts = [
 
 ];
 
+const updateVersion = "2026-05-31";
+
+const updateLogs = [
+
+{
+date:"2026-05-31",
+updates:[
+...
+]
+},
+
+{
+date:"2026-06-15",
+updates:[
+...
+]
+}
+
+];
+
 const promptCategories = [
 
 {
@@ -2287,6 +2390,26 @@ document.getElementById(
 ).style.display="flex";
 
 renderTrending();
+
+}
+
+const readVersion =
+localStorage.getItem("updateRead");
+
+if(readVersion === updateVersion){
+
+setTimeout(()=>{
+
+const dot =
+document.getElementById("updateDot");
+
+if(dot){
+
+dot.style.display="none";
+
+}
+
+},100);
 
 }
 
@@ -2519,6 +2642,114 @@ getCurrentData().length/perPage
 <button onclick="nextPage()">下一页</button>
 
 `;
+
+}
+
+function openUpdateLog(){
+
+localStorage.setItem(
+"updateRead",
+updateVersion
+);
+
+const dot =
+document.getElementById("updateDot");
+
+if(dot){
+
+dot.style.display="none";
+
+}
+
+const data =
+updateLogs[updateLogs.length-1];
+
+document.getElementById(
+"updateContent"
+).innerHTML =
+
+`
+
+<div style="
+margin-bottom:20px;
+font-size:14px;
+color:#888;
+">
+
+更新日期：
+${data.date}
+
+</div>
+
+${data.updates.map((item,index)=>`
+
+<div class="update-item">
+
+<div class="update-title">
+
+${index+1}：
+${item.category}
+
+</div>
+
+<div
+class="update-list"
+id="update_${index}"
+>
+
+${item.items.slice(0,5).join("、")}
+
+</div>
+
+${
+item.items.length>5
+?
+
+`<button
+class="more-btn"
+onclick="expandUpdate(${index})"
+>
+
+显示更多
+
+</button>`
+
+:
+
+""
+
+}
+
+</div>
+
+`).join("")}
+
+`;
+
+document.getElementById(
+"updateModal"
+).style.display="flex";
+
+}
+
+function closeUpdateLog(){
+
+document.getElementById(
+"updateModal"
+).style.display="none";
+
+}
+
+function expandUpdate(index){
+
+const item =
+updateLogs[0].updates[index];
+
+document.getElementById(
+"update_"+index
+).innerHTML =
+
+item.items.join("、");
 
 }
 
