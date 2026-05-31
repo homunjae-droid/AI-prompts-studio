@@ -590,44 +590,156 @@ currentPage = 1;
 renderPrompts();
 
 }
+
+function openSearchResult(mode,page){
+
+currentMode = mode;
+
+currentPage = page;
+
+document.getElementById(
+"cameraMovementModal"
+).style.display = "flex";
+
+renderPrompts();
+
+document.getElementById(
+"searchResults"
+).innerHTML = "";
+
+document.getElementById(
+"searchInput"
+).value = "";
+
+}
+
+function getCategoryName(mode){
+
+const map={
+
+camera:"运镜描述",
+
+quality:"画质描述",
+
+action:"动作描述",
+
+style:"风格描述",
+
+character:"人物描述",
+
+effect:"特效描述",
+
+scene:"场景描述",
+
+negative:"负面提示",
+
+antiMorph:"防穿模",
+
+antiText:"防乱码",
+
+antiCollapse:"防崩坏",
+
+antiConflict:"防串词",
+
+antiBug:"防BUG"
+
+};
+
+return map[mode] || "";
+
+}
+  
 function searchPrompts(){
 
 const keyword =
-document.getElementById("searchInput").value.trim();
+document.getElementById("searchInput")
+.value.trim();
 
 if(keyword===""){
-document.getElementById("searchResults").innerHTML="";
+
+document.getElementById(
+"searchResults"
+).innerHTML="";
+
 return;
+
 }
 
-const freePrompts = allPrompts;
+let results=[];
 
-const result = freePrompts.filter(item =>
+promptCategories.forEach(cat=>{
 
-item.cn.includes(keyword) ||
+cat.data.forEach((item,index)=>{
+
+if(
+
+item.cn.includes(keyword)
+
+||
 
 item.en.toLowerCase()
 .includes(keyword.toLowerCase())
 
-);
-document.getElementById("searchResults").innerHTML =
-result.slice(0,5).map(item=>`
+){
 
-<div class="search-item">
+results.push({
+
+...item,
+
+mode:cat.mode,
+
+page:
+Math.floor(index/perPage)+1
+
+});
+
+}
+
+});
+
+});
+
+document.getElementById(
+"searchResults"
+).innerHTML =
+
+results.slice(0,10).map(item=>`
+
+<div
+class="search-item"
+onclick="openSearchResult(
+'${item.mode}',
+${item.page}
+)">
 
 <div style="font-weight:600;">
+
 ${item.cn}
+
 </div>
 
 <div style="color:#888;font-size:13px;">
+
 ${item.en}
+
+</div>
+
+<div
+style="
+font-size:12px;
+margin-top:4px;
+color:#999;
+">
+
+第 ${item.page} 页
+
 </div>
 
 </div>
 
 `).join("");
-}
 
+}
 function closeVipModal(){
 
 document.getElementById("vipModal").style.display="none";
@@ -2053,6 +2165,75 @@ const antiBugPrompts = [
 
 {cn:"电影级稳定性",en:"Cinematic Stability"},
 {cn:"专业级生成质量",en:"Professional Generation Quality"}
+
+];
+
+const promptCategories = [
+
+{
+mode:"camera",
+data:prompts
+},
+
+{
+mode:"quality",
+data:qualityPrompts
+},
+
+{
+mode:"action",
+data:actionPrompts
+},
+
+{
+mode:"style",
+data:stylePrompts
+},
+
+{
+mode:"character",
+data:characterPrompts
+},
+
+{
+mode:"effect",
+data:effectPrompts
+},
+
+{
+mode:"scene",
+data:scenePrompts
+},
+
+{
+mode:"negative",
+data:negativePrompts
+},
+
+{
+mode:"antiMorph",
+data:antiMorphPrompts
+},
+
+{
+mode:"antiText",
+data:antiTextPrompts
+},
+
+{
+mode:"antiCollapse",
+data:antiCollapsePrompts
+},
+
+{
+mode:"antiConflict",
+data:antiConflictPrompts
+},
+
+{
+mode:"antiBug",
+data:antiBugPrompts
+}
 
 ];
 
