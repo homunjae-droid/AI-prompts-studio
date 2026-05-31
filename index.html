@@ -2405,7 +2405,12 @@ dot.style.display="none";
 }
 
 let isVip = false;
+const vipStatus =
+localStorage.getItem("vipUser");
 
+if(vipStatus==="true"){
+isVip=true;
+}
 let trendingPrompts = [];
 let currentMode = "camera";
 let currentPage = 1;
@@ -2950,16 +2955,35 @@ alert(error.message);
 return;
 }
 
-localStorage.setItem("vipUser", "true");
+isVip = true;
+
+localStorage.setItem(
+"vipUser",
+"true"
+);
+
 alert("登录成功");
+
 closeVipModal();
+
+renderPrompts();
+
 }
 
 async function logoutUser(){
 
 await db.auth.signOut();
 
+isVip = false;
+
+localStorage.removeItem(
+"vipUser"
+);
+
 alert("已退出登录");
+
+renderPrompts();
+
 }
 </script>
 </body>
