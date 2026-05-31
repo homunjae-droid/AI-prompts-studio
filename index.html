@@ -710,7 +710,7 @@ document.getElementById(
 
 function getCategoryName(mode){
 
-const map={
+ map={
 
 camera:"运镜描述",
 
@@ -2909,6 +2909,56 @@ window.supabase.createClient(
   supabaseKey
 );
 
+async function registerUser(){
+
+const email =
+document.getElementById("email").value;
+
+const password =
+document.getElementById("password").value;
+
+const { data, error } =
+await db.auth.signUp({
+email,
+password
+});
+
+if(error){
+alert(error.message);
+return;
+}
+
+alert("注册成功");
+}
+
+async function loginUser(){
+
+const email =
+document.getElementById("email").value;
+
+const password =
+document.getElementById("password").value;
+
+const { data, error } =
+await db.auth.signInWithPassword({
+email,
+password
+});
+
+if(error){
+alert(error.message);
+return;
+}
+
+alert("登录成功");
+}
+
+async function logoutUser(){
+
+await db.auth.signOut();
+
+alert("已退出登录");
+}
 </script>
 </body>
 </html>
