@@ -49,16 +49,36 @@ box-shadow:0 6px 20px rgba(0,0,0,.06);
 }
 
 .marquee{
+
+display:flex;
+
+width:max-content;
+
 white-space:nowrap;
-display:inline-block;
-animation:scroll 22s linear infinite;
+
+animation:scroll 25s linear infinite;
+
 font-size:15px;
+
 color:#333;
+
 }
 
+.marquee span{
+
+padding-right:20px;
+
+}
 @keyframes scroll{
-0%{transform:translateX(100%)}
-100%{transform:translateX(-100%)}
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
+
 }
 
 .search{
@@ -379,11 +399,13 @@ Professional Prompt Library<br>
 <div class="marquee-box">
 <div class="marquee">
 
-🔥 已收录10000+专业AI提示词以及高效实用指令 适用于（Midjourney · ChatGPT · Gemini · Claude · DeepSeek · Sora · Kling · Veo3 · Runway · Flux · Stable Diffusion · 即梦 · 小云雀）等各大AI创作平台 · 持续更新中 ·免费开放部分内容· VIP解锁全部内容 · 一次开通终身使用 ·🔥
-
+<span>
 🔥 已收录10000+专业AI提示词以及高效实用指令 适用于（Midjourney · ChatGPT · Gemini · Claude · DeepSeek · Sora · Kling · Veo3 · Runway · Flux · Stable Diffusion · 即梦 · 小云雀）等各大AI创作平台 · 持续更新中 · 免费开放部分内容·VIP解锁全部内容 · 一次开通终身使用 ·🔥
+</span>
 
-🔥 已收录10000+专业AI提示词以及高效实用指令 适用于（Midjourney · ChatGPT · Gemini · Claude · DeepSeek · Sora · Kling · Veo3 · Runway · Flux · Stable Diffusion · 即梦 · 小云雀）等各大AI创作平台 · 持续更新中 ·免费开放部分内容· VIP解锁全部内容 · 一次开通终身使用 ·🔥
+<span>
+🔥 已收录10000+专业AI提示词以及高效实用指令 适用于（Midjourney · ChatGPT · Gemini · Claude · DeepSeek · Sora · Kling · Veo3 · Runway · Flux · Stable Diffusion · 即梦 · 小云雀）等各大AI创作平台 · 持续更新中 · 免费开放部分内容·VIP解锁全部内容 · 一次开通终身使用 ·🔥
+</span>
 
 </div>
 </div>
