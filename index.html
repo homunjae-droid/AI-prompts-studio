@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+YPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
@@ -2405,12 +2405,7 @@ dot.style.display="none";
 }
 
 let isVip = false;
-const vipStatus =
-localStorage.getItem("vipUser");
 
-if(vipStatus==="true"){
-isVip=true;
-}
 let trendingPrompts = [];
 let currentMode = "camera";
 let currentPage = 1;
@@ -2559,7 +2554,7 @@ const data = getCurrentData();
 const pageData =
 data.slice(start,end);
 
-if(currentPage > 5){
+if(!isVip && currentPage > 2){
 
 cameraMovementList.innerHTML = `
 
@@ -2634,7 +2629,7 @@ document.getElementById("pagination").innerHTML=`
 
 <span>
 第 ${currentPage} 页
-${currentPage > 5 ? " 🔒" : ""}
+${!isVip && currentPage > 2 ? " 🔒" : ""}
 
 /
 
@@ -2801,16 +2796,20 @@ renderPrompts();
 
 }
 
-function prevPage(){
+window.onload = async function(){
 
-if(currentPage>1){
-currentPage--;
-renderPrompts();
+const { data } =
+await db.auth.getSession();
+
+if(data.session){
+
+isVip = true;
+
+}else{
+
+isVip = false;
+
 }
-
-}
-
-window.onload = function(){
 
 renderPrompts();
 
@@ -2913,6 +2912,23 @@ window.supabase.createClient(
   supabaseUrl,
   supabaseKey
 );
+db.auth.onAuthStateChange(
+(event, session)=>{
+
+if(session){
+
+isVip = true;
+
+}else{
+
+isVip = false;
+
+}
+
+renderPrompts();
+
+}
+);
 
 async function registerUser(){
 
@@ -2957,10 +2973,7 @@ return;
 
 isVip = true;
 
-localStorage.setItem(
-"vipUser",
-"true"
-);
+
 
 alert("登录成功");
 
@@ -2976,9 +2989,7 @@ await db.auth.signOut();
 
 isVip = false;
 
-localStorage.removeItem(
-"vipUser"
-);
+
 
 alert("已退出登录");
 
