@@ -411,16 +411,35 @@ font-size:12px;
 
 }
   
-.blur-card{
+.blur-card .cn,
+.blur-card .en{
 
 filter:blur(6px);
+
+}
+
+.blur-card{
+
 position:relative;
 
 }
 
-.blur-card button{
+.blur-card::after{
 
-filter:none;
+content:"VIP";
+position:absolute;
+
+top:10px;
+right:10px;
+
+background:#FFD700;
+color:#111;
+
+padding:4px 10px;
+border-radius:999px;
+
+font-size:12px;
+font-weight:700;
 
 }
 
@@ -2381,22 +2400,14 @@ return [...arr]
 }
 
 function openTrending(){
+
+currentMode = "trending";
   
-  currentPage = 1;
+    currentPage = 1;
 
-    if(isVip){
-
-        trendingPrompts =
-        shuffleArray(allPrompts)
-        .slice(0,10);
-
-    }else{
-
-        trendingPrompts =
-        shuffleArray(freePrompts)
-        .slice(0,4);
-
-    }
+    trendingPrompts =
+    shuffleArray(allPrompts)
+    .slice(0,10);
 
     document.getElementById(
         "cameraMovementModal"
@@ -2405,7 +2416,6 @@ function openTrending(){
     renderTrending();
 
 }
-
 const readVersion =
 localStorage.getItem("updateRead");
 
@@ -2490,9 +2500,14 @@ document.getElementById(
 );
 
 cameraMovementList.innerHTML =
-trendingPrompts.map(item=>`
 
-<div class="card">
+trendingPrompts.map((item,index)=>`
+
+<div class="card ${
+(!isVip && index >= 4)
+? 'blur-card'
+: ''
+}">
 
 <div class="cn">
 ${item.cn}
@@ -2504,7 +2519,13 @@ ${item.en}
 
 <button
 class="copy-btn"
-onclick="copyPrompt('${item.en}')">
+onclick="
+${
+(!isVip && index >= 4)
+? 'openVipModal()'
+: `copyPrompt('${item.en}')`
+}
+">
 
 复制 Copy
 
@@ -2736,7 +2757,7 @@ item.items.join("、");
 function copyPrompt(text){
 
 // 第1-2页免费复制
-if(currentPage <= 2){
+if(isVip){
 
 navigator.clipboard.writeText(text)
 .then(()=>{
@@ -2747,6 +2768,27 @@ return;
 
 }
 
+if(currentMode === "trending"){
+
+navigator.clipboard.writeText(text)
+.then(()=>{
+alert("复制成功：\n"+text);
+});
+
+return;
+
+}
+
+if(currentPage <= 2){
+
+navigator.clipboard.writeText(text)
+.then(()=>{
+alert("复制成功：\n"+text);
+});
+
+return;
+
+}
 // 第3-5页弹会员
 if(currentPage <= 5){
 
