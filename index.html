@@ -691,17 +691,32 @@ currentMode = "camera";
 currentPage = 1;
 
 }
-function openQualityTest() {
+function openSearchResult(mode,page){
 
-currentMode = "quality";
+if(!isVip && page > 5){
+
+openVipModal();
+return;
+
+}
+
+currentMode = mode;
+
+currentPage = page;
 
 document.getElementById(
 "cameraMovementModal"
-).style.display="flex";
-
-currentPage = 1;
+).style.display = "flex";
 
 renderPrompts();
+
+document.getElementById(
+"searchResults"
+).innerHTML = "";
+
+document.getElementById(
+"searchInput"
+).value = "";
 
 }
 
@@ -785,16 +800,21 @@ promptCategories.forEach(cat=>{
 
 cat.data.forEach((item,index)=>{
 
+const page =
+Math.floor(index/perPage)+1;
+
 if(
-
 item.cn.includes(keyword)
-
 ||
-
 item.en.toLowerCase()
 .includes(keyword.toLowerCase())
-
 ){
+
+if(!isVip && page > 5){
+
+return;
+
+}
 
 results.push({
 
@@ -802,8 +822,7 @@ results.push({
 
 mode:cat.mode,
 
-page:
-Math.floor(index/perPage)+1
+page:page
 
 });
 
@@ -2554,7 +2573,7 @@ const data = getCurrentData();
 const pageData =
 data.slice(start,end);
 
-if(!isVip && currentPage > 2){
+if(!isVip && currentPage > 5){
 
 cameraMovementList.innerHTML = `
 
@@ -2756,7 +2775,6 @@ item.items.join("、");
 
 function copyPrompt(text){
 
-// 第1-2页免费复制
 if(isVip){
 
 navigator.clipboard.writeText(text)
@@ -2789,17 +2807,19 @@ alert("复制成功：\n"+text);
 return;
 
 }
-// 第3-5页弹会员
-if(currentPage <= 5){
 
 openVipModal();
-
-return;
 
 }
+function prevPage(){
 
-// 第6页以后弹会员
-openVipModal();
+if(currentPage > 1){
+
+currentPage--;
+
+renderPrompts();
+
+}
 
 }
 
