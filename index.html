@@ -552,7 +552,10 @@ onkeyup="searchPrompts()">
 <div id="searchResults"></div>
 
 </div>
-<div class="vip-banner" onclick="openVipModal()">
+<div
+class="vip-banner"
+id="vipBanner"
+onclick="openVipModal()">
 
 <div class="vip-title">
 👑 VIP会员
@@ -2957,6 +2960,20 @@ await db.auth.getSession();
 if(data.session){
 
 isVip = true;
+document.getElementById(
+"vipBanner"
+).style.display="none";
+
+const email =
+data.session.user.email;
+
+document.getElementById(
+"userAccount"
+).innerText = email;
+
+document.getElementById(
+"userStatus"
+).innerText = "已开通";
 
 }else{
 
@@ -2967,7 +2984,6 @@ isVip = false;
 renderPrompts();
 
 }
-
 function searchPage(){
 
 const page=parseInt(
@@ -3124,7 +3140,16 @@ return;
 
 isVip = true;
 
+document.getElementById(
+"userAccount"
+).innerText = email;
+document.getElementById(
+"vipBanner"
+).style.display="none";
 
+document.getElementById(
+"userStatus"
+).innerText = "已开通";
 
 alert("登录成功");
 
@@ -3140,11 +3165,21 @@ await db.auth.signOut();
 
 isVip = false;
 
+document.getElementById(
+"vipBanner"
+).style.display="block";
 
+document.getElementById(
+"userAccount"
+).innerText = "未登录";
+
+document.getElementById(
+"userStatus"
+).innerText = "普通用户";
 
 alert("已退出登录");
 
-renderPrompts();
+renderPrompts();;
 
 }
 </script>
