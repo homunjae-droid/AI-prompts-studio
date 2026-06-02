@@ -164,6 +164,34 @@ text-align:center;
 color:#999;
 font-size:14px;
 }
+.topbar{
+display:flex;
+justify-content:flex-end;
+margin-bottom:10px;
+}
+
+.avatar-btn{
+width:42px;
+height:42px;
+border-radius:50%;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+transition:.25s;
+}
+
+.avatar-btn:hover{
+transform:scale(1.05);
+}
+
+.avatar-btn svg{
+width:22px;
+height:22px;
+fill:#111;
+}
 .vip-banner{
 background:linear-gradient(135deg,#111,#333);
 color:white;
@@ -443,12 +471,62 @@ font-weight:700;
 
 }
 
+.profile-box{
+margin-top:20px;
+}
+
+.profile-item{
+margin-bottom:20px;
+}
+
+.profile-item label{
+display:block;
+font-size:13px;
+color:#999;
+margin-bottom:6px;
+}
+
+.profile-item div{
+font-size:16px;
+font-weight:600;
+}
+
+.user-actions{
+margin-top:30px;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.user-actions button{
+padding:14px;
+border:none;
+background:#f5f5f7;
+border-radius:12px;
+cursor:pointer;
+font-size:15px;
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="container">
+
+<div class="topbar">
+
+<div
+class="avatar-btn"
+onclick="openUserCenter()">
+
+<svg viewBox="0 0 24 24">
+<path d="M12 12c2.8 0 5-2.2 5-5s-2.2-5-5-5-5 2.2-5 5 2.2 5 5 5zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5z"/>
+</svg>
+
+</div>
+
+</div>
 
 <h1>AI提示词大全</h1>
 
@@ -895,6 +973,22 @@ document.getElementById(
 function closeVipModal(){
 
 document.getElementById("vipModal").style.display="none";
+
+}
+
+function openUserCenter(){
+
+document
+.getElementById("userCenterModal")
+.style.display="flex";
+
+}
+
+function closeUserCenter(){
+
+document
+.getElementById("userCenterModal")
+.style.display="none";
 
 }
 
@@ -3054,5 +3148,67 @@ renderPrompts();
 
 }
 </script>
+<div id="userCenterModal" class="modal">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h2>个人中心</h2>
+
+<span
+class="close-btn"
+onclick="closeUserCenter()">
+
+&times;
+
+</span>
+
+</div>
+
+<div class="profile-box">
+
+<div class="profile-item">
+<label>账号</label>
+<div id="userAccount">
+未登录
+</div>
+</div>
+
+<div class="profile-item">
+<label>账户状态</label>
+<div id="userStatus">
+普通用户
+</div>
+</div>
+
+<div class="profile-item">
+<label>开通时间</label>
+<div id="userDate">
+--
+</div>
+</div>
+
+</div>
+
+<div class="user-actions">
+
+<button>
+我的收藏
+</button>
+
+<button>
+最近浏览
+</button>
+
+<button onclick="logoutUser()">
+退出登录
+</button>
+
+</div>
+
+</div>
+
+</div>
 </body>
 </html>
