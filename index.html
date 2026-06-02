@@ -2974,6 +2974,16 @@ document.getElementById(
 document.getElementById(
 "userStatus"
 ).innerText = "已开通";
+document.getElementById(
+"userDate"
+).innerText =
+localStorage.getItem("vipOpenDate")
+|| "--";
+document.getElementById(
+"userDate"
+).innerText =
+localStorage.getItem("vipOpenDate")
+|| "--";
 
 }else{
 
@@ -3116,6 +3126,11 @@ alert(error.message);
 return;
 }
 
+localStorage.setItem(
+"vipOpenDate",
+new Date().toLocaleDateString("zh-CN")
+);
+
 alert("注册成功");
 }
 
@@ -3218,7 +3233,7 @@ onclick="closeUserCenter()">
 </div>
 
 <div class="profile-item">
-<label>开通时间</label>
+<label>VIP开通时间</label>
 <div id="userDate">
 --
 </div>
