@@ -2504,7 +2504,7 @@ const freePrompts = [];
 promptCategories.forEach(category => {
 
 freePrompts.push(
-...category.data.slice(0,20)
+...category.data.slice(0,50)
 );
 
 });
@@ -2536,12 +2536,25 @@ return [...arr]
 function openTrending(){
 
 currentMode = "trending";
-  
-    currentPage = 1;
 
-    trendingPrompts =
-    shuffleArray(allPrompts)
-    .slice(0,10);
+currentPage = 1;
+
+const source =
+isVip
+? allPrompts
+: freePrompts;
+
+trendingPrompts =
+shuffleArray(source)
+.slice(0,10);
+
+document.getElementById(
+"cameraMovementModal"
+).style.display="flex";
+
+renderTrending();
+
+}
 
     document.getElementById(
         "cameraMovementModal"
@@ -3115,17 +3128,7 @@ window.supabase.createClient(
 db.auth.onAuthStateChange(
 (event, session)=>{
 
-if(session){
-
-isVip = true;
-
-}else{
-
-isVip = false;
-
-}
-
-renderPrompts();
+location.reload();
 
 }
 );
