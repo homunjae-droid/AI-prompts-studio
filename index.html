@@ -3007,7 +3007,7 @@ userAccount.innerText = email;
 if(
 vipData &&
 vipData.is_vip === true &&
-new Date(vipData.expire_date + " 23:59:59") > new Date()
+new Date(vipData.expire_date) > new Date()
 ){
 
 isVip = true;
