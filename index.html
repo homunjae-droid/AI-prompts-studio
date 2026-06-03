@@ -2985,14 +2985,20 @@ if(data.session){
 
 const email =
 data.session.user.email;
+console.log('session', data.session);
 
+console.log('email', email);
 const { data: vipData, error } =
 await db
 .from("vip_users")
 .select("*")
 .eq("email", email)
 .maybeSingle();
+console.log('vipData', vipData);
 
+console.log('expire', new Date(vipData?.expire_date));
+
+console.log('now', new Date());
 if(error){
 console.error(error);
 }
