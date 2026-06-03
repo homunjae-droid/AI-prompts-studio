@@ -3125,13 +3125,7 @@ window.supabase.createClient(
   supabaseUrl,
   supabaseKey
 );
-db.auth.onAuthStateChange(
-(event, session)=>{
 
-location.reload();
-
-}
-);
 
 async function registerUser(){
 
@@ -3185,7 +3179,7 @@ alert("登录成功");
 
 closeVipModal();
 
-location.reload();
+
 
 
 }
