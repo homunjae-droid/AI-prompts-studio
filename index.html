@@ -2991,7 +2991,11 @@ await db
 .from("vip_users")
 .select("*")
 .eq("email", email)
-.single();
+.maybeSingle();
+
+if(error){
+console.error(error);
+}
 
 document.getElementById(
 "userAccount"
@@ -3000,7 +3004,7 @@ document.getElementById(
 if(
 vipData &&
 vipData.is_vip === true &&
-new Date(vipData.expire_date) > new Date()
+new Date(vipData.expire_date + " 23:59:59") > new Date()
 ){
 
 isVip = true;
@@ -3165,6 +3169,8 @@ new Date().toLocaleDateString("zh-CN")
 );
 
 alert("注册成功");
+
+location.reload();
 }
 
 async function loginUser(){
@@ -3186,17 +3192,12 @@ alert(error.message);
 return;
 }
 
-
-
 alert("登录成功");
 
-closeVipModal();
 
-
-
+location.reload();
 
 }
-
 async function logoutUser(){
 
 await db.auth.signOut();
