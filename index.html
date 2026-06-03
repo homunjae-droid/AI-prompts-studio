@@ -2499,20 +2499,6 @@ data:antiBugPrompts
 }
 
 ];
-const FREE_PAGES = 2;
-
-const freePrompts = [];
-
-promptCategories.forEach(category => {
-
-freePrompts.push(
-...category.data.slice(
-0,
-FREE_PAGES * perPage
-)
-);
-
-});
 
 const allPrompts = [
 
