@@ -2556,13 +2556,7 @@ renderTrending();
 
 }
 
-    document.getElementById(
-        "cameraMovementModal"
-    ).style.display="flex";
-
-    renderTrending();
-
-}
+   
 const readVersion =
 localStorage.getItem("updateRead");
 
@@ -3110,7 +3104,7 @@ placeholder="密码">
 </div>
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
@@ -3120,10 +3114,12 @@ const supabaseUrl =
 const supabaseKey =
 "sb_publishable__KTGaRsUOw6Nek9eK2F1XQ_bY8lUSci";
 
+const { createClient } = supabase;
+
 const db =
-window.supabase.createClient(
-  supabaseUrl,
-  supabaseKey
+createClient(
+supabaseUrl,
+supabaseKey
 );
 
 
