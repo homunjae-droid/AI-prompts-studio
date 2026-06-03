@@ -2499,12 +2499,17 @@ data:antiBugPrompts
 }
 
 ];
+const FREE_PAGES = 2;
+
 const freePrompts = [];
 
 promptCategories.forEach(category => {
 
 freePrompts.push(
-...category.data.slice(0,50)
+...category.data.slice(
+0,
+FREE_PAGES * perPage
+)
 );
 
 });
@@ -2539,10 +2544,23 @@ currentMode = "trending";
 
 currentPage = 1;
 
-const source =
-isVip
-? allPrompts
-: freePrompts;
+let source = [];
+
+if(isVip){
+
+source = allPrompts;
+
+}else{
+
+promptCategories.forEach(category=>{
+
+source.push(
+...category.data.slice(0,20)
+);
+
+});
+
+}
 
 trendingPrompts =
 shuffleArray(source)
@@ -2910,10 +2928,23 @@ return;
 
 if(currentMode === "trending"){
 
+const index =
+trendingPrompts.findIndex(
+item => item.en === text
+);
+
+if(index < 4){
+
 navigator.clipboard.writeText(text)
 .then(()=>{
 alert("复制成功：\n"+text);
 });
+
+}else{
+
+openVipModal();
+
+}
 
 return;
 
