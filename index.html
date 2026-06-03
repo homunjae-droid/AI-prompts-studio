@@ -2959,31 +2959,54 @@ await db.auth.getSession();
 
 if(data.session){
 
-isVip = true;
-document.getElementById(
-"vipBanner"
-).style.display="none";
-
 const email =
 data.session.user.email;
+
+const { data: vipData, error } =
+await db
+.from("vip_users")
+.select("*")
+.eq("email", email)
+.single();
 
 document.getElementById(
 "userAccount"
 ).innerText = email;
 
+if(
+vipData &&
+vipData.is_vip === true &&
+new Date(vipData.expire_date) > new Date()
+){
+
+isVip = true;
+
+document.getElementById(
+"vipBanner"
+).style.display = "none";
+
 document.getElementById(
 "userStatus"
 ).innerText = "已开通";
+
 document.getElementById(
 "userDate"
 ).innerText =
-localStorage.getItem("vipOpenDate")
-|| "--";
+vipData.expire_date;
+
+}else{
+
+isVip = false;
+
+document.getElementById(
+"userStatus"
+).innerText = "普通用户";
+
 document.getElementById(
 "userDate"
-).innerText =
-localStorage.getItem("vipOpenDate")
-|| "--";
+).innerText = "--";
+
+}
 
 }else{
 
@@ -3153,24 +3176,14 @@ alert(error.message);
 return;
 }
 
-isVip = true;
 
-document.getElementById(
-"userAccount"
-).innerText = email;
-document.getElementById(
-"vipBanner"
-).style.display="none";
-
-document.getElementById(
-"userStatus"
-).innerText = "已开通";
 
 alert("登录成功");
 
 closeVipModal();
 
-renderPrompts();
+location.reload();
+
 
 }
 
