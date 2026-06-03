@@ -2997,9 +2997,12 @@ if(error){
 console.error(error);
 }
 
-document.getElementById(
-"userAccount"
-).innerText = email;
+const userAccount =
+document.getElementById("userAccount");
+
+if(userAccount){
+userAccount.innerText = email;
+}
 
 if(
 vipData &&
@@ -3009,30 +3012,45 @@ new Date(vipData.expire_date + " 23:59:59") > new Date()
 
 isVip = true;
 
-document.getElementById(
-"vipBanner"
-).style.display = "none";
+const vipBanner =
+document.getElementById("vipBanner");
 
-document.getElementById(
-"userStatus"
-).innerText = "已开通";
+if(vipBanner){
+vipBanner.style.display = "none";
+}
 
-document.getElementById(
-"userDate"
-).innerText =
+const userStatus =
+document.getElementById("userStatus");
+
+if(userStatus){
+userStatus.innerText = "已开通";
+}
+
+const userDate =
+document.getElementById("userDate");
+
+if(userDate){
+userDate.innerText =
 vipData.expire_date;
+}
 
 }else{
 
 isVip = false;
 
-document.getElementById(
-"userStatus"
-).innerText = "普通用户";
+const userStatus =
+document.getElementById("userStatus");
 
-document.getElementById(
-"userDate"
-).innerText = "--";
+if(userStatus){
+userStatus.innerText = "普通用户";
+}
+
+const userDate =
+document.getElementById("userDate");
+
+if(userDate){
+userDate.innerText = "--";
+}
 
 }
 
@@ -3194,11 +3212,19 @@ return;
 
 alert("登录成功");
 
-
 location.reload();
 
 }
+
+async function logoutUser(){
+
+const { error } =
 await db.auth.signOut();
+
+if(error){
+alert(error.message);
+return;
+}
 
 alert("已退出登录");
 
