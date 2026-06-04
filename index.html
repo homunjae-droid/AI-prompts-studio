@@ -2976,16 +2976,7 @@ renderPrompts();
 }
 
 window.onload = async function(){
-const { data: promptData, error: promptError } =
-await db
-.from("prompts_library")
-.select("*");
 
-console.log("数据库内容", promptData);
-
-if(promptError){
-console.error(promptError);
-}
 const { data } =
 await db.auth.getSession();
 
