@@ -2579,7 +2579,7 @@ dot.style.display="none";
 },100);
 
 }
-
+let promptData = {};
 let isVip = false;
 
 let trendingPrompts = [];
@@ -2592,43 +2592,41 @@ function getCurrentData(){
 switch(currentMode){
 
 case "camera":
-return cameraPrompts;
-
+return promptData.camera || [];
 case "quality":
-return qualityPrompts;
-
+return promptData.quality || [];
 case "action":
-return actionPrompts;
+return promptData.action || [];
 
 case "style":
-return stylePrompts;
+return promptData.style || [];
 
 case "character":
-return characterPrompts;
+return promptData.character || [];
 
 case "effect":
-return effectPrompts;
+return promptData.effect || [];
 
 case "scene":
-return scenePrompts;
+return promptData.scene || [];
 
 case "negative":
-return negativePrompts;
+return promptData.negative || [];
 
 case "antiMorph":
-return antiMorphPrompts;
+return promptData.antiMorph || [];
 
 case "antiText":
-return antiTextPrompts;
+return promptData.antiText || [];
 
 case "antiCollapse":
-return antiCollapsePrompts;
+return promptData.antiCollapse || [];
 
 case "antiConflict":
-return antiConflictPrompts;
+return promptData.antiConflict || [];
 
 case "antiBug":
-return antiBugPrompts;
+return promptData.antiBug || [];
 
 default:
 return cameraPrompts;
@@ -2976,6 +2974,32 @@ renderPrompts();
 }
 
 window.onload = async function(){
+
+const { data: promptRows } =
+await db
+.from("prompts")
+.select("*");
+
+if(promptRows){
+
+promptData = {};
+
+promptRows.forEach(row=>{
+
+if(!promptData[row.category]){
+
+promptData[row.category] = [];
+
+}
+
+promptData[row.category].push({
+cn: row.cn,
+en: row.en
+});
+
+});
+
+}
 
 const { data } =
 await db.auth.getSession();
