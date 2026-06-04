@@ -1177,7 +1177,7 @@ const actionPrompts = [
 {cn:"电影级人物动态",en:"Cinematic Character Movement"}
 
 ];
-const prompts = [
+const cameraPrompts = [
 
 {cn:"推进镜头",en:"Dolly In"},
 {cn:"拉远镜头",en:"Dolly Out"},
@@ -2435,7 +2435,7 @@ const promptCategories = [
 
 {
 mode:"camera",
-data:prompts
+data:cameraPrompts
 },
 
 {
@@ -2501,8 +2501,7 @@ data:antiBugPrompts
 ];
 
 const allPrompts = [
-
-...prompts,
+...cameraPrompts,
 ...qualityPrompts,
 ...actionPrompts,
 ...stylePrompts,
@@ -2593,7 +2592,7 @@ function getCurrentData(){
 switch(currentMode){
 
 case "camera":
-return prompts;
+return cameraPrompts;
 
 case "quality":
 return qualityPrompts;
@@ -2632,7 +2631,7 @@ case "antiBug":
 return antiBugPrompts;
 
 default:
-return prompts;
+return cameraPrompts;
 
 }
 
