@@ -2977,7 +2977,7 @@ window.onload = async function(){
 
 const { data: promptRows } =
 await db
-.from("prompts")
+.from("prompts_library")
 .select("*");
 
 if(promptRows){
