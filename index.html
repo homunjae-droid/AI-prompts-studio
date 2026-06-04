@@ -2976,7 +2976,16 @@ renderPrompts();
 }
 
 window.onload = async function(){
+const { data, error } =
+await db
+.from("prompts_library")
+.select("*");
 
+console.log("数据库内容", data);
+
+if(error){
+console.error(error);
+}
 const { data } =
 await db.auth.getSession();
 
