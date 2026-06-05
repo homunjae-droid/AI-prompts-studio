@@ -1191,7 +1191,7 @@ ${item.cn}
 
 <button
 class="favorite-btn ${isFavorite(item.en) ? 'active' : ''}"
-onclick="toggleFavorite(event,'${item.cn}','${item.en}',${index})">
+onclick="toggleFavorite(event,'${item.cn}','${item.en}',${index});event.stopPropagation();"
 
 ♥
 
@@ -1696,7 +1696,7 @@ item => item.en === en
 
 }
 
-function toggleFavorite(event,cn,en,index=-1){
+function toggleFavorite(event,cn,en,itemIndex=-1){
 
 event.stopPropagation();
 
@@ -1704,7 +1704,7 @@ if(
 !isVip &&
 (
 currentPage > 5 ||
-(currentMode==="trending" && index>=4)
+(currentMode==="trending" && itemIndex>=4)
 )
 ){
 openVipModal();
@@ -1713,13 +1713,13 @@ return;
 
 let favorites = getFavorites();
 
-const favoriteIndex = favorites.findIndex
+const favoriteIndex = favorites.findIndex(
 item => item.en === en
 );
 
-if(index > -1){
+if(favoriteIndex > -1){
 
-favorites.splice(index,1);
+favorites.splice(favoriteIndex,1);
 
 }else{
 
@@ -1730,6 +1730,18 @@ en
 
 }
 
+localStorage.setItem(
+"favorites",
+JSON.stringify(favorites)
+);
+
+if(currentMode==="trending"){
+renderTrending();
+}else{
+renderPrompts();
+}
+
+}
 localStorage.setItem(
 "favorites",
 JSON.stringify(favorites)
