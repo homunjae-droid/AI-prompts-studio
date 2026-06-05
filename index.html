@@ -111,6 +111,14 @@ padding:20px;
 box-shadow:0 8px 25px rgba(0,0,0,.06);
 cursor:pointer;
 transition:.25s;
+
+height:150px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
 }
 
 .card:hover{
@@ -120,12 +128,30 @@ transform:translateY(-3px);
 .cn{
 font-size:17px;
 font-weight:600;
+
+display:-webkit-box;
+
+-webkit-line-clamp:2;
+
+-webkit-box-orient:vertical;
+
+overflow:hidden;
 }
 
 .en{
 font-size:13px;
 color:#777;
 margin-top:6px;
+
+display:-webkit-box;
+
+-webkit-line-clamp:2;
+
+-webkit-box-orient:vertical;
+
+overflow:hidden;
+
+min-height:34px;
 }
 
 .update{
@@ -310,7 +336,7 @@ cursor:pointer;
 }
 
 .copy-btn{
-margin-top:10px;
+margin-top:auto;
 width:100%;
 padding:8px;
 background:#111;
