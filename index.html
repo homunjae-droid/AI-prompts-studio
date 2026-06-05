@@ -1694,12 +1694,17 @@ renderPrompts();
 
 function getFavorites(){
 
+if(!currentUserEmail){
+return [];
+}
+
 return JSON.parse(
-localStorage.getItem("favorites") || "[]"
+localStorage.getItem(
+"favorites_" + currentUserEmail
+) || "[]"
 );
 
 }
-
 function isFavorite(en){
 
 return getFavorites().some(
@@ -1750,10 +1755,8 @@ cn,
 en
 });
 
-}
-
 localStorage.setItem(
-"favorites",
+"favorites_" + currentUserEmail,
 JSON.stringify(favorites)
 );
 
