@@ -516,7 +516,7 @@ content:"VIP";
 position:absolute;
 
 bottom:12px;
-right:12px;
+right:45px;
 
 background:#FFD700;
 color:#111;
@@ -1191,7 +1191,7 @@ ${item.cn}
 
 <button
 class="favorite-btn ${isFavorite(item.en) ? 'active' : ''}"
-onclick="toggleFavorite(event,'${item.cn}','${item.en}',${index});event.stopPropagation();"
+onclick="toggleFavorite(event,'${item.cn}','${item.en}',${index})">
 
 ♥
 
@@ -1267,11 +1267,20 @@ font-size:16px;
 VIP Only Content
 </div>
 
+<div style="
+margin-top:10px;
+font-size:15px;
+color:#666;
+">
+开通会员查看全部内容
+</div>
+
 <button
 class="copy-btn"
 style="
-margin-top:25px;
+margin:25px auto 0;
 max-width:220px;
+display:block;
 "
 onclick="openVipModal()">
 
@@ -1287,7 +1296,7 @@ document.getElementById(
 "pagination"
 ).innerHTML = "";
 
-return;
+
 
 }else{
 
@@ -1331,16 +1340,14 @@ onclick="copyPrompt('${item.en}')">
 `).join("");
 
 }
-if(!isVip && currentPage > 5){
-return;
-}
+
 document.getElementById("pagination").innerHTML=`
 
 <button onclick="prevPage()">上一页</button>
 
 <span>
+
 第 ${currentPage} 页
-${!isVip && currentPage > 5 ? " 🔒" : ""}
 
 /
 
@@ -1349,6 +1356,7 @@ Math.ceil(
 getCurrentData().length/perPage
 )
 } 页
+
 </span>
 
 <button onclick="nextPage()">下一页</button>
