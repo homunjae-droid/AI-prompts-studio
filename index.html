@@ -1145,6 +1145,8 @@ dot.style.display="none";
 let promptData = {};
 let isVip = false;
 
+let currentUserEmail = "";
+
 let trendingPrompts = [];
 let currentMode = "camera";
 let currentPage = 1;
@@ -1585,6 +1587,9 @@ if(data.session){
 
 const email =
 data.session.user.email;
+
+currentUserEmail = email;
+
 console.log('session', data.session);
 
 console.log('email', email);
@@ -1706,6 +1711,16 @@ item => item.en === en
 function toggleFavorite(event,cn,en,itemIndex=-1){
 
 event.stopPropagation();
+
+if(!currentUserEmail){
+
+alert("请先登录账号");
+
+openVipModal();
+
+return;
+
+}
 
 if(
 !isVip &&
