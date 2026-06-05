@@ -857,24 +857,31 @@ return;
 let results=[];
 let vipResults=[];
 
-promptCategories.forEach(cat=>{
+Object.keys(promptData).forEach(mode=>{
 
-cat.data.forEach((item,index)=>{
+const data = promptData[mode] || [];
+
+data.forEach((item,index)=>{
 
 const page =
 Math.floor(index/perPage)+1;
 
 if(
-item.cn.includes(keyword)
+
+(item.cn || "")
+.includes(keyword)
+
 ||
-item.en.toLowerCase()
+
+(item.en || "")
+.toLowerCase()
 .includes(keyword.toLowerCase())
+
 ){
 
 if(!isVip && page > 5){
 
 vipResults.push(item);
-
 return;
 
 }
@@ -882,8 +889,8 @@ return;
 results.push({
 
 ...item,
-mode:cat.mode,
-page:page
+mode,
+page
 
 });
 
@@ -953,10 +960,8 @@ color:#888;
 
 包含 ${
 vipResults.length > 10
-?
-"10+"
-:
-vipResults.length
+? "10+"
+: vipResults.length
 }
 条相关结果
 
@@ -1089,49 +1094,7 @@ let currentQualityPage = 1;
 const perPage = 10;
 function getCurrentData(){
 
-switch(currentMode){
-
-case "camera":
-return promptData.camera || [];
-case "quality":
-return promptData.quality || [];
-case "action":
-return promptData.action || [];
-
-case "style":
-return promptData.style || [];
-
-case "character":
-return promptData.character || [];
-
-case "effect":
-return promptData.effect || [];
-
-case "scene":
-return promptData.scene || [];
-
-case "negative":
-return promptData.negative || [];
-
-case "antiMorph":
-return promptData.antiMorph || [];
-
-case "antiText":
-return promptData.antiText || [];
-
-case "antiCollapse":
-return promptData.antiCollapse || [];
-
-case "antiConflict":
-return promptData.antiConflict || [];
-
-case "antiBug":
-return promptData.antiBug || [];
-
-default:
-return [];
-
-}
+return promptData[currentMode] || [];
 
 }
 function renderTrending(){
