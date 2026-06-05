@@ -1253,6 +1253,39 @@ padding:60px 20px;
 🔒
 </div>
 
+<div style="
+margin-top:20px;
+font-size:26px;
+font-weight:700;
+">
+VIP Only Content
+</div>
+
+<div style="
+margin-top:12px;
+font-size:15px;
+color:#666;
+">
+开通会员查看全部内容
+</div>
+
+<button
+class="copy-btn"
+style="
+margin:25px auto 0;
+max-width:220px;
+display:block;
+"
+onclick="openVipModal()">
+
+立即开通会员
+
+</button>
+
+</div>
+
+`;
+
 <div class="cn" style="
 margin-top:20px;
 font-size:24px;
@@ -1343,26 +1376,34 @@ onclick="copyPrompt('${item.en}')">
 
 document.getElementById("pagination").innerHTML=`
 
-<button onclick="prevPage()">上一页</button>
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+margin-top:10px;
+">
+
+<button onclick="prevPage()">
+上一页
+</button>
 
 <span>
-
-第 ${currentPage} 页
-
-/
-
+第 ${currentPage} 页 /
 共 ${
 Math.ceil(
 getCurrentData().length/perPage
 )
 } 页
-
 </span>
 
-<button onclick="nextPage()">下一页</button>
+<button onclick="nextPage()">
+下一页
+</button>
+
+</div>
 
 `;
-
 }
 
 function openUpdateLog(){
@@ -1479,6 +1520,7 @@ if(isVip){
 
 navigator.clipboard.writeText(text)
 .then(()=>{
+addHistory("",text);
 alert("复制成功：\n"+text);
 });
 
@@ -1497,6 +1539,7 @@ if(index < 4){
 
 navigator.clipboard.writeText(text)
 .then(()=>{
+addHistory("",text);
 alert("复制成功：\n"+text);
 });
 
@@ -1514,6 +1557,7 @@ if(currentPage <= 2){
 
 navigator.clipboard.writeText(text)
 .then(()=>{
+addHistory("",text);
 alert("复制成功：\n"+text);
 });
 
@@ -1767,7 +1811,7 @@ cn,
 en
 });
 
-history = history.slice(0,50);
+history = history.slice(0,10);
 
 localStorage.setItem(
 "history",
@@ -2119,7 +2163,7 @@ onclick="closeUserCenter()">
 </button>
 
 <button onclick="openHistory()">
-最近浏览
+最近复制
 </button>
 
 <button onclick="logoutUser()">
@@ -2168,7 +2212,7 @@ class="prompt-grid">
 
 <div class="modal-header">
 
-<h2>🕘 最近浏览</h2>
+<h2>🕘 最近复制</h2>
 
 <span
 class="close-btn"
