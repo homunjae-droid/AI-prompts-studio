@@ -346,6 +346,26 @@ border-radius:8px;
 cursor:pointer;
 }
 
+.card-top{
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:10px;
+}
+
+.favorite-btn{
+background:none;
+border:none;
+font-size:24px;
+cursor:pointer;
+color:#ccc;
+padding:0;
+}
+
+.favorite-btn.active{
+color:red;
+}
+
 .modal-header{
 display:flex;
 gap:10px;
@@ -1140,14 +1160,25 @@ trendingPrompts.map((item,index)=>`
 : ''
 }">
 
+<div class="card-top">
+
 <div class="cn">
 ${item.cn}
+</div>
+
+<button
+class="favorite-btn ${isFavorite(item.en) ? 'active' : ''}"
+onclick="toggleFavorite(event,'${item.cn}','${item.en}')">
+
+♥
+
+</button>
+
 </div>
 
 <div class="en">
 ${item.en}
 </div>
-
 <button
 class="copy-btn"
 onclick="
@@ -1236,7 +1267,19 @@ pageData.map(item=>`
 
 <div class="card">
 
+<div class="card-top">
+
 <div class="cn">${item.cn}</div>
+
+<button
+class="favorite-btn ${isFavorite(item.en) ? 'active' : ''}"
+onclick="toggleFavorite(event,'${item.cn}','${item.en}')">
+
+♥
+
+</button>
+
+</div>
 
 <div class="en">${item.en}</div>
 
@@ -1599,10 +1642,62 @@ renderPrompts();
 }
 
 }
+
+function getFavorites(){
+
+return JSON.parse(
+localStorage.getItem("favorites") || "[]"
+);
+
+}
+
+function isFavorite(en){
+
+return getFavorites().some(
+item => item.en === en
+);
+
+}
+
+function toggleFavorite(event,cn,en){
+
+event.stopPropagation();
+
+let favorites = getFavorites();
+
+const index = favorites.findIndex(
+item => item.en === en
+);
+
+if(index > -1){
+
+favorites.splice(index,1);
+
+}else{
+
+favorites.push({
+cn,
+en
+});
+
+}
+
+localStorage.setItem(
+"favorites",
+JSON.stringify(favorites)
+);
+
+renderPrompts();
+
+if(currentMode==="trending"){
+renderTrending();
+}
+
+}
+
 function openVipModal(){
 document.getElementById("vipModal").style.display="flex";
 }
-
 
 
 </script>
