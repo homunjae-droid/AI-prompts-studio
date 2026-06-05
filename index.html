@@ -1166,8 +1166,14 @@ trendingPrompts.map((item,index)=>`
 (!isVip && index >= 4)
 ? 'blur-card'
 : ''
-}">
+}"
 
+onclick="
+addHistory(
+'${item.cn}',
+'${item.en}'
+);
+">
 <div class="card-top">
 
 <div class="cn">
@@ -1273,7 +1279,13 @@ onclick="openVipModal()">
 cameraMovementList.innerHTML =
 pageData.map(item=>`
 
-<div class="card">
+<div class="card"
+onclick="
+addHistory(
+'${item.cn}',
+'${item.en}'
+);
+">
 
 <div class="card-top">
 
@@ -1772,10 +1784,6 @@ ${item.en}
 <button
 class="copy-btn"
 onclick="
-addHistory(
-'${item.cn}',
-'${item.en}'
-);
 addHistory(
 '${item.cn}',
 '${item.en}'
