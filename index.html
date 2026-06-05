@@ -123,7 +123,9 @@ justify-content:space-between;
 
 #favoritesList .card{
 
-height:120px;
+height:auto;
+
+min-height:140px;
 
 padding:14px;
 
@@ -136,6 +138,8 @@ transform:translateY(-3px);
 .cn{
 font-size:17px;
 font-weight:600;
+
+line-height:1.5;
 
 display:-webkit-box;
 
@@ -511,8 +515,8 @@ position:relative;
 content:"VIP";
 position:absolute;
 
-top:10px;
-right:10px;
+bottom:12px;
+right:12px;
 
 background:#FFD700;
 color:#111;
@@ -1169,10 +1173,15 @@ trendingPrompts.map((item,index)=>`
 }"
 
 onclick="
+if(
+isVip ||
+index < 4
+){
 addHistory(
 '${item.cn}',
 '${item.en}'
 );
+}
 ">
 <div class="card-top">
 
@@ -1182,7 +1191,7 @@ ${item.cn}
 
 <button
 class="favorite-btn ${isFavorite(item.en) ? 'active' : ''}"
-onclick="toggleFavorite(event,'${item.cn}','${item.en}')">
+onclick="toggleFavorite(event,'${item.cn}','${item.en}',${index})">
 
 ♥
 
@@ -1274,6 +1283,12 @@ onclick="openVipModal()">
 
 `;
 
+document.getElementById(
+"pagination"
+).innerHTML = "";
+
+return;
+
 }else{
 
 cameraMovementList.innerHTML =
@@ -1316,7 +1331,9 @@ onclick="copyPrompt('${item.en}')">
 `).join("");
 
 }
-
+if(!isVip && currentPage > 5){
+return;
+}
 document.getElementById("pagination").innerHTML=`
 
 <button onclick="prevPage()">上一页</button>
@@ -1679,9 +1696,20 @@ item => item.en === en
 
 }
 
-function toggleFavorite(event,cn,en){
+function toggleFavorite(event,cn,en,index=-1){
 
 event.stopPropagation();
+
+if(
+!isVip &&
+(
+currentPage > 5 ||
+(currentMode==="trending" && index>=4)
+)
+){
+openVipModal();
+return;
+}
 
 let favorites = getFavorites();
 
