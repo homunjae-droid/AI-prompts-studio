@@ -1216,7 +1216,10 @@ onclick="
 ${
 (!isVip && index >= 4)
 ? 'openVipModal()'
-: `copyPrompt('${item.en}')`
+: `cop: `copyPrompt(
+${JSON.stringify(item.cn)},
+${JSON.stringify(item.en)}
+)`yPrompt('${item.en}')`
 }
 ">
 
@@ -1332,10 +1335,8 @@ class="copy-btn"
 onclick='copyPrompt(
 ${JSON.stringify(item.cn)},
 ${JSON.stringify(item.en)}
-)'
-
+)'>
 复制 Copy
-
 </button>
 
 </div>
@@ -2003,10 +2004,8 @@ onclick='toggleFavorite(
 event,
 ${JSON.stringify(item.cn)},
 ${JSON.stringify(item.en)}
-)'
-
+)'>
 ♥
-
 </button>
 
 <div style="flex:1;">
