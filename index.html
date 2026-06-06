@@ -1797,10 +1797,23 @@ en
 
 }
 
+if(
+document.getElementById("favoritesModal")
+.style.display === "flex"
+){
+
+openFavorites();
+
+}
+
 if(currentMode==="trending"){
+
 renderTrending();
+
 }else{
+
 renderPrompts();
+
 }
 
 }
@@ -1870,13 +1883,12 @@ gap:10px;
 
 <button
 class="favorite-btn active"
-onclick="
-toggleFavorite(
+onclick='toggleFavorite(
 event,
-'${item.cn}',
-'${item.en}'
-)
-">
+${JSON.stringify(item.cn)},
+${JSON.stringify(item.en)}
+)'
+>
 
 ♥
 
@@ -1980,13 +1992,11 @@ gap:10px;
 
 <button
 class="favorite-btn active"
-onclick="
-toggleFavorite(
+onclick='toggleFavorite(
 event,
-'${item.cn}',
-'${item.en}'
-)
-">
+${JSON.stringify(item.cn)},
+${JSON.stringify(item.en)}
+)'
 
 ♥
 
