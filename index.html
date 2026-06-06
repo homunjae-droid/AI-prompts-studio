@@ -1329,7 +1329,10 @@ ${JSON.stringify(item.en)}
 
 <button
 class="copy-btn"
-onclick='copyPrompt(${JSON.stringify(item.en)})'>
+onclick='copyPrompt(
+${JSON.stringify(item.cn)},
+${JSON.stringify(item.en)}
+)'
 
 复制 Copy
 
@@ -1481,13 +1484,13 @@ item.items.join("、");
 
 }
 
-function copyPrompt(text){
+function copyPrompt(cn,text){
 
 if(isVip){
 
 navigator.clipboard.writeText(text)
 .then(()=>{
-addHistory("",text);
+addHistory(cn,text);
 alert("复制成功：\n"+text);
 });
 
@@ -1506,7 +1509,7 @@ if(index < 4){
 
 navigator.clipboard.writeText(text)
 .then(()=>{
-addHistory("",text);
+addHistory(cn,text);
 alert("复制成功：\n"+text);
 });
 
@@ -1524,7 +1527,7 @@ if(currentPage <= 2){
 
 navigator.clipboard.writeText(text)
 .then(()=>{
-addHistory("",text);
+addHistory(cn,text);
 alert("复制成功：\n"+text);
 });
 
@@ -1932,7 +1935,10 @@ addHistory(
 '${item.cn}',
 '${item.en}'
 );
-copyPrompt('${item.en}')
+copyPrompt(
+'${item.cn}',
+'${item.en}'
+)
 ">
 
 复制 Copy
@@ -2036,7 +2042,10 @@ addHistory(
 '${item.cn}',
 '${item.en}'
 );
-copyPrompt('${item.en}')
+copyPrompt(
+'${item.cn}',
+'${item.en}'
+)
 ">
 
 复制 Copy
@@ -2126,6 +2135,7 @@ ${item.en}
 class="copy-btn"
 onclick="
 copyPrompt(
+'${item.cn}',
 '${item.en}'
 )
 ">
