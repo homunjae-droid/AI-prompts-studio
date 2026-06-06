@@ -818,21 +818,23 @@ currentPage = 1;
 
 if(
 mode==="antiConflict" &&
-!promptData[mode]
+!promptData["antiConflict"]
 ){
-promptData[mode]=promptData["anticonflict"]||[];
+promptData["antiConflict"] =
+promptData["anticonflict"] || [];
 }
 
 if(
 mode==="antiBug" &&
-!promptData[mode]
+!promptData["antiBug"]
 ){
-promptData[mode]=promptData["antibug"]||[];
+promptData["antiBug"] =
+promptData["antibug"] || [];
 }
 
 document.getElementById(
 "cameraMovementModal"
-).style.display="flex";
+).style.display = "flex";
 
 renderPrompts();
 
