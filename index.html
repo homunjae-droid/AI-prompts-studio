@@ -356,7 +356,6 @@ color:white;
 border:none;
 border-radius:8px;
 cursor:pointer;
-font-weight:600;
 }
 
 .card-top{
@@ -727,6 +726,7 @@ style="margin:0;">
 
 </div>
 
+
 <div class="section-title">
 最新更新 Latest Updates
 </div>
@@ -816,25 +816,9 @@ function openCategory(mode){
 currentMode = mode;
 currentPage = 1;
 
-if(
-mode==="antiConflict" &&
-!promptData["antiConflict"]
-){
-promptData["antiConflict"] =
-promptData["anticonflict"] || [];
-}
-
-if(
-mode==="antiBug" &&
-!promptData["antiBug"]
-){
-promptData["antiBug"] =
-promptData["antibug"] || [];
-}
-
 document.getElementById(
 "cameraMovementModal"
-).style.display = "flex";
+).style.display="flex";
 
 renderPrompts();
 
@@ -878,7 +862,7 @@ document.getElementById(
 
 function getCategoryName(mode){
 
- map={
+const map={
 
 camera:"运镜描述",
 
@@ -914,7 +898,7 @@ return map[mode] || "";
   
 function searchPrompts(){
 
- keyword =
+const keyword =
 document.getElementById("searchInput")
 .value.trim();
 
@@ -933,11 +917,11 @@ let vipResults=[];
 
 Object.keys(promptData).forEach(mode=>{
 
- data = promptData[mode] || [];
+const data = promptData[mode] || [];
 
 data.forEach((item,index)=>{
 
- page =
+const page =
 Math.floor(index/perPage)+1;
 
 if(
@@ -1079,9 +1063,9 @@ function closeCameraMovementPage() {
 }
 
 
- updateVersion = "2026-05-31";
+const updateVersion = "2026-05-31";
 
- updateLogs = [
+const updateLogs = [
 {
 date:"2026-05-31",
 updates:[
@@ -1092,7 +1076,7 @@ items:["推进镜头","拉远镜头"]
 ]
 }
 ];
- promptCategories = [];
+const promptCategories = [];
 
 let allPrompts = [];
 function shuffleArray(arr){
@@ -1139,14 +1123,14 @@ renderTrending();
 }
 
    
- readVersion =
+const readVersion =
 localStorage.getItem("updateRead");
 
 if(readVersion === updateVersion){
 
 setTimeout(()=>{
 
- dot =
+const dot =
 document.getElementById("updateDot");
 
 if(dot){
@@ -1167,7 +1151,7 @@ let trendingPrompts = [];
 let currentMode = "camera";
 let currentPage = 1;
 let currentQualityPage = 1;
- perPage = 10;
+const perPage = 10;
 function getCurrentData(){
 
 return promptData[currentMode] || [];
@@ -1175,7 +1159,7 @@ return promptData[currentMode] || [];
 }
 function renderTrending(){
 
- cameraMovementList =
+const cameraMovementList =
 document.getElementById(
 "cameraMovementList"
 );
@@ -1226,16 +1210,12 @@ ${index}
 ${item.en}
 </div>
 <button
-<button
 class="copy-btn"
 onclick="
 ${
 (!isVip && index >= 4)
 ? 'openVipModal()'
-: `copyPrompt(
-${JSON.stringify(item.cn)},
-${JSON.stringify(item.en)}
-)`
+: `copyPrompt('${item.en}')`
 }
 ">
 
@@ -1254,24 +1234,18 @@ document.getElementById(
 }
 function renderPrompts(){
 
- cameraMovementList =
+const cameraMovementList =
 document.getElementById(
 "cameraMovementList"
 );
 
- start=(currentPage-1)*perPage;
- end=start+perPage;
+const start=(currentPage-1)*perPage;
+const end=start+perPage;
 
- data = getCurrentData();
- pageData =
+const data = getCurrentData();
+const pageData =
 data.slice(start,end);
 
-pageData = pageData.filter(
-item =>
-item &&
-item.cn &&
-item.en
-);
 if(!isVip && currentPage > 5){
 
 cameraMovementList.innerHTML = `
@@ -1354,11 +1328,10 @@ ${JSON.stringify(item.en)}
 
 <button
 class="copy-btn"
-onclick='copyPrompt(
-${JSON.stringify(item.cn)},
-${JSON.stringify(item.en)}
-)'>
+onclick='copyPrompt(${JSON.stringify(item.en)})'>
+
 复制 Copy
+
 </button>
 
 </div>
@@ -1406,7 +1379,7 @@ localStorage.setItem(
 updateVersion
 );
 
- dot =
+const dot =
 document.getElementById("updateDot");
 
 if(dot){
@@ -1415,7 +1388,7 @@ dot.style.display="none";
 
 }
 
- data =
+const data =
 updateLogs[updateLogs.length-1];
 
 document.getElementById(
@@ -1496,7 +1469,7 @@ document.getElementById(
 
 function expandUpdate(index){
 
- item =
+const item =
 updateLogs[0].updates[index];
 
 document.getElementById(
@@ -1507,13 +1480,13 @@ item.items.join("、");
 
 }
 
-function copyPrompt(cn,text){
+function copyPrompt(text){
 
 if(isVip){
 
 navigator.clipboard.writeText(text)
 .then(()=>{
-addHistory(cn,text);
+addHistory("",text);
 alert("复制成功：\n"+text);
 });
 
@@ -1523,7 +1496,7 @@ return;
 
 if(currentMode === "trending"){
 
- index =
+const index =
 trendingPrompts.findIndex(
 item => item.en === text
 );
@@ -1532,7 +1505,7 @@ if(index < 4){
 
 navigator.clipboard.writeText(text)
 .then(()=>{
-addHistory(cn,text);
+addHistory("",text);
 alert("复制成功：\n"+text);
 });
 
@@ -1550,7 +1523,7 @@ if(currentPage <= 2){
 
 navigator.clipboard.writeText(text)
 .then(()=>{
-addHistory(cn,text);
+addHistory("",text);
 alert("复制成功：\n"+text);
 });
 
@@ -1575,7 +1548,7 @@ renderPrompts();
 
 function nextPage(){
 
- totalPages =
+const totalPages =
 Math.ceil(
 getCurrentData().length / perPage
 );
@@ -1592,22 +1565,7 @@ window.onload = async function(){
 const { data: promptRows } =
 await db
 .from("prompts_library")
-.select("category,cn,en");
-
-console.log(
-"promptRows",
-promptRows?.length
-);
-
-console.log(
-"antiConflict",
-promptData["antiConflict"]?.length
-);
-
-console.log(
-"antiBug",
-promptData["antiBug"]?.length
-);
+.select("*");
 
 if(promptRows){
 
@@ -1615,37 +1573,13 @@ promptData = {};
 
 promptRows.forEach(row=>{
 
-let category =
-String(row.category || "").trim();
+if(!promptData[row.category]){
 
-if(
-category === "antiConflict" ||
-category === "AntiConflict" ||
-category === "anticonflict" ||
-category === "anti_conflict" ||
-category === "防串词"
-){
-category = "antiConflict";
-}
-
-else if(
-category === "antiBug" ||
-category === "AntiBug" ||
-category === "antibug" ||
-category === "anti_bug" ||
-category === "防BUG" ||
-category === "防Bug" ||
-category === "防bug"
-){
-category = "antiBug";
-}
-if(!promptData[category]){
-
-promptData[category] = [];
+promptData[row.category] = [];
 
 }
 
-promptData[category].push({
+promptData[row.category].push({
 cn: row.cn,
 en: row.en
 });
@@ -1653,17 +1587,6 @@ en: row.en
 });
 
 allPrompts = Object.values(promptData).flat();
-
-console.log(
-"antiConflict",
-promptData["antiConflict"]?.length
-);
-
-console.log(
-"antiBug",
-promptData["antiBug"]?.length
-);
-
 
 }
 const { data } =
@@ -1874,23 +1797,10 @@ en
 
 }
 
-if(
-document.getElementById("favoritesModal")
-.style.display === "flex"
-){
-
-openFavorites();
-
-}
-
 if(currentMode==="trending"){
-
 renderTrending();
-
 }else{
-
 renderPrompts();
-
 }
 
 }
@@ -1960,12 +1870,13 @@ gap:10px;
 
 <button
 class="favorite-btn active"
-onclick='toggleFavorite(
+onclick="
+toggleFavorite(
 event,
-${JSON.stringify(item.cn)},
-${JSON.stringify(item.en)}
-)'
->
+'${item.cn}',
+'${item.en}'
+)
+">
 
 ♥
 
@@ -2008,13 +1919,10 @@ addHistory(
 '${item.cn}',
 '${item.en}'
 );
-copyPrompt(
-'${item.cn}',
-'${item.en}'
-)
+copyPrompt('${item.en}')
 ">
 
-复制 Copy
+复制
 
 </button>
 
@@ -2072,12 +1980,16 @@ gap:10px;
 
 <button
 class="favorite-btn active"
-onclick='toggleFavorite(
+onclick="
+toggleFavorite(
 event,
-${JSON.stringify(item.cn)},
-${JSON.stringify(item.en)}
-)'>
+'${item.cn}',
+'${item.en}'
+)
+">
+
 ♥
+
 </button>
 
 <div style="flex:1;">
@@ -2113,13 +2025,10 @@ addHistory(
 '${item.cn}',
 '${item.en}'
 );
-copyPrompt(
-'${item.cn}',
-'${item.en}'
-)
+copyPrompt('${item.en}')
 ">
 
-复制 Copy
+复制
 
 </button>
 
@@ -2206,7 +2115,6 @@ ${item.en}
 class="copy-btn"
 onclick="
 copyPrompt(
-'${item.cn}',
 '${item.en}'
 )
 ">
