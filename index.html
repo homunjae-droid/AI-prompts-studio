@@ -1211,15 +1211,16 @@ ${index}
 ${item.en}
 </div>
 <button
+<button
 class="copy-btn"
 onclick="
 ${
 (!isVip && index >= 4)
 ? 'openVipModal()'
-: `cop: `copyPrompt(
+: `copyPrompt(
 ${JSON.stringify(item.cn)},
 ${JSON.stringify(item.en)}
-)`yPrompt('${item.en}')`
+)`
 }
 ">
 
