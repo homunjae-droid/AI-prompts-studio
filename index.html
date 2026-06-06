@@ -863,7 +863,7 @@ document.getElementById(
 
 function getCategoryName(mode){
 
-const map={
+ map={
 
 camera:"运镜描述",
 
@@ -899,7 +899,7 @@ return map[mode] || "";
   
 function searchPrompts(){
 
-const keyword =
+ keyword =
 document.getElementById("searchInput")
 .value.trim();
 
@@ -918,11 +918,11 @@ let vipResults=[];
 
 Object.keys(promptData).forEach(mode=>{
 
-const data = promptData[mode] || [];
+ data = promptData[mode] || [];
 
 data.forEach((item,index)=>{
 
-const page =
+ page =
 Math.floor(index/perPage)+1;
 
 if(
@@ -1064,9 +1064,9 @@ function closeCameraMovementPage() {
 }
 
 
-const updateVersion = "2026-05-31";
+ updateVersion = "2026-05-31";
 
-const updateLogs = [
+ updateLogs = [
 {
 date:"2026-05-31",
 updates:[
@@ -1077,7 +1077,7 @@ items:["推进镜头","拉远镜头"]
 ]
 }
 ];
-const promptCategories = [];
+ promptCategories = [];
 
 let allPrompts = [];
 function shuffleArray(arr){
@@ -1124,14 +1124,14 @@ renderTrending();
 }
 
    
-const readVersion =
+ readVersion =
 localStorage.getItem("updateRead");
 
 if(readVersion === updateVersion){
 
 setTimeout(()=>{
 
-const dot =
+ dot =
 document.getElementById("updateDot");
 
 if(dot){
@@ -1152,7 +1152,7 @@ let trendingPrompts = [];
 let currentMode = "camera";
 let currentPage = 1;
 let currentQualityPage = 1;
-const perPage = 10;
+ perPage = 10;
 function getCurrentData(){
 
 return promptData[currentMode] || [];
@@ -1160,7 +1160,7 @@ return promptData[currentMode] || [];
 }
 function renderTrending(){
 
-const cameraMovementList =
+ cameraMovementList =
 document.getElementById(
 "cameraMovementList"
 );
@@ -1239,16 +1239,16 @@ document.getElementById(
 }
 function renderPrompts(){
 
-const cameraMovementList =
+ cameraMovementList =
 document.getElementById(
 "cameraMovementList"
 );
 
-const start=(currentPage-1)*perPage;
-const end=start+perPage;
+ start=(currentPage-1)*perPage;
+ end=start+perPage;
 
-const data = getCurrentData();
-const pageData =
+ data = getCurrentData();
+ pageData =
 data.slice(start,end);
 
 if(!isVip && currentPage > 5){
@@ -1385,7 +1385,7 @@ localStorage.setItem(
 updateVersion
 );
 
-const dot =
+ dot =
 document.getElementById("updateDot");
 
 if(dot){
@@ -1394,7 +1394,7 @@ dot.style.display="none";
 
 }
 
-const data =
+ data =
 updateLogs[updateLogs.length-1];
 
 document.getElementById(
@@ -1475,7 +1475,7 @@ document.getElementById(
 
 function expandUpdate(index){
 
-const item =
+ item =
 updateLogs[0].updates[index];
 
 document.getElementById(
@@ -1502,7 +1502,7 @@ return;
 
 if(currentMode === "trending"){
 
-const index =
+ index =
 trendingPrompts.findIndex(
 item => item.en === text
 );
@@ -1554,7 +1554,7 @@ renderPrompts();
 
 function nextPage(){
 
-const totalPages =
+ totalPages =
 Math.ceil(
 getCurrentData().length / perPage
 );
@@ -1572,6 +1572,21 @@ const { data: promptRows } =
 await db
 .from("prompts_library")
 .select("*");
+
+console.log(
+"promptRows",
+promptRows?.length
+);
+
+console.log(
+"antiConflict",
+promptData["antiConflict"]?.length
+);
+
+console.log(
+"antiBug",
+promptData["antiBug"]?.length
+);
 
 if(promptRows){
 
