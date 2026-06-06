@@ -1567,9 +1567,11 @@ renderPrompts();
 window.onload = async function(){
 
 const { data: promptRows } =
+const { data: promptRows } =
 await db
 .from("prompts_library")
-.select("*");
+.select("*")
+.range(0, 2000);
 
 if(promptRows){
 
