@@ -1247,13 +1247,7 @@ const end=start+perPage;
 const data = getCurrentData();
 const pageData =
 data.slice(start,end);
-alert(
-currentMode +
-" / " +
-data.length +
-" / " +
-JSON.stringify(pageData[0])
-);
+
 
 
 if(!isVip && currentPage > 5){
@@ -1595,9 +1589,7 @@ en: row.en
 });
 
 });
-alert(
-Object.keys(promptData).join("\n")
-);
+
 allPrompts = Object.values(promptData).flat();
 
 }
