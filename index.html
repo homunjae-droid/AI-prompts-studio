@@ -1771,13 +1771,24 @@ item=>item.en!==en
 
 }else{
 
+const { data, error } =
 await db
 .from("user_favorites")
 .insert({
-email:currentUserEmail,
+email: currentUserEmail,
 cn,
 en
 });
+
+console.log(
+"favorite insert data",
+data
+);
+
+console.log(
+"favorite insert error",
+error
+);
 
 favoritesCache.unshift({
 cn,
