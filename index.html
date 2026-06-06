@@ -1616,29 +1616,28 @@ promptData = {};
 promptRows.forEach(row=>{
 
 let category =
-String(row.category || "")
-.trim()
-.toLowerCase();
+String(row.category || "").trim();
 
 if(
-category==="anticonflict" ||
-category==="anti_conflict" ||
-category==="防串词"
+category === "antiConflict" ||
+category === "AntiConflict" ||
+category === "anticonflict" ||
+category === "anti_conflict" ||
+category === "防串词"
 ){
-category="antiConflict";
+category = "antiConflict";
 }
 
 else if(
-category==="antibug" ||
-category==="anti_bug" ||
-category==="防bug" ||
-category==="防BUG"
+category === "antiBug" ||
+category === "AntiBug" ||
+category === "antibug" ||
+category === "anti_bug" ||
+category === "防BUG" ||
+category === "防Bug" ||
+category === "防bug"
 ){
-category="antiBug";
-}
-
-else{
-category=row.category;
+category = "antiBug";
 }
 if(!promptData[category]){
 
