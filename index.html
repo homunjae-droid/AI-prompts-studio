@@ -2070,8 +2070,30 @@ history.map(item=>`
 
 <div class="card">
 
+<div class="card-top">
+
 <div class="cn">
 ${item.cn}
+</div>
+
+<button
+class="favorite-btn
+${isFavorite(item.en)
+? 'active'
+: ''
+}"
+onclick="
+toggleFavorite(
+event,
+'${item.cn}',
+'${item.en}'
+)
+">
+
+♥
+
+</button>
+
 </div>
 
 <div class="en">
@@ -2080,7 +2102,11 @@ ${item.en}
 
 <button
 class="copy-btn"
-onclick='copyPrompt(${JSON.stringify(item.en)})'
+onclick="
+copyPrompt(
+'${item.en}'
+)
+">
 
 复制 Copy
 
@@ -2306,6 +2332,10 @@ onclick="closeUserCenter()">
 
 <button onclick="openHistory()">
 最近复制
+</button>
+
+<button onclick="openVipModal()">
+立即登录
 </button>
 
 <button onclick="logoutUser()">
