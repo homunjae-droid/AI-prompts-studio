@@ -715,9 +715,6 @@ style="margin:0;">
 <div class="en">Anti Collapse</div>
 </div>
 
-<!-- 暂时隐藏 -->
-
-<!--
 <div class="card" onclick="openCategory('antiConflict')">
 <div class="cn">防串词</div>
 <div class="en">Anti Conflict</div>
@@ -727,7 +724,6 @@ style="margin:0;">
 <div class="cn">防BUG</div>
 <div class="en">Anti Bug</div>
 </div>
--->
 
 <div class="section-title">
 最新更新 Latest Updates
@@ -1291,6 +1287,12 @@ document.getElementById(
  pageData =
 data.slice(start,end);
 
+pageData = pageData.filter(
+item =>
+item &&
+item.cn &&
+item.en
+);
 if(!isVip && currentPage > 5){
 
 cameraMovementList.innerHTML = `
@@ -1634,20 +1636,24 @@ promptData = {};
 
 promptRows.forEach(row=>{
 
-const categoryMap = {
-AntiConflict:"antiConflict",
-anti_conflict:"antiConflict",
-防串词:"antiConflict",
+let category = String(row.category || "").trim();
 
-AntiBug:"antiBug",
-anti_bug:"antiBug",
-防BUG:"antiBug",
-防Bug:"antiBug"
-};
+if(
+category.toLowerCase()==="anticonflict" ||
+category.toLowerCase()==="anti_conflict" ||
+category==="防串词"
+){
+category="antiConflict";
+}
 
-const category =
-categoryMap[row.category] || row.category;
-
+if(
+category.toLowerCase()==="antibug" ||
+category.toLowerCase()==="anti_bug" ||
+category==="防BUG" ||
+category==="防Bug"
+){
+category="antiBug";
+}
 if(!promptData[category]){
 
 promptData[category] = [];
@@ -1662,6 +1668,16 @@ en: row.en
 });
 
 allPrompts = Object.values(promptData).flat();
+
+console.log(
+"antiConflict",
+promptData["antiConflict"]?.length
+);
+
+console.log(
+"antiBug",
+promptData["antiBug"]?.length
+);
 
 if(!promptData["antiConflict"]){
 promptData["antiConflict"] = [];
