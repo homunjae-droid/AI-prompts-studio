@@ -1193,7 +1193,12 @@ ${item.cn}
 
 <button
 class="favorite-btn ${isFavorite(item.en) ? 'active' : ''}"
-onclick="toggleFavorite(event,'${item.cn}','${item.en}',${index})">
+onclick='toggleFavorite(
+event,
+${JSON.stringify(item.cn)},
+${JSON.stringify(item.en)},
+${index}
+)'>
 
 ♥
 
@@ -1307,7 +1312,11 @@ addHistory(
 
 <button
 class="favorite-btn ${isFavorite(item.en) ? 'active' : ''}"
-onclick="toggleFavorite(event,'${item.cn}','${item.en}')">
+onclick='toggleFavorite(
+event,
+${JSON.stringify(item.cn)},
+${JSON.stringify(item.en)}
+)'>
 
 ♥
 
@@ -1319,7 +1328,7 @@ onclick="toggleFavorite(event,'${item.cn}','${item.en}')">
 
 <button
 class="copy-btn"
-onclick='copyPrompt(${JSON.stringify(item.en)})'
+onclick='copyPrompt(${JSON.stringify(item.en)})'>
 
 复制 Copy
 
@@ -1857,7 +1866,7 @@ addHistory(
 '${item.cn}',
 '${item.en}'
 );
-copyPrompt('${item.en}')
+copyPrompt(${JSON.stringify(item.en)})
 ">
 
 复制 Copy
@@ -1927,7 +1936,7 @@ ${item.en}
 
 <button
 class="copy-btn"
-onclick="copyPrompt('${item.en}')">
+onclick='copyPrompt(${JSON.stringify(item.en)})'
 
 复制 Copy
 
