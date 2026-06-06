@@ -1615,7 +1615,7 @@ window.onload = async function(){
 const { data: promptRows } =
 await db
 .from("prompts_library")
-.select("*");
+.select("category,cn,en");
 
 console.log(
 "promptRows",
