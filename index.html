@@ -1594,13 +1594,27 @@ promptData = {};
 
 promptRows.forEach(row=>{
 
-if(!promptData[row.category]){
+const categoryMap = {
+AntiConflict:"antiConflict",
+anti_conflict:"antiConflict",
+防串词:"antiConflict",
 
-promptData[row.category] = [];
+AntiBug:"antiBug",
+anti_bug:"antiBug",
+防BUG:"antiBug",
+防Bug:"antiBug"
+};
+
+const category =
+categoryMap[row.category] || row.category;
+
+if(!promptData[category]){
+
+promptData[category] = [];
 
 }
 
-promptData[row.category].push({
+promptData[category].push({
 cn: row.cn,
 en: row.en
 });
@@ -1608,6 +1622,14 @@ en: row.en
 });
 
 allPrompts = Object.values(promptData).flat();
+
+if(!promptData["antiConflict"]){
+promptData["antiConflict"] = [];
+}
+
+if(!promptData["antiBug"]){
+promptData["antiBug"] = [];
+}
 
 
 }
