@@ -862,7 +862,7 @@ document.getElementById(
 
 function getCategoryName(mode){
 
- map={
+const map={
 
 camera:"运镜描述",
 
@@ -1319,7 +1319,7 @@ onclick="toggleFavorite(event,'${item.cn}','${item.en}')">
 
 <button
 class="copy-btn"
-onclick="copyPrompt('${item.en}')">
+onclick='copyPrompt(${JSON.stringify(item.en)})'
 
 复制 Copy
 
@@ -1701,12 +1701,8 @@ renderPrompts();
 
 }
 
-let favoritesCache = [];
-
 function getFavorites(){
-
-return favoritesCache;
-
+    return favoritesCache;
 }
 function isFavorite(en){
 
