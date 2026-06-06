@@ -1146,7 +1146,7 @@ let promptData = {};
 let isVip = false;
 
 let currentUserEmail = "";
-
+let favoritesCache = [];
 let trendingPrompts = [];
 let currentMode = "camera";
 let currentPage = 1;
@@ -1589,7 +1589,14 @@ const email =
 data.session.user.email;
 
 currentUserEmail = email;
+const { data:favoritesData } =
+await db
+.from("user_favorites")
+.select("cn,en")
+.eq("email",email);
 
+favoritesCache =
+favoritesData || [];
 console.log('session', data.session);
 
 console.log('email', email);
@@ -1669,6 +1676,8 @@ userDate.innerText = "--";
 
 isVip = false;
 
+favoritesCache = [];
+
 }
 
 renderPrompts();
@@ -1692,17 +1701,11 @@ renderPrompts();
 
 }
 
+let favoritesCache = [];
+
 function getFavorites(){
 
-if(!currentUserEmail){
-return [];
-}
-
-return JSON.parse(
-localStorage.getItem(
-"favorites_" + currentUserEmail
-) || "[]"
-);
+return favoritesCache;
 
 }
 function isFavorite(en){
@@ -1713,7 +1716,12 @@ item => item.en === en
 
 }
 
-function toggleFavorite(event,cn,en,itemIndex=-1){
+async function toggleFavorite(
+event,
+cn,
+en,
+itemIndex=-1
+){
 
 event.stopPropagation();
 
@@ -1738,29 +1746,40 @@ openVipModal();
 return;
 }
 
-let favorites = getFavorites();
-
-const favoriteIndex = favorites.findIndex(
-item => item.en === en
+const exists =
+favoritesCache.find(
+item=>item.en===en
 );
 
-if(favoriteIndex > -1){
+if(exists){
 
-favorites.splice(favoriteIndex,1);
+await db
+.from("user_favorites")
+.delete()
+.eq("email",currentUserEmail)
+.eq("en",en);
+
+favoritesCache =
+favoritesCache.filter(
+item=>item.en!==en
+);
 
 }else{
 
-favorites.push({
+await db
+.from("user_favorites")
+.insert({
+email:currentUserEmail,
+cn,
+en
+});
+
+favoritesCache.unshift({
 cn,
 en
 });
 
 }
-
-localStorage.setItem(
-"favorites_" + currentUserEmail,
-JSON.stringify(favorites)
-);
 
 if(currentMode==="trending"){
 renderTrending();
