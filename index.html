@@ -1849,27 +1849,69 @@ text-align:center;
 
 favorites.map(item=>`
 
-<div class="card">
+<div style="
+padding:12px;
+border-bottom:1px solid #eee;
+display:flex;
+align-items:center;
+gap:10px;
+">
 
-<div class="cn">
+<button
+class="favorite-btn active"
+onclick="
+toggleFavorite(
+event,
+'${item.cn}',
+'${item.en}'
+)
+">
+
+♥
+
+</button>
+
+<div style="
+flex:1;
+overflow:hidden;
+">
+
+<div style="
+font-size:15px;
+font-weight:600;
+">
+
 ${item.cn}
+
 </div>
 
-<div class="en">
+<div style="
+font-size:12px;
+color:#888;
+margin-top:4px;
+">
+
 ${item.en}
+
+</div>
+
 </div>
 
 <button
 class="copy-btn"
+style="
+width:90px;
+margin:0;
+"
 onclick="
 addHistory(
 '${item.cn}',
 '${item.en}'
 );
-copyPrompt(${JSON.stringify(item.en)})
+copyPrompt('${item.en}')
 ">
 
-复制 Copy
+复制
 
 </button>
 
@@ -1880,6 +1922,108 @@ copyPrompt(${JSON.stringify(item.en)})
 document.getElementById(
 "favoritesModal"
 ).style.display="flex";
+
+}
+function searchFavorites(){
+
+const keyword =
+document
+.getElementById("favoriteSearch")
+.value
+.toLowerCase();
+
+const result =
+favoritesCache.filter(item=>
+
+(item.cn||"")
+.toLowerCase()
+.includes(keyword)
+
+||
+
+(item.en||"")
+.toLowerCase()
+.includes(keyword)
+
+);
+
+renderFavoriteList(result);
+
+}
+
+function renderFavoriteList(list){
+
+document.getElementById(
+"favoritesList"
+).innerHTML =
+
+list.map(item=>`
+
+<div style="
+padding:12px;
+border-bottom:1px solid #eee;
+display:flex;
+align-items:center;
+gap:10px;
+">
+
+<button
+class="favorite-btn active"
+onclick="
+toggleFavorite(
+event,
+'${item.cn}',
+'${item.en}'
+)
+">
+
+♥
+
+</button>
+
+<div style="flex:1;">
+
+<div style="
+font-size:15px;
+font-weight:600;
+">
+
+${item.cn}
+
+</div>
+
+<div style="
+font-size:12px;
+color:#888;
+">
+
+${item.en}
+
+</div>
+
+</div>
+
+<button
+class="copy-btn"
+style="
+width:90px;
+margin:0;
+"
+onclick="
+addHistory(
+'${item.cn}',
+'${item.en}'
+);
+copyPrompt('${item.en}')
+">
+
+复制
+
+</button>
+
+</div>
+
+`).join("");
 
 }
 
@@ -2183,6 +2327,18 @@ onclick="closeUserCenter()">
 <div class="modal-header">
 
 <h2>❤️ 我的收藏</h2>
+
+<input
+id="favoriteSearch"
+type="text"
+placeholder="搜索收藏内容..."
+onkeyup="searchFavorites()"
+style="
+flex:1;
+padding:10px;
+border:1px solid #ddd;
+border-radius:10px;
+">
 
 <span
 class="close-btn"
