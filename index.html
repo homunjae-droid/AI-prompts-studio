@@ -1590,7 +1590,25 @@ en: row.en
 });
 
 });
+alert(
+JSON.stringify(
+{
+antiBug:
+promptData["antiBug"]?.length || 0,
 
+antiConflict:
+promptData["antiConflict"]?.length || 0,
+
+antiCollapse:
+promptData["antiCollapse"]?.length || 0,
+
+antiText:
+promptData["antiText"]?.length || 0
+},
+null,
+2
+)
+);
 allPrompts = Object.values(promptData).flat();
 
 }
