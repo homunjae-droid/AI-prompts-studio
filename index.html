@@ -725,6 +725,8 @@ style="margin:0;">
 <div class="en">Anti Bug</div>
 </div>
 
+</div>
+
 <div class="section-title">
 最新更新 Latest Updates
 </div>
@@ -1636,23 +1638,30 @@ promptData = {};
 
 promptRows.forEach(row=>{
 
-let category = String(row.category || "").trim();
+let category =
+String(row.category || "")
+.trim()
+.toLowerCase();
 
 if(
-category.toLowerCase()==="anticonflict" ||
-category.toLowerCase()==="anti_conflict" ||
+category==="anticonflict" ||
+category==="anti_conflict" ||
 category==="防串词"
 ){
 category="antiConflict";
 }
 
-if(
-category.toLowerCase()==="antibug" ||
-category.toLowerCase()==="anti_bug" ||
-category==="防BUG" ||
-category==="防Bug"
+else if(
+category==="antibug" ||
+category==="anti_bug" ||
+category==="防bug" ||
+category==="防BUG"
 ){
 category="antiBug";
+}
+
+else{
+category=row.category;
 }
 if(!promptData[category]){
 
@@ -1678,14 +1687,6 @@ console.log(
 "antiBug",
 promptData["antiBug"]?.length
 );
-
-if(!promptData["antiConflict"]){
-promptData["antiConflict"] = [];
-}
-
-if(!promptData["antiBug"]){
-promptData["antiBug"] = [];
-}
 
 
 }
