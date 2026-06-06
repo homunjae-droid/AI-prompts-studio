@@ -817,9 +817,18 @@ currentMode = mode;
 currentPage = 1;
 
 if(
-!promptData[mode] ||
-promptData[mode].length===0
+!promptData[mode]
 ){
+
+if(mode==="antiConflict"){
+promptData[mode]=promptData["anticonflict"]||[];
+}
+
+if(mode==="antiBug"){
+promptData[mode]=promptData["antibug"]||[];
+}
+
+}
 
 cameraMovementList =
 document.getElementById(
