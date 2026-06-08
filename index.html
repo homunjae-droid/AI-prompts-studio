@@ -1186,9 +1186,9 @@ onclick="
 ${
 (!isVip && index >= 4)
 ? 'openVipModal()'
-: `copyPrompt('${item.en}')`
+: `copyPrompt(${JSON.stringify(item.cn)},${JSON.stringify(item.en)})`
 }
-">
+"
 
 复制 Copy
 
@@ -1304,10 +1304,8 @@ class="copy-btn"
 onclick='copyPrompt(
 ${JSON.stringify(item.cn)},
 ${JSON.stringify(item.en)}
-)'
-
+)'>
 复制 Copy
-
 </button>
 
 </div>
@@ -1456,14 +1454,14 @@ item.items.join("、");
 
 }
 
-function copyPrompt(cn,en)
+function copyPrompt(cn,en){
 
 if(isVip){
 
 navigator.clipboard.writeText(en)
 .then(()=>{
 addHistory(cn,en);
-alert("复制成功：\n"+text);
+alert("复制成功：\n"+en);
 });
 
 return;
@@ -1474,7 +1472,7 @@ if(currentMode === "trending"){
 
 const index =
 trendingPrompts.findIndex(
-item => item.en === text
+item => item.en === en
 );
 
 if(index < 4){
@@ -1482,7 +1480,7 @@ if(index < 4){
 navigator.clipboard.writeText(en)
 .then(()=>{
 addHistory(cn,en);
-alert("复制成功：\n"+text);
+alert("复制成功：\n"+en);
 });
 
 }else{
@@ -1500,7 +1498,7 @@ if(currentPage <= 2){
 navigator.clipboard.writeText(en)
 .then(()=>{
 addHistory(cn,en);
-alert("复制成功：\n"+text);
+alert("复制成功：\n"+en);
 });
 
 return;
@@ -1896,8 +1894,10 @@ addHistory(
 '${item.cn}',
 '${item.en}'
 );
-copyPrompt('${item.en}')
-">
+copyPrompt(
+'${item.cn}',
+'${item.en}'
+)>
 
 复制
 
@@ -2002,8 +2002,10 @@ addHistory(
 '${item.cn}',
 '${item.en}'
 );
-copyPrompt('${item.en}')
-">
+copyPrompt(
+'${item.cn}',
+'${item.en}'
+)>
 
 复制
 
@@ -2092,6 +2094,7 @@ ${item.en}
 class="copy-btn"
 onclick="
 copyPrompt(
+'${item.cn}',
 '${item.en}'
 )
 ">
