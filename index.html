@@ -992,7 +992,7 @@ html += `
 
 <div
 class="search-item"
-onclick="openVipModal()"
+onclick="openVipUpgrade()"
 style="
 margin-top:10px;
 background:rgba(255,215,0,.12);
@@ -1291,7 +1291,7 @@ margin-top:35px;
 width:260px;
 max-width:100%;
 "
-onclick="openVipModal()">
+onclick="openVipUpgrade()">
 
 立即开通会员
 
@@ -1540,7 +1540,7 @@ alert("复制成功：\n"+en);
 
 }else{
 
-openVipModal();
+openVipUpgrade();
 
 }
 
@@ -1560,7 +1560,7 @@ return;
 
 }
 
-openVipModal();
+openVipUpgrade();
 
 }
 function prevPage(){
@@ -1785,7 +1785,7 @@ currentPage > 5 ||
 (currentMode==="trending" && itemIndex>=4)
 )
 ){
-openVipModal();
+openVipUpgrade();
 return;
 }
 
@@ -2204,6 +2204,20 @@ function closeHistory(){
 document.getElementById(
 "historyModal"
 ).style.display="none";
+
+}
+
+function openVipUpgrade(){
+
+if(!currentUserEmail){
+
+openVipModal();
+
+return;
+
+}
+
+alert("这里后面改成VIP开通弹窗");
 
 }
 
