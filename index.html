@@ -1357,9 +1357,10 @@ justify-content:center;
 align-items:center;
 gap:12px;
 margin-top:10px;
+flex-wrap:wrap;
 ">
 
-<button onclick="prevPage()">
+<button class="page-btn" onclick="prevPage()">
 上一页
 </button>
 
@@ -1372,8 +1373,27 @@ getCurrentData().length/perPage
 } 页
 </span>
 
-<button onclick="nextPage()">
+<button class="page-btn" onclick="nextPage()">
 下一页
+</button>
+
+<input
+id="pageSearchInput"
+type="number"
+min="1"
+placeholder="页码"
+style="
+width:80px;
+padding:8px;
+border:1px solid #ddd;
+border-radius:8px;
+text-align:center;
+">
+
+<button
+class="page-btn"
+onclick="searchPage()">
+跳转
 </button>
 
 </div>
