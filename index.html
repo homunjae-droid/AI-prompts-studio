@@ -1301,7 +1301,10 @@ ${JSON.stringify(item.en)}
 
 <button
 class="copy-btn"
-onclick='copyPrompt(${JSON.stringify(item.en)})'>
+onclick='copyPrompt(
+${JSON.stringify(item.cn)},
+${JSON.stringify(item.en)}
+)'
 
 复制 Copy
 
@@ -1453,13 +1456,13 @@ item.items.join("、");
 
 }
 
-function copyPrompt(text){
+function copyPrompt(cn,en)
 
 if(isVip){
 
-navigator.clipboard.writeText(text)
+navigator.clipboard.writeText(en)
 .then(()=>{
-addHistory("",text);
+addHistory(cn,en);
 alert("复制成功：\n"+text);
 });
 
@@ -1476,9 +1479,9 @@ item => item.en === text
 
 if(index < 4){
 
-navigator.clipboard.writeText(text)
+navigator.clipboard.writeText(en)
 .then(()=>{
-addHistory("",text);
+addHistory(cn,en);
 alert("复制成功：\n"+text);
 });
 
@@ -1494,9 +1497,9 @@ return;
 
 if(currentPage <= 2){
 
-navigator.clipboard.writeText(text)
+navigator.clipboard.writeText(en)
 .then(()=>{
-addHistory("",text);
+addHistory(cn,en);
 alert("复制成功：\n"+text);
 });
 
