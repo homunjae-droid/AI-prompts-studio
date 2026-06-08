@@ -1209,16 +1209,12 @@ ${item.en}
 </div>
 <button
 class="copy-btn"
-onclick="
-${
-(!isVip && index >= 4)
-? 'openVipModal()'
-: `copyPrompt(${JSON.stringify(item.cn)},${JSON.stringify(item.en)})`
-}
-">
-
+onclick='copyTrendingPrompt(
+${index},
+${JSON.stringify(item.cn)},
+${JSON.stringify(item.en)}
+)'>
 复制 Copy
-
 </button>
 
 </div>
@@ -1506,6 +1502,20 @@ document.getElementById(
 ).innerHTML =
 
 item.items.join("、");
+
+}
+
+function copyTrendingPrompt(index,cn,en){
+
+if(!isVip && index >= 4){
+
+openVipUpgrade();
+
+return;
+
+}
+
+copyPrompt(cn,en);
 
 }
 
