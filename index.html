@@ -1808,16 +1808,30 @@ en
 }
 
 if(
+document.getElementById("favoritesModal")
+.style.display==="flex"
+){
+
+openFavorites();
+
+}
+else if(
 document.getElementById("historyModal")
 .style.display==="flex"
 ){
+
 openHistory();
+
 }
 else if(currentMode==="trending"){
+
 renderTrending();
+
 }
 else{
+
 renderPrompts();
+
 }
 
 }
