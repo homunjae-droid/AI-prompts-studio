@@ -1623,9 +1623,9 @@ renderPrompts();
 function copyHistoryPrompt(
 cn,
 en,
-page
+page,
+mode
 ){
-
 if(isVip){
 
 navigator.clipboard.writeText(en)
@@ -1873,6 +1873,8 @@ item=>item.en!==en
 }else{
 
 const { data, error } =
+await db
+.from("user_favorites")
 .insert({
 email: currentUserEmail,
 cn,
@@ -2042,7 +2044,8 @@ onclick="
 copyHistoryPrompt(
 '${item.cn}',
 '${item.en}',
-${item.page || 1}
+${item.page || 1},
+'${item.mode || ""}'
 )
 "
 style="
@@ -2256,7 +2259,8 @@ onclick="
 copyHistoryPrompt(
 '${item.cn}',
 '${item.en}',
-${item.page || 1}
+${item.page || 1},
+'${item.mode || ""}'
 )
 "
 style="
@@ -2377,7 +2381,8 @@ onclick="
 copyHistoryPrompt(
 '${item.cn}',
 '${item.en}',
-${item.page || 1}
+${item.page || 1},
+'${item.mode || ""}'
 )
 ">
 
