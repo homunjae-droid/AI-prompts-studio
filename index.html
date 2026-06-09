@@ -1620,6 +1620,38 @@ renderPrompts();
 
 }
 
+function copyHistoryPrompt(
+cn,
+en,
+page
+){
+
+if(isVip){
+
+navigator.clipboard.writeText(en)
+.then(()=>{
+alert("复制成功");
+});
+
+return;
+
+}
+
+if(page <= 2){
+
+navigator.clipboard.writeText(en)
+.then(()=>{
+alert("复制成功");
+});
+
+return;
+
+}
+
+openVipUpgrade();
+
+}
+
 window.onload = async function(){
 
 const { data: promptRows } =
@@ -1907,7 +1939,9 @@ item => item.en !== en
 
 history.unshift({
 cn,
-en
+en,
+mode:currentMode,
+page:currentPage
 });
 
 history = history.slice(0,10);
@@ -2336,9 +2370,10 @@ ${item.en}
 <button
 class="copy-btn"
 onclick="
-copyPrompt(
+copyHistoryPrompt(
 '${item.cn}',
-'${item.en}'
+'${item.en}',
+${item.page || 1}
 )
 ">
 
