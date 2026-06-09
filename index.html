@@ -1935,11 +1935,8 @@ text-align:center;
 favorites.map(item=>`
 
 <div style="
-display:flex;
-align-items:center;
-padding:8px 0;
+padding:8px;
 border-bottom:1px solid #f0f0f0;
-gap:8px;
 ">
 
 <button
@@ -1962,35 +1959,34 @@ event,
 
 <div style="
 flex:1;
-font-size:13px;
-color:#333;
 overflow:hidden;
-white-space:nowrap;
-text-overflow:ellipsis;
+">
+
+<div style="
+font-size:11px;
+font-weight:600;
+color:#111;
+line-height:1.3;
+">
+
+${item.cn}
+
+</div>
+
+<div style="
+font-size:10px;
+color:#777;
+line-height:1.3;
+margin-top:2px;
+word-break:break-word;
 ">
 
 ${item.en}
 
 </div>
 
-<button
-onclick="
-copyPrompt(
-'${item.cn}',
-'${item.en}'
-)
-"
-style="
-background:none;
-border:none;
-font-size:18px;
-cursor:pointer;
-padding:0 4px;
-">
+</div>
 
-📋
-
-</button>
 
 </div>
 
