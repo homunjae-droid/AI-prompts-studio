@@ -662,6 +662,19 @@ box-shadow:
 0 8px 20px rgba(0,122,255,.35);
 }
 
+.nav-item svg{
+
+width:22px;
+
+height:22px;
+
+fill:currentColor;
+
+margin-bottom:4px;
+
+transition:.25s;
+}
+
 </style>
 </head>
 
@@ -2608,6 +2621,21 @@ alert("已退出登录");
 location.reload();
 
 }
+
+function switchTab(el){
+
+document
+.querySelectorAll('.nav-item')
+.forEach(item=>{
+
+item.classList.remove('active');
+
+});
+
+el.classList.add('active');
+
+}
+
 </script>
 <div id="userCenterModal" class="modal">
 
@@ -2750,14 +2778,28 @@ class="prompt-grid">
 
 <div class="bottom-nav">
 
-<div class="nav-item active">
-🏠
+<div
+class="nav-item active"
+onclick="switchTab(this)">
+
+<svg viewBox="0 0 24 24">
+<path d="M12 3L3 10V21H9V15H15V21H21V10Z"/>
+</svg>
+
 <span>首页</span>
+
 </div>
 
-<div class="nav-item">
-🧰
+<div
+class="nav-item"
+onclick="switchTab(this)">
+
+<svg viewBox="0 0 24 24">
+<path d="M4 4H10V10H4ZM14 4H20V10H14ZM4 14H10V20H4ZM14 14H20V20H14Z"/>
+</svg>
+
 <span>工具</span>
+
 </div>
 
 <div class="nav-item">
@@ -2768,16 +2810,26 @@ class="prompt-grid">
 
 </div>
 
-<div class="nav-item">
-🧠
+<div
+class="nav-item"
+onclick="switchTab(this)">
+
+<svg viewBox="0 0 24 24">
+<path d="M12 2C8 2 5 5 5 9C5 12 7 14 8 15V18H16V15C17 14 19 12 19 9C19 5 16 2 12 2Z"/>
+</svg>
+
 <span>专家</span>
+
 </div>
 
 <div
 class="nav-item"
-onclick="openUserCenter()">
+onclick="switchTab(this);openUserCenter();">
 
-👤
+<svg viewBox="0 0 24 24">
+<path d="M12 12C15 12 17 10 17 7S15 2 12 2S7 4 7 7S9 12 12 12ZM12 14C7.5 14 4 16.2 4 19V21H20V19C20 16.2 16.5 14 12 14Z"/>
+</svg>
+
 <span>我的</span>
 
 </div>
