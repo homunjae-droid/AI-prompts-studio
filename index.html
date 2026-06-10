@@ -682,6 +682,7 @@ transition:.25s;
 
 <div class="container">
 
+<div id="homePage">
 
 <h1>AI效率神器</h1>
 
@@ -839,6 +840,8 @@ Professional
 
 <div class="site">
 https://ai-prompts-studio.vercel.app
+</div>
+
 </div>
 
 </div>
@@ -2654,7 +2657,87 @@ el.classList.add('active');
 
 }
 
+function showProfilePage(el){
+
+switchTab(el);
+
+document.getElementById(
+"homePage"
+).style.display="none";
+
+document.getElementById(
+"profilePage"
+).style.display="block";
+
+}
+
+function showHomePage(el){
+
+switchTab(el);
+
+document.getElementById(
+"profilePage"
+).style.display="none";
+
+document.getElementById(
+"homePage"
+).style.display="block";
+
+}
+
 </script>
+
+<div id="profilePage" style="display:none;">
+
+<h1>我的</h1>
+
+<div class="profile-box">
+
+<div class="profile-item">
+<label>账号</label>
+<div id="profileUserAccount">
+未登录
+</div>
+</div>
+
+<div class="profile-item">
+<label>账户状态</label>
+<div id="profileUserStatus">
+普通用户
+</div>
+</div>
+
+<div class="profile-item">
+<label>VIP开通时间</label>
+<div id="profileUserDate">
+--
+</div>
+</div>
+
+</div>
+
+<div class="user-actions">
+
+<button onclick="openFavorites()">
+我的收藏
+</button>
+
+<button onclick="openHistory()">
+最近浏览
+</button>
+
+<button onclick="openVipModal()">
+立即登录
+</button>
+
+<button onclick="logoutUser()">
+退出登录
+</button>
+
+</div>
+
+</div>
+
 <div id="userCenterModal" class="modal">
 
 <div class="modal-content">
@@ -2798,7 +2881,7 @@ class="prompt-grid">
 
 <div
 class="nav-item active"
-onclick="switchTab(this)">
+onclick="showHomePage(this)">
 
 <svg viewBox="0 0 24 24">
 <path d="M12 3L3 10V21H9V15H15V21H21V10Z"/>
@@ -2842,7 +2925,7 @@ onclick="switchTab(this)">
 
 <div
 class="nav-item"
-onclick="switchTab(this);openUserCenter();">
+onclick="showProfilePage(this)">
 
 <svg viewBox="0 0 24 24">
 <path d="M12 12C15 12 17 10 17 7S15 2 12 2S7 4 7 7S9 12 12 12ZM12 14C7.5 14 4 16.2 4 19V21H20V19C20 16.2 16.5 14 12 14Z"/>
