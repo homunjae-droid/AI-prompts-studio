@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>AI提示词大全</title>
+<title>AI效率神器</title>
 
 <style>
 *{
@@ -19,6 +19,7 @@ body{
 background:#f5f5f7;
 color:#111;
 padding:20px;
+padding-bottom:140px;
 }
 
 .container{
@@ -613,6 +614,82 @@ cursor:pointer;
 font-size:15px;
 }
 
+.bottom-nav{
+position:fixed;
+bottom:20px;
+
+left:50%;
+transform:translateX(-50%);
+
+width:92%;
+max-width:520px;
+
+height:72px;
+
+background:rgba(255,255,255,.88);
+
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+
+border-radius:24px;
+
+display:flex;
+justify-content:space-around;
+align-items:center;
+
+box-shadow:
+0 8px 30px rgba(0,0,0,.08);
+
+z-index:9999;
+}
+
+.nav-item{
+flex:1;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+font-size:11px;
+
+color:#8E8E93;
+
+cursor:pointer;
+
+transition:.2s;
+}
+
+.nav-item.active{
+color:#007AFF;
+}
+
+.nav-item:active{
+transform:scale(.92);
+}
+
+.ai-btn{
+width:56px;
+height:56px;
+
+border-radius:50%;
+
+background:#007AFF;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+color:white;
+
+margin-top:-24px;
+
+font-size:24px;
+
+box-shadow:
+0 8px 20px rgba(0,122,255,.35);
+}
+
 </style>
 </head>
 
@@ -634,11 +711,11 @@ onclick="openUserCenter()">
 
 </div>
 
-<h1>AI提示词大全</h1>
+<h1>AI效率神器</h1>
 
 <div class="subtitle">
-Professional Prompt Library<br>
-集合各种类型与功能的专业提示词
+AI Efficiency Toolkit<br>
+AI工具 · AI专家 · AI工作流 · AI提示词
 </div>
 
 <div class="marquee-box">
@@ -2623,7 +2700,7 @@ onclick="closeUserCenter()">
 </button>
 
 <button onclick="openHistory()">
-最近复制
+最近浏览
 </button>
 
 <button onclick="openVipModal()">
@@ -2690,7 +2767,7 @@ class="prompt-grid">
 
 <div class="modal-header">
 
-<h2>🕘 最近复制</h2>
+<h2>🕘 最近浏览</h2>
 
 <span
 class="close-btn"
@@ -2707,6 +2784,42 @@ id="historyList"
 class="prompt-grid">
 
 </div>
+
+</div>
+
+</div>
+
+<div class="bottom-nav">
+
+<div class="nav-item active">
+🏠
+<span>首页</span>
+</div>
+
+<div class="nav-item">
+🧰
+<span>工具</span>
+</div>
+
+<div class="nav-item">
+
+<div class="ai-btn">
+✨
+</div>
+
+</div>
+
+<div class="nav-item">
+🧠
+<span>专家</span>
+</div>
+
+<div
+class="nav-item"
+onclick="openUserCenter()">
+
+👤
+<span>我的</span>
 
 </div>
 
