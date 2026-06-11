@@ -3595,20 +3595,6 @@ openVipUpgrade();
 
 }
 
-function showProfilePage(el){
-
-switchTab(el);
-
-document.getElementById(
-"homePage"
-).style.display="none";
-
-document.getElementById(
-"profilePage"
-).style.display="block";
-
-}
-
 function showHomePage(el){
 
 switchTab(el);
@@ -3627,6 +3613,24 @@ document.getElementById(
 
 }
 
+function showToolsPage(el){
+
+switchTab(el);
+
+document.getElementById(
+"homePage"
+).style.display="none";
+
+document.getElementById(
+"profilePage"
+).style.display="none";
+
+document.getElementById(
+"toolsPage"
+).style.display="block";
+
+}
+
 function showProfilePage(el){
 
 switchTab(el);
@@ -3644,7 +3648,6 @@ document.getElementById(
 ).style.display="block";
 
 }
-
 </script>
 
 <div id="profilePage" class="profile-page" style="display:none;">
