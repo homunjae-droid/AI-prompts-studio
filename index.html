@@ -1079,11 +1079,11 @@ gap:20px;
 
 flex:1;
 
-background:#fafafa;
+background:#f6f6f6;
 
 border-radius:22px;
 
-padding:20px;
+padding:24px;
 
 }
 
@@ -1103,11 +1103,13 @@ font-size:42px;
 
 flex:1;
 
-background:#fafafa;
+background:#111;
+
+color:white;
 
 border-radius:22px;
 
-padding:20px;
+padding:24px;
 
 display:flex;
 
@@ -1196,6 +1198,38 @@ margin-bottom:18px;
 
 }
 
+.expert-image{
+
+display:flex;
+
+justify-content:flex-end;
+
+margin-top:20px;
+
+margin-bottom:16px;
+
+}
+
+.expert-image-bg{
+
+width:88px;
+
+height:88px;
+
+border-radius:22px;
+
+background:#f5f5f5;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:42px;
+
+}
+
 .expert-open-btn{
 
 background:#111;
@@ -1221,7 +1255,19 @@ repeat(4,1fr);
 
 gap:12px;
 
-margin-top:16px;
+margin-top:18px;
+
+min-height:88px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+font-size:14px;
 
 }
 
@@ -1415,43 +1461,56 @@ style="display:none;">
 
     </div>
 
-    <div class="expert-preview">
+<div class="expert-preview">
 
-        <div class="expert-before">
+<div class="expert-before">
 
-            <div>✖ 帮我写代码</div>
-            <div>✖ 帮我做方案</div>
-            <div>✖ 修复这个Bug</div>
+<div>❌ 帮我写代码</div>
 
-        </div>
+<div>❌ 帮我做方案</div>
 
-        <div class="expert-arrow">
-            →
-        </div>
+<div>❌ 修复这个Bug</div>
 
-        <div class="expert-after">
+</div>
 
-            <div class="expert-icon">
-                🎓
-            </div>
+<div class="expert-arrow">
+→
+</div>
 
-            <div>
+<div class="expert-after">
 
-                <strong>
-                你在把一个高级AI
-                当成实习生。
-                </strong>
+<div class="expert-icon">
+🎓
+</div>
 
-                <br>
+<div>
 
-                复制这些专家提示词，
-                充分发挥AI潜力。
+<div style="
+font-size:18px;
+font-weight:700;
+margin-bottom:8px;
+">
 
-            </div>
+你在把高级AI
+当成一个实习生
 
-        </div>
+</div>
 
-    </div>
+<div style="
+font-size:14px;
+color:#666;
+line-height:1.7;
+">
+
+复制专家提示词后
+
+AI会自动切换成对应专家角色
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1473,21 +1532,30 @@ style="display:none;">
 
 <br><br>
 
-✓ 架构<br>
-✓ 文件结构<br>
-✓ 数据库模式
+✓ 架构　✓ 文件结构
 
-<br><br>
+<br>
 
-✓ API端点<br>
-✓ UI架构<br>
-✓ 完整代码
+✓ 数据库模式　✓ API端点
 
-<br><br>
+<br>
 
-像真正的创业MVP一样设计并使其可扩展。
+✓ UI架构　✓ 完整代码
 
 </p >
+
+<div class="expert-image">
+
+<img
+src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300"
+style="
+width:100px;
+height:100px;
+object-fit:cover;
+border-radius:20px;
+">
+
+</div>
 
 <button
 class="expert-open-btn"
@@ -1515,18 +1583,34 @@ onclick="openCategory('system')">
 
 <br><br>
 
-✓ 架构<br>
-✓ 组件结构<br>
-✓ 数据流<br>
-✓ API设计
+✓ 架构　✓ 组件结构
 
-<br><br>
+<br>
 
-✓ 数据库模式<br>
-✓ 缓存策略<br>
+✓ 数据流　✓ API设计
+
+<br>
+
+✓ 数据库模式　✓ 缓存策略
+
+<br>
+
 ✓ 实现代码
 
 </p >
+
+<div class="expert-image">
+
+<img
+src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=300"
+style="
+width:100px;
+height:100px;
+object-fit:cover;
+border-radius:20px;
+">
+
+</div>
 
 <button
 class="expert-open-btn"
