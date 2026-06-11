@@ -758,11 +758,6 @@ box-shadow:
 
 }
 
-box-shadow:
-0 8px 20px rgba(0,0,0,.05);
-
-}
-
 .profile-row{
 
 display:flex;
@@ -2079,6 +2074,24 @@ favoritesCache = [];
 
 }
 
+if(currentUserEmail){
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+if(logoutBtn){
+logoutBtn.style.display="block";
+}
+
+const loginBtn =
+document.getElementById("loginBtn");
+
+if(loginBtn){
+loginBtn.style.display="none";
+}
+
+}else{
+
 const logoutBtn =
 document.getElementById("logoutBtn");
 
@@ -2091,6 +2104,8 @@ document.getElementById("loginBtn");
 
 if(loginBtn){
 loginBtn.style.display="block";
+}
+
 }
 
 renderPrompts();
