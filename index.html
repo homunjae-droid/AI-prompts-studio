@@ -1143,10 +1143,17 @@ border-radius:24px;
 
 padding:24px;
 
+min-height:260px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
 box-shadow:0 8px 25px rgba(0,0,0,.05);
 
 }
-
 .expert-card-number{
 
 width:34px;
@@ -1209,7 +1216,8 @@ cursor:pointer;
 
 display:grid;
 
-grid-template-columns:1fr 1fr;
+grid-template-columns:
+repeat(4,1fr);
 
 gap:12px;
 
@@ -1221,13 +1229,15 @@ margin-top:16px;
 
 background:white;
 
-border-radius:20px;
+border-radius:18px;
 
-padding:18px;
+padding:14px;
 
-font-size:15px;
+font-size:14px;
 
 font-weight:600;
+
+text-align:center;
 
 box-shadow:
 0 8px 20px rgba(0,0,0,.05);
@@ -1241,6 +1251,34 @@ transition:.25s;
 .expert-mini-card:hover{
 
 transform:translateY(-3px);
+
+}
+
+.expert-more{
+
+margin-top:18px;
+
+background:#f7f7f7;
+
+border-radius:18px;
+
+padding:16px;
+
+text-align:center;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.expert-more:hover{
+
+background:#efefef;
 
 }
 
@@ -1441,6 +1479,12 @@ onclick="openCategory('system')">
 <div class="expert-mini-card">
 📋 产品经理模式
 </div>
+
+</div>
+
+<div class="expert-more">
+
+查看更多专家提示词 →
 
 </div>
 
