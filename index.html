@@ -1205,6 +1205,45 @@ cursor:pointer;
 
 }
 
+.expert-mini-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:12px;
+
+margin-top:16px;
+
+}
+
+.expert-mini-card{
+
+background:white;
+
+border-radius:20px;
+
+padding:18px;
+
+font-size:15px;
+
+font-weight:600;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.05);
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.expert-mini-card:hover{
+
+transform:translateY(-3px);
+
+}
+
 </style>
 </head>
 
@@ -1383,6 +1422,24 @@ onclick="openCategory('system')">
 
 </button>
 
+</div>
+
+<div class="expert-mini-grid">
+
+<div class="expert-mini-card">
+🏗️ 系统架构设计
+</div>
+
+<div class="expert-mini-card">
+🧩 代码库理解与重构
+</div>
+
+<div class="expert-mini-card">
+🐞 Bug排查专家
+</div>
+
+<div class="expert-mini-card">
+📋 产品经理模式
 </div>
 
 </div>
