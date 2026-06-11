@@ -2869,6 +2869,29 @@ el.classList.add('active');
 
 }
 
+function checkVipStatus(){
+
+if(isVip){
+
+alert(
+"🎉 恭喜您是VIP用户！\n\n去尽情探索和使用吧！"
+);
+
+return;
+
+}
+
+if(!currentUserEmail){
+
+openVipModal();
+return;
+
+}
+
+openVipUpgrade();
+
+}
+
 function showProfilePage(el){
 
 switchTab(el);
@@ -2946,7 +2969,7 @@ document.getElementById(
 🕘 最近浏览
 </button>
 
-<button onclick="openVipModal()">
+<button onclick="checkVipStatus()">
 ⭐ VIP会员
 </button>
 
