@@ -1954,6 +1954,21 @@ console.log('expire', new Date(vipData?.expire_date));
 console.log('now', new Date());
 if(error){
 console.error(error);
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+if(logoutBtn){
+logoutBtn.style.display="block";
+}
+
+const loginBtn =
+document.getElementById("loginBtn");
+
+if(loginBtn){
+loginBtn.style.display="none";
+}
+
 }
 
 const userAccount =
@@ -2062,6 +2077,20 @@ isVip = false;
 
 favoritesCache = [];
 
+}
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+if(logoutBtn){
+logoutBtn.style.display="none";
+}
+
+const loginBtn =
+document.getElementById("loginBtn");
+
+if(loginBtn){
+loginBtn.style.display="block";
 }
 
 renderPrompts();
@@ -2961,6 +2990,14 @@ document.getElementById(
 
 <div class="menu-list">
 
+<button
+id="loginBtn"
+onclick="openVipModal()">
+
+🔑 立即登录
+
+</button>
+
 <button onclick="openFavorites()">
 ❤️ 我的收藏
 </button>
@@ -2969,12 +3006,20 @@ document.getElementById(
 🕘 最近浏览
 </button>
 
-<button onclick="checkVipStatus()">
-⭐ VIP会员
+<button
+id="vipBtn"
+onclick="checkVipStatus()">
+
+👑 会员中心
+
 </button>
 
-<button onclick="logoutUser()">
+<button
+id="logoutBtn"
+onclick="logoutUser()">
+
 🚪 退出登录
+
 </button>
 
 </div>
