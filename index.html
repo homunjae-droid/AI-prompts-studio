@@ -1558,18 +1558,7 @@ onclick="openCategory('system')">
 
 </div>
 
-<div
-style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-top:36px;
-margin-bottom:18px;
-">
 
-
-
-</div>
 <div class="section-title">
 最新更新 Latest Updates
 </div>
@@ -3638,7 +3627,7 @@ document.getElementById(
 
 }
 
-function showToolsPage(el){
+function showProfilePage(el){
 
 switchTab(el);
 
@@ -3647,11 +3636,11 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
-"profilePage"
+"toolsPage"
 ).style.display="none";
 
 document.getElementById(
-"toolsPage"
+"profilePage"
 ).style.display="block";
 
 }
@@ -3887,7 +3876,7 @@ onclick="showHomePage(this)">
 
 <div
 class="nav-item"
-onclick="showToolsPage(this)"
+onclick="showToolsPage(this)">
 
 <svg viewBox="0 0 24 24">
 <path d="M4 4H10V10H4ZM14 4H20V10H14ZM4 14H10V20H4ZM14 14H20V20H14Z"/>
