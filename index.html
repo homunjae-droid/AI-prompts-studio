@@ -839,6 +839,180 @@ padding-bottom:120px;
 
 }
 
+.hero-section{
+
+background:white;
+
+border-radius:36px;
+
+padding:32px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:20px;
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.05);
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+.hero-left{
+
+flex:1;
+
+}
+
+.hero-logo{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+font-size:18px;
+
+font-weight:700;
+
+margin-bottom:20px;
+
+}
+
+.logo-icon{
+
+width:34px;
+height:34px;
+
+background:#111;
+
+color:white;
+
+border-radius:10px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+.hero-title{
+
+font-size:60px;
+
+font-weight:800;
+
+margin-bottom:20px;
+
+}
+
+.hero-tags{
+
+display:flex;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+margin-bottom:24px;
+
+}
+
+.hero-tags span{
+
+padding:10px 18px;
+
+background:#f4f4f4;
+
+border-radius:999px;
+
+font-size:14px;
+
+}
+
+.hero-desc{
+
+font-size:20px;
+
+line-height:1.8;
+
+margin-bottom:20px;
+
+}
+
+.hero-slogan{
+
+font-size:28px;
+
+font-weight:700;
+
+margin-bottom:30px;
+
+}
+
+.hero-btn{
+
+background:#111;
+
+color:white;
+
+border:none;
+
+padding:18px 32px;
+
+border-radius:999px;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+.hero-right{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.hero-robot{
+
+width:100%;
+
+max-width:450px;
+
+animation:float 5s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
 </style>
 </head>
 
@@ -848,39 +1022,54 @@ padding-bottom:120px;
 
 <div id="homePage">
 
-<h1>AI效率神器</h1>
+<div class="hero-section">
 
-<div class="subtitle">
-AI Efficiency Toolkit<br>
-AI工具 · AI专家 · AI工作流 · AI提示词
+  <div class="hero-left">
+
+    <div class="hero-logo">
+      <span class="logo-icon">A</span>
+      AI效率神器
+    </div>
+
+    <h1 class="hero-title">
+      AI效率神器
+    </h1>
+
+    <div class="hero-tags">
+
+      <span>✨ AI提示词</span>
+
+      <span>🛠 AI工具</span>
+
+      <span>🧠 AI专家模式</span>
+
+    </div>
+
+    <div class="hero-desc">
+      如果这些还不会？<br>
+      我们还可以通过高级AI助手<br>
+      直接为你解答问题
+    </div>
+
+    <div class="hero-slogan">
+      让AI真正成为你的得力助手
+    </div>
+
+    <button class="hero-btn">
+      🚀 立即开始探索
+    </button>
+
+  </div>
+
+  <div class="hero-right">
+
+    <img
+      src="robot.png"
+      class="hero-robot">
+
+  </div>
+
 </div>
-
-<div class="marquee-box">
-<div class="marquee">
-🔥 已收录10000+专业AI提示词以及高效实用指令 适用于（Midjourney · ChatGPT · Gemini · Claude · DeepSeek · Sora · Kling · Veo3 · Runway · Flux · Stable Diffusion · 即梦 · 小云雀）等各大AI创作平台 · 持续更新中 · 免费开放部分内容 · VIP解锁全部内容 · 一次开通终身使用 · 🔥
-</div>
-</div>
-
-<div class="search">
-
-<input
-type="text"
-id="searchInput"
-placeholder="搜索提示词 Search prompts..."
-onkeyup="searchPrompts()">
-
-<div id="searchResults"></div>
-
-</div>
-<div
-class="vip-banner"
-id="vipBanner"
-onclick="openVipUpgrade()">
-
-<div class="vip-title">
-👑 VIP会员
-</div>
-
 <div class="vip-desc">
 解锁全部10000+专业提示词
 </div>
