@@ -1123,6 +1123,88 @@ font-size:40px;
 
 }
 
+.expert-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:16px;
+
+margin-top:20px;
+
+}
+
+.expert-card{
+
+background:white;
+
+border-radius:24px;
+
+padding:24px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+}
+
+.expert-card-number{
+
+width:34px;
+
+height:34px;
+
+border-radius:50%;
+
+background:#111;
+
+color:white;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-weight:700;
+
+margin-bottom:15px;
+
+}
+
+.expert-card h3{
+
+font-size:22px;
+
+margin-bottom:12px;
+
+}
+
+.expert-card p{
+
+color:#666;
+
+line-height:1.8;
+
+margin-bottom:18px;
+
+}
+
+.expert-open-btn{
+
+background:#111;
+
+color:white;
+
+border:none;
+
+padding:12px 18px;
+
+border-radius:14px;
+
+cursor:pointer;
+
+}
+
 </style>
 </head>
 
@@ -1251,26 +1333,57 @@ font-size:40px;
 
 </div>
 
+<div class="expert-grid">
+
 <div class="expert-card">
 
-    <div class="expert-card-number">
-        ①
-    </div>
+<div class="expert-card-number">
+1
+</div>
 
-    <div class="expert-card-content">
+<h3>
+从零完成应用
+</h3>
 
-        <h3>从零完成应用</h3>
+<p>
+像高级全栈工程师一样思考，
+从架构设计到完整MVP。
+</p >
 
-        <p>
-        像高级全栈工程师一样思考，
-        从架构设计到完整MVP。
-        </p >
+<button
+class="expert-open-btn"
+onclick="openCategory('system')">
 
-        <button class="hero-btn">
-        打开专家模式
-        </button>
+打开专家模式
 
-    </div>
+</button>
+
+</div>
+
+<div class="expert-card">
+
+<div class="expert-card-number">
+2
+</div>
+
+<h3>
+系统设计 + 实现
+</h3>
+
+<p>
+像资深系统架构师一样设计，
+完成数据库、API与实现代码。
+</p >
+
+<button
+class="expert-open-btn"
+onclick="openCategory('system')">
+
+打开专家模式
+
+</button>
+
+</div>
 
 </div>
 
