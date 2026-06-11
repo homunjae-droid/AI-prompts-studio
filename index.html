@@ -1567,67 +1567,7 @@ margin-top:36px;
 margin-bottom:18px;
 ">
 
-<div
-class="section-title"
-style="margin:0;">
-分类 Categories
-</div>
 
-
-
-</div>
-
-<div class="grid">
-
-<div class="card" onclick="openTrending()">
-<div class="cn">热门推荐</div>
-<div class="en">Trending Search</div>
-</div>
-
-<div class="card" onclick="openCategory('quality')">
-<div class="cn">画质描述</div>
-<div class="en">Quality</div>
-</div>
-
-<div class="card" onclick="openCategory('style')">
-<div class="cn">风格描述</div>
-<div class="en">Style</div>
-</div>
-
-<div class="card" onclick="openCategory('action')">
-<div class="cn">动作描述</div>
-<div class="en">Action</div>
-</div>
-
-<div class="card" onclick="openCategory('character')">
-<div class="cn">人物描述</div>
-<div class="en">Character</div>
-</div>
-
-<div class="card" onclick="openCategory('scene')">
-<div class="cn">场景描述</div>
-<div class="en">Scene</div>
-</div>
-
-<div class="card" onclick="openCategory('effect')">
-<div class="cn">特效描述</div>
-<div class="en">Effects</div>
-</div>
-
-<div class="card" onclick="openCategory('camera')">
-<div class="cn">运镜描述</div>
-<div class="en">Camera Movement</div>
-</div>
-
-<div class="card" onclick="openCategory('Lighting')">
-<div class="cn">灯光描述</div>
-<div class="en">Lighting</div>
-</div>
-
-<div class="card" onclick="openCategory('negative')">
-<div class="cn">负面提示</div>
-<div class="en">Negative Prompt</div>
-</div>
 
 </div>
 <div class="section-title">
@@ -1672,6 +1612,73 @@ https://ai-prompts-studio.vercel.app
 </div>
 
 </div>
+
+<!-- 工具页面 -->
+
+<div id="toolsPage"
+class="profile-page"
+style="display:none;">
+
+<h2 class="section-title">
+工具分类
+</h2>
+
+<div class="grid">
+
+<div class="card" onclick="openTrending()">
+<div class="cn">热门推荐</div>
+<div class="en">Trending Search</div>
+</div>
+
+<div class="card" onclick="openCategory('quality')">
+<div class="cn">画质描述</div>
+<div class="en">Quality</div>
+</div>
+
+<div class="card" onclick="openCategory('style')">
+<div class="cn">风格描述</div>
+<div class="en">Style</div>
+</div>
+
+<div class="card" onclick="openCategory('action')">
+<div class="cn">动作描述</div>
+<div class="en">Action</div>
+</div>
+
+<div class="card" onclick="openCategory('character')">
+<div class="cn">人物描述</div>
+<div class="en">Character</div>
+</div>
+
+<div class="card" onclick="openCategory('scene')">
+<div class="cn">场景描述</div>
+<div class="en">Scene</div>
+</div>
+
+<div class="card" onclick="openCategory('effect')">
+<div class="cn">特效描述</div>
+<div class="en">Effects</div>
+</div>
+
+<div class="card" onclick="openCategory('camera')">
+<div class="cn">运镜描述</div>
+<div class="en">Camera</div>
+</div>
+
+<div class="card" onclick="openCategory('Lighting')">
+<div class="cn">灯光描述</div>
+<div class="en">Lighting</div>
+</div>
+
+<div class="card" onclick="openCategory('negative')">
+<div class="cn">负面提示</div>
+<div class="en">Negative Prompt</div>
+</div>
+
+</div>
+
+</div>
+
 <div id="updateModal" class="modal">
 
 <div class="modal-content">
@@ -3627,6 +3634,24 @@ document.getElementById(
 
 }
 
+function showToolsPage(el){
+
+switchTab(el);
+
+document.getElementById(
+"homePage"
+).style.display="none";
+
+document.getElementById(
+"profilePage"
+).style.display="none";
+
+document.getElementById(
+"toolsPage"
+).style.display="block";
+
+}
+
 </script>
 
 <div id="profilePage" class="profile-page" style="display:none;">
@@ -3858,7 +3883,7 @@ onclick="showHomePage(this)">
 
 <div
 class="nav-item"
-onclick="switchTab(this)">
+onclick="showToolsPage(this)"
 
 <svg viewBox="0 0 24 24">
 <path d="M4 4H10V10H4ZM14 4H20V10H14ZM4 14H10V20H4ZM14 14H20V20H14Z"/>
