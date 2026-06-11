@@ -675,6 +675,175 @@ margin-bottom:4px;
 transition:.25s;
 }
 
+.profile-header{
+
+text-align:center;
+
+margin-top:20px;
+
+margin-bottom:30px;
+
+padding:20px;
+
+background:white;
+
+border-radius:24px;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.05);
+
+}
+.avatar-large{
+
+width:90px;
+height:90px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:linear-gradient(
+135deg,
+#007AFF,
+#5B7FFF
+);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:42px;
+
+color:white;
+
+box-shadow:
+0 10px 25px rgba(0,122,255,.25);
+
+}
+
+.profile-header h2{
+
+margin-top:16px;
+
+font-size:28px;
+
+font-weight:700;
+
+}
+
+.profile-status{
+
+margin-top:8px;
+
+font-size:14px;
+
+color:#888;
+
+}
+
+.profile-card{
+
+background:white;
+
+border-radius:22px;
+
+padding:20px;
+
+margin-top:16px;
+
+margin-bottom:16px;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.05);
+
+}
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.05);
+
+}
+
+.profile-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:14px 0;
+
+font-size:15px;
+
+}
+
+.profile-row:not(:last-child){
+
+border-bottom:1px solid #eee;
+
+}
+
+.menu-list{
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.menu-list button{
+
+width:100%;
+
+background:white;
+
+border:none;
+
+border-radius:20px;
+
+padding:18px 20px;
+
+font-size:16px;
+
+font-weight:500;
+
+text-align:left;
+
+cursor:pointer;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.05);
+
+transition:.2s;
+
+}
+
+.menu-list button:hover{
+
+transform:translateY(-2px);
+
+}
+
+.menu-list button:active{
+
+transform:scale(.98);
+
+}
+
+.profile-page{
+
+max-width:520px;
+
+margin:0 auto;
+
+padding-top:10px;
+
+padding-bottom:120px;
+
+}
+
 </style>
 </head>
 
@@ -1794,6 +1963,21 @@ if(userAccount){
 userAccount.innerText = email;
 }
 
+const profileUserAccount =
+document.getElementById("profileUserAccount");
+
+if(profileUserAccount){
+profileUserAccount.innerText = email;
+}
+
+const profileName =
+document.getElementById("profileName");
+
+if(profileName){
+profileName.innerText =
+email.split("@")[0];
+}
+
 if(
 vipData &&
 vipData.is_vip === true &&
@@ -1816,11 +2000,32 @@ if(userStatus){
 userStatus.innerText = "已开通";
 }
 
+const profileUserStatus =
+document.getElementById("profileUserStatus");
+
+if(profileUserStatus){
+profileUserStatus.innerText = "VIP会员";
+}
+
+const profileStatus =
+document.querySelector(".profile-status");
+
+if(profileStatus){
+profileStatus.innerText = "VIP会员";
+}
 const userDate =
 document.getElementById("userDate");
 
 if(userDate){
 userDate.innerText =
+vipData.expire_date;
+}
+
+const profileUserDate =
+document.getElementById("profileUserDate");
+
+if(profileUserDate){
+profileUserDate.innerText =
 vipData.expire_date;
 }
 
@@ -1833,6 +2038,20 @@ document.getElementById("userStatus");
 
 if(userStatus){
 userStatus.innerText = "普通用户";
+}
+
+const profileUserStatus =
+document.getElementById("profileUserStatus");
+
+if(profileUserStatus){
+profileUserStatus.innerText = "普通用户";
+}
+
+const profileStatus =
+document.querySelector(".profile-status");
+
+if(profileStatus){
+profileStatus.innerText = "普通用户";
 }
 
 const userDate =
@@ -2687,57 +2906,70 @@ document.getElementById(
 
 </script>
 
-<div id="profilePage" style="display:none;">
+<div id="profilePage" class="profile-page" style="display:none;">
 
-<h1>我的</h1>
+<div class="profile-header">
 
-<div class="profile-box">
+<div class="avatar-large">
+👤
+</div>
 
-<div class="profile-item">
-<label>账号</label>
-<div id="profileUserAccount">
+<h2 id="profileName">
 未登录
-</div>
-</div>
+</h2>
 
-<div class="profile-item">
-<label>账户状态</label>
-<div id="profileUserStatus">
+<div class="profile-status">
 普通用户
 </div>
+
 </div>
 
-<div class="profile-item">
-<label>VIP开通时间</label>
-<div id="profileUserDate">
+<div class="profile-card">
+
+<div class="profile-row">
+<span>账号</span>
+<span id="profileUserAccount">
+未登录
+</span>
+</div>
+
+<div class="profile-row">
+<span>状态</span>
+<span id="profileUserStatus">
+普通用户
+</span>
+</div>
+
+<div class="profile-row">
+<span>VIP到期</span>
+<span id="profileUserDate">
 --
-</div>
-</div>
-
+</span>
 </div>
 
-<div class="user-actions">
+</div>
+
+<div class="menu-list">
 
 <button onclick="openFavorites()">
-我的收藏
+❤️ 我的收藏
 </button>
 
 <button onclick="openHistory()">
-最近浏览
+🕘 最近浏览
 </button>
 
 <button onclick="openVipModal()">
-立即登录
+⭐ VIP会员
 </button>
 
 <button onclick="logoutUser()">
-退出登录
+🚪 退出登录
 </button>
 
 </div>
 
 </div>
-
 <div id="userCenterModal" class="modal">
 
 <div class="modal-content">
