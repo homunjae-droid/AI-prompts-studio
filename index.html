@@ -668,15 +668,23 @@ height:30px;
 
 display:block;
 
-fill:#111;
+fill:none;
 
-stroke:none;
+stroke:#111;
+
+stroke-width:1.8;
 
 transition:.25s;
 
 }
 
+.ai-btn.active .gemini-icon{
 
+fill:#111;
+
+stroke:#111;
+
+}
 
 .nav-item svg{
 
@@ -3798,6 +3806,32 @@ item.classList.remove('active');
 
 el.classList.add('active');
 
+const aiBtn =
+document.querySelector('.ai-btn');
+
+if(aiBtn){
+
+aiBtn.classList.remove('active');
+
+}
+
+}
+
+function toggleAiButton(){
+
+const aiBtn =
+document.querySelector('.ai-btn');
+
+document
+.querySelectorAll('.nav-item')
+.forEach(item=>{
+
+item.classList.remove('active');
+
+});
+
+aiBtn.classList.toggle('active');
+
 }
 
 function checkVipStatus(){
@@ -4120,7 +4154,8 @@ onclick="showToolsPage(this)">
 <div class="nav-item">
 
 <div
-class="ai-btn active">
+class="ai-btn"
+onclick="toggleAiButton()">
 
 <svg
 class="gemini-icon"
