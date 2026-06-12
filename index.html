@@ -1485,20 +1485,261 @@ transform:rotate(180deg);
 @media (max-width:768px){
 
 body{
-
 padding:10px;
-
 padding-bottom:120px;
-
 }
 
 .container{
-
 max-width:100%;
+}
+
+/* HERO区域 */
+
+.hero-section{
+
+padding:20px;
+
+border-radius:28px;
+
+display:flex;
+
+flex-direction:row;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:12px;
 
 }
 
-/* FAQ保持正常 */
+.hero-left{
+
+width:58%;
+
+flex:none;
+
+}
+
+.hero-right{
+
+width:42%;
+
+flex:none;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.hero-robot{
+
+width:100%;
+
+max-width:180px;
+
+height:auto;
+
+}
+
+.hero-logo{
+
+font-size:14px;
+
+margin-bottom:12px;
+
+}
+
+.logo-icon{
+
+width:28px;
+height:28px;
+font-size:14px;
+
+}
+
+.hero-title{
+
+font-size:34px;
+
+line-height:1.1;
+
+margin-bottom:14px;
+
+text-align:left;
+
+word-break:keep-all;
+
+}
+
+.hero-tags{
+
+gap:6px;
+
+margin-bottom:14px;
+
+}
+
+.hero-tags span{
+
+padding:6px 10px;
+
+font-size:11px;
+
+white-space:nowrap;
+
+}
+
+.hero-desc{
+
+font-size:13px;
+
+line-height:1.7;
+
+margin-bottom:12px;
+
+}
+
+.hero-slogan{
+
+font-size:20px;
+
+line-height:1.3;
+
+margin-bottom:16px;
+
+}
+
+.hero-btn{
+
+padding:12px 20px;
+
+font-size:14px;
+
+}
+
+/* 专家区 */
+
+.expert-panel{
+
+padding:18px;
+
+border-radius:24px;
+
+}
+
+.expert-title{
+
+font-size:22px;
+
+}
+
+.expert-desc{
+
+font-size:14px;
+
+}
+
+.expert-preview{
+
+display:flex;
+
+gap:10px;
+
+align-items:center;
+
+}
+
+.expert-before{
+
+padding:14px;
+
+font-size:13px;
+
+}
+
+.expert-arrow{
+
+font-size:26px;
+
+}
+
+.expert-after{
+
+padding:14px;
+
+}
+
+.expert-after div{
+
+writing-mode:horizontal-tb !important;
+
+}
+
+.expert-grid{
+
+grid-template-columns:1fr 1fr;
+
+gap:10px;
+
+}
+
+.expert-card{
+
+min-height:auto;
+
+padding:16px;
+
+}
+
+.expert-card h3{
+
+font-size:18px;
+
+}
+
+.expert-card p{
+
+font-size:13px;
+
+line-height:1.7;
+
+}
+
+.expert-image img{
+
+width:70px !important;
+
+height:70px !important;
+
+}
+
+/* 四个模式按钮 */
+
+.expert-mini-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:8px;
+
+}
+
+.expert-mini-card{
+
+font-size:11px;
+
+padding:10px 4px;
+
+line-height:1.4;
+
+}
+
+/* FAQ */
 
 .faq-content{
 
@@ -1507,7 +1748,6 @@ font-size:14px;
 }
 
 }
-
 </style>
 </head>
 
@@ -1628,21 +1868,19 @@ style="display:none;">
 font-size:18px;
 font-weight:700;
 margin-bottom:8px;
+line-height:1.5;
 ">
 
-这是在把高级AI
-当成一个实习生
+这是在把高级AI当成一个实习生
 
 </div>
-
 <div style="
 font-size:14px;
 color:#666;
 line-height:1.7;
 ">
 
-用这些效率提示词
-充分发挥AI的最大潜力
+用这些效率提示词，充分发挥AI的最大潜力
 
 </div>
 
