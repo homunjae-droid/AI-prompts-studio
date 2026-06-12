@@ -1301,15 +1301,21 @@ background:#f7f7f7;
 
 border-radius:14px;
 
-padding:14px;
+padding:12px 8px;
 
 text-align:center;
 
-font-size:14px;
+font-size:12px;
 
 font-weight:600;
 
 cursor:pointer;
+
+line-height:1.4;
+
+white-space:normal;
+
+word-break:keep-all;
 
 }
 
@@ -1344,6 +1350,61 @@ transition:.25s;
 .expert-more:hover{
 
 background:#efefef;
+
+}
+
+.expert-toggle{
+
+margin-top:18px;
+
+background:#f7f7f7;
+
+border-radius:18px;
+
+padding:16px 18px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:600;
+
+}
+
+.expert-toggle-arrow{
+
+font-size:20px;
+
+transition:.3s;
+
+}
+
+#expertExpandContent{
+
+max-height:0;
+
+overflow:hidden;
+
+transition:.4s ease;
+
+}
+
+#expertExpandContent.active{
+
+max-height:1500px;
+
+}
+
+#expertExpandContent.active
++ .expert-mini-grid{
+
+margin-top:20px;
 
 }
 
@@ -1599,7 +1660,6 @@ margin-bottom:8px;
 ">
 
 这是在把高级AI
-
 当成一个实习生
 
 </div>
@@ -1611,7 +1671,6 @@ line-height:1.7;
 ">
 
 用这些效率提示词
-
 充分发挥AI的最大潜力
 
 </div>
@@ -1621,6 +1680,25 @@ line-height:1.7;
 </div>
 
 </div>
+
+<div
+class="expert-toggle"
+onclick="toggleExpert()"
+>
+
+<span>
+查看专家模式案例
+</span>
+
+<div class="expert-toggle-arrow">
+⌄
+</div>
+
+</div>
+
+<div id="expertExpandContent">
+
+<div class="expert-grid">
 
 <div class="expert-grid">
 
@@ -1743,6 +1821,8 @@ onclick="openCategory('system')">
 打开专家模式
 
 </button>
+
+</div>
 
 </div>
 
@@ -2076,6 +2156,38 @@ element.classList.remove("active");
 }else{
 
 element.classList.add("active");
+
+}
+
+}
+
+function toggleExpert(){
+
+const content =
+document.getElementById(
+"expertExpandContent"
+);
+
+const arrow =
+document.querySelector(
+".expert-toggle-arrow"
+);
+
+content.classList.toggle(
+"active"
+);
+
+if(
+content.classList.contains(
+"active"
+)
+){
+
+arrow.innerHTML="⌃";
+
+}else{
+
+arrow.innerHTML="⌄";
 
 }
 
