@@ -663,14 +663,28 @@ box-shadow:
 }
 .gemini-icon{
 
-width:28px;
-height:28px;
-
-fill:black;
+width:30px;
+height:30px;
 
 display:block;
 
+stroke:#111;
+stroke-width:1.8;
+
+fill:none;
+
+transition:.25s;
+
 }
+
+.ai-btn.active .gemini-icon{
+
+fill:#111;
+
+stroke:#111;
+
+}
+
 .nav-item svg{
 
 width:22px;
@@ -4112,21 +4126,19 @@ onclick="showToolsPage(this)">
 
 <div class="nav-item">
 
-<div class="ai-btn">
+<div
+class="ai-btn active">
 
 <svg
 class="gemini-icon"
 viewBox="0 0 24 24">
 
 <path d="
-M12 2
-L15 9
-L22 12
-L15 15
-L12 22
-L9 15
-L2 12
-L9 9
+M12 3
+C14 8 16 10 21 12
+C16 14 14 16 12 21
+C10 16 8 14 3 12
+C8 10 10 8 12 3
 Z"/>
 
 </svg>
