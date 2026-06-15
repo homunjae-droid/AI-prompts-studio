@@ -587,6 +587,7 @@ font-size:15px;
 }
 
 .bottom-nav{
+
 position:fixed;
 bottom:20px;
 
@@ -597,6 +598,10 @@ width:92%;
 max-width:520px;
 
 height:72px;
+
+display:flex !important;
+visibility:visible !important;
+opacity:1 !important;
 
 background:rgba(255,255,255,.88);
 
@@ -1504,7 +1509,7 @@ transform:rotate(180deg);
 #expertPage{
 
 padding:20px;
-padding-bottom:120px;
+padding-bottom:180px;
 
 }
 
@@ -1841,8 +1846,9 @@ margin-top:12px;
 
 margin-top:20px;
 
-background:white;
+margin-bottom:80px;
 
+background:white;
 border-radius:28px;
 
 padding:20px;
@@ -2169,7 +2175,7 @@ font-size:13px;
 .expert-grid-new{
 
 grid-template-columns:
-repeat(2,1fr);
+repeat(2,minmax(0,1fr));
 
 gap:14px;
 
@@ -2177,7 +2183,7 @@ gap:14px;
 
 .expert-box{
 
-height:240px;
+height:220px;
 
 }
 
@@ -3911,13 +3917,9 @@ logoutBtn.style.display="none";
 const loginBtn =
 document.getElementById("loginBtn");
 
-if(
-document.getElementById(
-"cameraMovementModal"
-).style.display==="flex"
-){
-
-renderPrompts();
+if(loginBtn){
+loginBtn.style.display="block";
+}
 
 }
 
