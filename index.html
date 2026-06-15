@@ -1496,6 +1496,161 @@ transform:rotate(180deg);
 
 }
 
+#expertPage{
+
+padding:20px;
+padding-bottom:120px;
+
+}
+
+.explore-header{
+
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+
+margin-bottom:30px;
+
+}
+
+.explore-header h1{
+
+font-size:34px;
+font-weight:800;
+margin-bottom:10px;
+
+}
+
+.explore-header p{
+
+font-size:14px;
+color:#666;
+line-height:1.7;
+
+}
+
+.explore-search-btn{
+
+width:52px;
+height:52px;
+
+border:none;
+background:white;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+}
+
+.explore-search-btn svg{
+
+width:22px;
+height:22px;
+
+stroke:#111;
+fill:none;
+stroke-width:2;
+
+}
+
+.expert-grid-new{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+
+gap:12px;
+
+}
+
+.expert-box{
+
+background:white;
+border-radius:24px;
+padding:16px;
+
+min-height:180px;
+
+display:flex;
+flex-direction:column;
+
+box-shadow:0 8px 24px rgba(0,0,0,.04);
+
+}
+
+.expert-icon{
+
+width:58px;
+height:58px;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:24px;
+
+margin-bottom:14px;
+
+}
+
+.orange{background:#FFF1E7;}
+.purple{background:#F3ECFF;}
+.blue{background:#EAF2FF;}
+.green{background:#EAF8EF;}
+.yellow{background:#FFF8E1;}
+.red{background:#FFECEC;}
+.cyan{background:#EAFBFB;}
+.violet{background:#F3ECFF;}
+
+.expert-box h3{
+
+font-size:18px;
+margin-bottom:8px;
+
+}
+
+.expert-box p{
+
+font-size:13px;
+color:#666;
+line-height:1.6;
+
+margin-bottom:auto;
+
+}
+
+.expert-users{
+
+font-size:12px;
+color:#999;
+margin-top:12px;
+
+}
+
+.expert-banner{
+
+margin-top:20px;
+
+background:white;
+
+border-radius:28px;
+
+padding:20px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+box-shadow:0 8px 24px rgba(0,0,0,.04);
+
+}
+
 @media (max-width:768px){
 
 body{
@@ -4364,6 +4519,10 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
+"expertPage"
+).style.display="none";
+
+document.getElementById(
 "toolsPage"
 ).style.display="none";
 
@@ -4386,7 +4545,33 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
+"expertPage"
+).style.display="none";
+
+document.getElementById(
 "toolsPage"
+).style.display="block";
+
+}
+
+function showExpertPage(el){
+
+switchTab(el);
+
+document.getElementById(
+"homePage"
+).style.display="none";
+
+document.getElementById(
+"toolsPage"
+).style.display="none";
+
+document.getElementById(
+"profilePage"
+).style.display="none";
+
+document.getElementById(
+"expertPage"
 ).style.display="block";
 
 }
@@ -4404,11 +4589,123 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
+"expertPage"
+).style.display="none";
+
+document.getElementById(
 "profilePage"
 ).style.display="block";
 
 }
 </script>
+
+<div id="expertPage" style="display:none;">
+
+<div class="explore-header">
+
+<div>
+
+<h1>AI专家助手团</h1>
+
+<p>
+覆盖多领域专业AI专家，为你的任务提供精准支持
+</p >
+
+</div>
+
+<button class="explore-search-btn">
+
+<svg viewBox="0 0 24 24">
+
+<circle cx="11" cy="11" r="6"/>
+
+<path d="M20 20L16.5 16.5"/>
+
+</svg>
+
+</button>
+
+</div>
+
+<div class="expert-grid-new">
+
+<div class="expert-box">
+<div class="expert-icon orange">🎨</div>
+<h3>绘画专家</h3>
+<p>专业视觉创作</p >
+<div class="expert-users">128K+人使用</div>
+</div>
+
+<div class="expert-box">
+<div class="expert-icon purple">✒️</div>
+<h3>设计专家</h3>
+<p>打造优质设计</p >
+<div class="expert-users">98K+人使用</div>
+</div>
+
+<div class="expert-box">
+<div class="expert-icon blue">🎬</div>
+<h3>视频专家</h3>
+<p>创意视频生成</p >
+<div class="expert-users">86K+人使用</div>
+</div>
+
+<div class="expert-box">
+<div class="expert-icon green">📝</div>
+<h3>文案专家</h3>
+<p>高质量内容输出</p >
+<div class="expert-users">156K+人使用</div>
+</div>
+
+<div class="expert-box">
+<div class="expert-icon yellow">💼</div>
+<h3>办公专家</h3>
+<p>提升办公效率</p >
+<div class="expert-users">112K+人使用</div>
+</div>
+
+<div class="expert-box">
+<div class="expert-icon red">📈</div>
+<h3>商业专家</h3>
+<p>驱动业务增长</p >
+<div class="expert-users">77K+人使用</div>
+</div>
+
+<div class="expert-box">
+<div class="expert-icon cyan">⌨️</div>
+<h3>编程专家</h3>
+<p>代码生成与调试</p >
+<div class="expert-users">133K+人使用</div>
+</div>
+
+<div class="expert-box">
+<div class="expert-icon violet">🎓</div>
+<h3>学习专家</h3>
+<p>助力知识掌握</p >
+<div class="expert-users">95K+人使用</div>
+</div>
+
+</div>
+
+<div class="expert-banner">
+
+<div>
+
+<h3>还不知道从哪里开始？</h3>
+
+<p>
+浏览精选推荐，找到最适合你的AI专家
+</p >
+
+</div>
+
+<button>
+去看看 →
+</button>
+
+</div>
+
+</div>
 
 <div id="profilePage" class="profile-page" style="display:none;">
 
@@ -4677,7 +4974,7 @@ Z"/>
 
 <div
 class="nav-item"
-onclick="switchTab(this)">
+onclick="showExpertPage(this)">
 
 <svg viewBox="0 0 24 24">
 <path d="M12 2C8 2 5 5 5 9C5 12 7 14 8 15V18H16V15C17 14 19 12 19 9C19 5 16 2 12 2Z"/>
