@@ -692,11 +692,18 @@ width:22px;
 
 height:22px;
 
+display:block;
+
 fill:currentColor;
+
+stroke:none;
+
+overflow:visible;
 
 margin-bottom:4px;
 
 transition:.25s;
+
 }
 
 .profile-header{
@@ -2637,11 +2644,11 @@ font-weight:400;
 
 </div>
 
+</div>
 
 <div class="section-title">
 最新更新 Latest Updates
 </div>
-
 <div
 class="update"
 onclick="openUpdateLog()"
@@ -3904,13 +3911,15 @@ logoutBtn.style.display="none";
 const loginBtn =
 document.getElementById("loginBtn");
 
-if(loginBtn){
-loginBtn.style.display="block";
-}
-
-}
+if(
+document.getElementById(
+"cameraMovementModal"
+).style.display==="flex"
+){
 
 renderPrompts();
+
+}
 
 }
 function searchPage(){
@@ -5275,7 +5284,7 @@ class="prompt-grid">
 class="nav-item active"
 onclick="showHomePage(this)">
 
-<svg viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24" fill="currentColor">
 <path d="M12 3L3 10V21H9V15H15V21H21V10Z"/>
 </svg>
 
@@ -5287,7 +5296,7 @@ onclick="showHomePage(this)">
 class="nav-item"
 onclick="showToolsPage(this)">
 
-<svg viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24" fill="currentColor">
 <path d="M4 4H10V10H4ZM14 4H20V10H14ZM4 14H10V20H4ZM14 14H20V20H14Z"/>
 </svg>
 
@@ -5325,7 +5334,7 @@ Z"/>
 class="nav-item"
 onclick="showExpertPage(this)">
 
-<svg viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24" fill="currentColor">
 <path d="M12 2C8 2 5 5 5 9C5 12 7 14 8 15V18H16V15C17 14 19 12 19 9C19 5 16 2 12 2Z"/>
 </svg>
 
@@ -5337,7 +5346,7 @@ onclick="showExpertPage(this)">
 class="nav-item"
 onclick="showProfilePage(this)">
 
-<svg viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24" fill="currentColor">
 <path d="M12 12C15 12 17 10 17 7S15 2 12 2S7 4 7 7S9 12 12 12ZM12 14C7.5 14 4 16.2 4 19V21H20V19C20 16.2 16.5 14 12 14Z"/>
 </svg>
 
