@@ -1503,6 +1503,195 @@ padding-bottom:120px;
 
 }
 
+.explore-top{
+
+margin-bottom:30px;
+
+}
+
+.explore-title-wrap{
+
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+
+}
+
+.explore-title{
+
+font-size:56px;
+font-weight:800;
+
+margin:0;
+
+}
+
+.explore-title span{
+
+color:#B29CFF;
+
+}
+
+.explore-subtitle{
+
+margin-top:12px;
+
+font-size:16px;
+
+color:#666;
+
+line-height:1.8;
+
+}
+
+.discover-section{
+
+margin-bottom:40px;
+
+}
+
+.discover-title{
+
+font-size:22px;
+font-weight:700;
+
+margin-bottom:16px;
+
+}
+
+.discover-card{
+
+background:white;
+
+border-radius:30px;
+
+overflow:hidden;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.04);
+
+}
+
+.discover-item{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:22px;
+
+}
+
+.discover-left{
+
+display:flex;
+align-items:center;
+
+gap:14px;
+
+}
+
+.discover-icon-box{
+
+width:54px;
+height:54px;
+
+border-radius:16px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:24px;
+
+}
+
+.purple-box{
+
+background:#EEE6FF;
+
+}
+
+.red-box{
+
+background:#FFE7E7;
+
+}
+
+.discover-name{
+
+font-size:20px;
+
+font-weight:700;
+
+margin-bottom:6px;
+
+}
+
+.discover-desc{
+
+font-size:13px;
+
+color:#888;
+
+}
+
+.discover-divider{
+
+height:1px;
+
+background:#eee;
+
+margin:0 20px;
+
+}
+
+.discover-arrow{
+
+font-size:28px;
+
+color:#999;
+
+}
+
+.expert-header-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-start;
+
+margin-bottom:18px;
+
+}
+
+.expert-main-title{
+
+font-size:22px;
+
+font-weight:800;
+
+margin-bottom:8px;
+
+}
+
+.expert-main-desc{
+
+font-size:14px;
+
+color:#666;
+
+}
+
+.expert-filter{
+
+font-size:22px;
+
+color:#666;
+
+}
+
 .explore-header{
 
 display:flex;
@@ -1917,6 +2106,48 @@ line-height:1.4;
 .faq-content{
 
 font-size:14px;
+
+}
+
+.explore-title{
+
+font-size:44px;
+
+}
+
+.explore-subtitle{
+
+font-size:15px;
+
+}
+
+.discover-item{
+
+padding:18px;
+
+}
+
+.discover-name{
+
+font-size:18px;
+
+}
+
+.discover-desc{
+
+font-size:12px;
+
+}
+
+.expert-main-title{
+
+font-size:20px;
+
+}
+
+.expert-main-desc{
+
+font-size:13px;
 
 }
 
@@ -4601,14 +4832,19 @@ document.getElementById(
 
 <div id="expertPage" style="display:none;">
 
-<div class="explore-header">
+<div class="explore-top">
+
+<div class="explore-title-wrap">
 
 <div>
 
-<h1>AI专家助手团</h1>
+<h1 class="explore-title">
+探索
+<span>✨</span>
+</h1>
 
-<p>
-覆盖多领域专业AI专家，为你的任务提供精准支持
+<p class="explore-subtitle">
+汇聚专业AI资源，激发你的无限可能
 </p >
 
 </div>
@@ -4624,6 +4860,96 @@ document.getElementById(
 </svg>
 
 </button>
+
+</div>
+
+</div>
+
+<div class="discover-section">
+
+<h2 class="discover-title">
+发现
+</h2>
+
+<div class="discover-card">
+
+<div class="discover-item">
+
+<div class="discover-left">
+
+<div class="discover-icon-box purple-box">
+🔥
+</div>
+
+<div>
+
+<div class="discover-name">
+热门仓库
+</div>
+
+<div class="discover-desc">
+精选高质量资源，紧跟最新趋势
+</div>
+
+</div>
+
+</div>
+
+<div class="discover-arrow">
+›
+</div>
+
+</div>
+
+<div class="discover-divider"></div>
+
+<div class="discover-item">
+
+<div class="discover-left">
+
+<div class="discover-icon-box red-box">
+😊
+</div>
+
+<div>
+
+<div class="discover-name">
+精选列表
+</div>
+
+<div class="discover-desc">
+专业团队整理，值得信赖的优质集合
+</div>
+
+</div>
+
+</div>
+
+<div class="discover-arrow">
+›
+</div>
+
+</div>
+
+</div>
+
+<div class="expert-header-row">
+
+<div>
+
+<h2 class="expert-main-title">
+AI专家助手团
+</h2>
+
+<p class="expert-main-desc">
+覆盖多领域专业AI专家，为你的任务提供精准支持
+</p >
+
+</div>
+
+<div class="expert-filter">
+☰
+</div>
 
 </div>
 
