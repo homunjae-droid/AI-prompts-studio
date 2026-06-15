@@ -2692,8 +2692,6 @@ https://ai-prompts-studio.vercel.app
 
 </div>
 
-</div>
-
 <!-- 工具页面 -->
 
 <div id="toolsPage"
@@ -4722,7 +4720,11 @@ item.classList.remove('active');
 
 });
 
+if(el){
+
 el.classList.add('active');
+
+}
 
 const aiBtn =
 document.querySelector('.ai-btn');
@@ -4780,7 +4782,11 @@ function showHomePage(el){
 switchTab(el);
 
 document.getElementById(
-"profilePage"
+"homePage"
+).style.display="block";
+
+document.getElementById(
+"toolsPage"
 ).style.display="none";
 
 document.getElementById(
@@ -4788,12 +4794,12 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
-"toolsPage"
+"profilePage"
 ).style.display="none";
 
-document.getElementById(
-"homePage"
-).style.display="block";
+document.querySelector(
+".bottom-nav"
+).style.display="flex";
 
 }
 
@@ -4806,19 +4812,22 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
-"profilePage"
-).style.display="none";
+"toolsPage"
+).style.display="block";
 
 document.getElementById(
 "expertPage"
 ).style.display="none";
 
 document.getElementById(
-"toolsPage"
-).style.display="block";
+"profilePage"
+).style.display="none";
+
+document.querySelector(
+".bottom-nav"
+).style.display="flex";
 
 }
-
 function showExpertPage(el){
 
 switchTab(el);
@@ -4832,12 +4841,16 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
+"expertPage"
+).style.display="block";
+
+document.getElementById(
 "profilePage"
 ).style.display="none";
 
-document.getElementById(
-"expertPage"
-).style.display="block";
+document.querySelector(
+".bottom-nav"
+).style.display="flex";
 
 }
 
@@ -4860,6 +4873,10 @@ document.getElementById(
 document.getElementById(
 "profilePage"
 ).style.display="block";
+
+document.querySelector(
+".bottom-nav"
+).style.display="flex";
 
 }
 </script>
