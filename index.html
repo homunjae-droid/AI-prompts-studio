@@ -1748,9 +1748,13 @@ stroke-width:2;
 .expert-grid-new{
 
 display:grid;
-grid-template-columns:repeat(4,1fr);
+
+grid-template-columns:
+repeat(4,minmax(0,1fr));
 
 gap:12px;
+
+align-items:start;
 
 }
 
@@ -1760,10 +1764,12 @@ background:white;
 border-radius:24px;
 padding:16px;
 
-min-height:180px;
+height:220px;
 
 display:flex;
 flex-direction:column;
+
+overflow:hidden;
 
 box-shadow:0 8px 24px rgba(0,0,0,.04);
 
@@ -1807,6 +1813,10 @@ margin-bottom:8px;
 font-size:13px;
 color:#666;
 line-height:1.6;
+
+height:42px;
+
+overflow:hidden;
 
 margin-bottom:auto;
 
@@ -2146,6 +2156,21 @@ font-size:20px;
 .expert-main-desc{
 
 font-size:13px;
+
+}
+
+.expert-grid-new{
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:14px;
+
+}
+
+.expert-box{
+
+height:240px;
 
 }
 
@@ -4975,7 +5000,7 @@ AI专家助手团
 </div>
 
 <div class="expert-box">
-<divclass="expert-page-icon green">📝</div>
+<div class="expert-page-icon green">📝</div>
 <h3>文案专家</h3>
 <p>高质量内容输出</p >
 <div class="expert-users">156K+人使用</div>
