@@ -4408,7 +4408,36 @@ document.getElementById(
 ).style.display="block";
 
 }
+
+function showExpertPage(el){
+
+switchTab(el);
+
+document.getElementById(
+"homePage"
+).style.display="none";
+
+document.getElementById(
+"toolsPage"
+).style.display="none";
+
+document.getElementById(
+"profilePage"
+).style.display="none";
+
+document.getElementById(
+"expertPage"
+).style.display="block";
+
+}
+
 </script>
+
+<div id="expertPage"
+class="profile-page"
+style="display:none;">
+
+</div>
 
 <div id="profilePage" class="profile-page" style="display:none;">
 
@@ -4677,7 +4706,7 @@ Z"/>
 
 <div
 class="nav-item"
-onclick="switchTab(this)">
+onclick="showExpertPage(this)">
 
 <svg viewBox="0 0 24 24">
 <path d="M12 2C8 2 5 5 5 9C5 12 7 14 8 15V18H16V15C17 14 19 12 19 9C19 5 16 2 12 2Z"/>
