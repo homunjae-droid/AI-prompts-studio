@@ -1494,10 +1494,17 @@ transform:rotate(180deg);
 /* ===== Explore Page ===== */
 
 .explore-header{
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:flex-start;
-margin-bottom:30px;
+
+margin-top:10px;
+
+margin-bottom:34px;
+
 }
 
 .explore-title{
@@ -1515,21 +1522,40 @@ color:#777;
 }
 
 .explore-search{
-width:56px;
-height:56px;
+
+width:58px;
+
+height:58px;
+
 border-radius:50%;
-background:white;
+
+background:#fff;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 font-size:22px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+box-shadow:
+0 12px 30px rgba(0,0,0,.08);
+
+border:1px solid rgba(0,0,0,.03);
+
+flex-shrink:0;
+
 }
 
 .discover-title{
 font-size:28px;
 font-weight:700;
 margin-bottom:15px;
+}
+
+.discover-section{
+margin-bottom:10px;
 }
 
 .discover-box{
@@ -1600,32 +1626,60 @@ margin-bottom:20px;
 }
 
 .expert-group-title{
-font-size:30px;
-font-weight:700;
+
+font-size:34px;
+
+font-weight:800;
+
+line-height:1.1;
+
 }
 
 .expert-group-desc{
-font-size:13px;
+
+font-size:14px;
+
+line-height:1.6;
+
 color:#777;
-margin-top:6px;
+
+margin-top:8px;
+
+max-width:280px;
+
 }
 
 .expert-grid-new{
+
 display:grid;
+
 grid-template-columns:repeat(4,1fr);
-gap:12px;
+
+gap:10px;
+
+margin-top:6px;
+
 }
 
 .expert-box{
+
 background:white;
-border-radius:20px;
-padding:16px 10px;
+
+border-radius:22px;
+
+padding:18px 12px;
+
 text-align:center;
-min-height:180px;
+
+height:190px;
+
 display:flex;
+
 flex-direction:column;
-justify-content:flex-start;
-box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.05);
+
 }
 
 .expert-box-icon{
@@ -1741,18 +1795,20 @@ border:none;
 
 background:white;
 
-padding:12px 20px;
+padding:12px 22px;
 
 border-radius:999px;
 
-font-size:15px;
+font-size:14px;
 
 font-weight:700;
 
 cursor:pointer;
 
+white-space:nowrap;
+
 box-shadow:
-0 4px 12px rgba(0,0,0,.05);
+0 6px 18px rgba(0,0,0,.06);
 
 }
 
@@ -2022,6 +2078,40 @@ line-height:1.4;
 .faq-content{
 
 font-size:14px;
+
+}
+
+.expert-grid-new{
+
+grid-template-columns:repeat(4,1fr);
+
+gap:8px;
+
+}
+
+.expert-box{
+
+height:170px;
+
+padding:12px 6px;
+
+}
+
+.expert-box-title{
+
+font-size:13px;
+
+}
+
+.expert-box-desc{
+
+font-size:11px;
+
+}
+
+.expert-box-bottom{
+
+font-size:10px;
 
 }
 
