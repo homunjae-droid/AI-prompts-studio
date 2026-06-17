@@ -2775,6 +2775,70 @@ style="display:none;">
 
 </div>
 
+<div id="promptPage"
+class="profile-page"
+style="display:none;">
+
+<h2 class="section-title">
+工具分类
+</h2>
+
+<div class="grid">
+
+<div class="card" onclick="openTrending()">
+<div class="cn">热门推荐</div>
+<div class="en">Trending Search</div>
+</div>
+
+<div class="card" onclick="openCategory('quality')">
+<div class="cn">画质描述</div>
+<div class="en">Quality</div>
+</div>
+
+<div class="card" onclick="openCategory('style')">
+<div class="cn">风格描述</div>
+<div class="en">Style</div>
+</div>
+
+<div class="card" onclick="openCategory('action')">
+<div class="cn">动作描述</div>
+<div class="en">Action</div>
+</div>
+
+<div class="card" onclick="openCategory('character')">
+<div class="cn">人物描述</div>
+<div class="en">Character</div>
+</div>
+
+<div class="card" onclick="openCategory('scene')">
+<div class="cn">场景描述</div>
+<div class="en">Scene</div>
+</div>
+
+<div class="card" onclick="openCategory('effect')">
+<div class="cn">特效描述</div>
+<div class="en">Effects</div>
+</div>
+
+<div class="card" onclick="openCategory('camera')">
+<div class="cn">运镜描述</div>
+<div class="en">Camera</div>
+</div>
+
+<div class="card" onclick="openCategory('Lighting')">
+<div class="cn">灯光描述</div>
+<div class="en">Lighting</div>
+</div>
+
+<div class="card" onclick="openCategory('negative')">
+<div class="cn">负面提示</div>
+<div class="en">Negative Prompt</div>
+</div>
+
+</div>
+
+</div>
+
 <div id="updateModal" class="modal">
 
 <div class="modal-content">
@@ -4752,20 +4816,27 @@ aiBtn.classList.remove('active');
 
 }
 
-function toggleAiButton(){
+function showPromptPage(){
 
-const aiBtn =
-document.querySelector('.ai-btn');
+document.getElementById(
+"homePage"
+).style.display="none";
 
-document
-.querySelectorAll('.nav-item')
-.forEach(item=>{
+document.getElementById(
+"toolsPage"
+).style.display="none";
 
-item.classList.remove('active');
+document.getElementById(
+"expertPage"
+).style.display="none";
 
-});
+document.getElementById(
+"profilePage"
+).style.display="none";
 
-aiBtn.classList.toggle('active');
+document.getElementById(
+"promptPage"
+).style.display="block";
 
 }
 
@@ -4805,6 +4876,10 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
+"promptPage"
+).style.display="none";
+
+document.getElementById(
 "expertPage"
 ).style.display="none";
 
@@ -4823,6 +4898,10 @@ document.getElementById(
 
 document.getElementById(
 "profilePage"
+).style.display="none";
+
+document.getElementById(
+"promptPage"
 ).style.display="none";
 
 document.getElementById(
@@ -4848,6 +4927,10 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
+"promptPage"
+).style.display="none";
+
+document.getElementById(
 "expertPage"
 ).style.display="none";
 
@@ -4867,6 +4950,10 @@ document.getElementById(
 
 document.getElementById(
 "toolsPage"
+).style.display="none";
+
+document.getElementById(
+"promptPage"
 ).style.display="none";
 
 document.getElementById(
@@ -5509,7 +5596,7 @@ onclick="showToolsPage(this)">
 
 <div
 class="ai-btn"
-onclick="toggleAiButton()">
+onclick="showPromptPage()">
 
 <svg
 class="gemini-icon"
