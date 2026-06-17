@@ -1822,6 +1822,72 @@ box-shadow:
 
 }
 
+/* 按场景快速查找专属 */
+
+.scene-grid{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-start;
+
+gap:8px;
+
+margin-top:12px;
+
+margin-bottom:12px;
+
+}
+
+.scene-box{
+
+width:56px;
+
+height:56px;
+
+background:white;
+
+border-radius:16px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+box-shadow:0 4px 12px rgba(0,0,0,.04);
+
+cursor:pointer;
+
+flex-shrink:0;
+
+}
+
+.scene-box .expert-box-icon{
+
+width:30px;
+
+height:30px;
+
+margin:0 auto 4px;
+
+font-size:18px;
+
+}
+
+.scene-box .expert-box-title{
+
+font-size:12px;
+
+font-weight:600;
+
+margin:0;
+
+}
+
 @media (max-width:768px){
 
 body{
@@ -2199,6 +2265,44 @@ top:50%;
 transform:translateY(-50%);
 
 font-size:14px;
+
+}
+
+.scene-grid{
+
+display:flex;
+
+justify-content:space-between;
+
+gap:6px;
+
+}
+
+.scene-box{
+
+width:54px;
+
+height:54px;
+
+border-radius:14px;
+
+}
+
+.scene-box .expert-box-icon{
+
+width:28px;
+
+height:28px;
+
+font-size:16px;
+
+margin-bottom:2px;
+
+}
+
+.scene-box .expert-box-title{
+
+font-size:11px;
 
 }
 
@@ -3001,9 +3105,9 @@ AI简历优化流程
 按场景快速查找
 </div>
 
-<div class="expert-grid-new">
+<div class="scene-grid">
 
-<div class="expert-box">
+<div class="scene-box">
 
 <div
 class="expert-box-icon"
@@ -3020,7 +3124,7 @@ color:#4A7CFF;
 
 </div>
 
-<div class="expert-box">
+<div class="scene-box">
 
 <div
 class="expert-box-icon"
@@ -3037,7 +3141,7 @@ color:#32B56C;
 
 </div>
 
-<div class="expert-box">
+<div class="scene-box">
 
 <div
 class="expert-box-icon"
@@ -3054,7 +3158,7 @@ color:#F05A7E;
 
 </div>
 
-<div class="expert-box">
+<div class="scene-box">
 
 <div
 class="expert-box-icon"
@@ -3071,7 +3175,7 @@ color:#D4A100;
 
 </div>
 
-<div class="expert-box">
+<div class="scene-box">
 
 <div
 class="expert-box-icon"
@@ -3088,7 +3192,7 @@ color:#8A63FF;
 
 </div>
 
-<div class="expert-box">
+<div class="scene-box">
 
 <div
 class="expert-box-icon"
