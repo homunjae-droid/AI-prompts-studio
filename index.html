@@ -5259,27 +5259,19 @@ aiBtn.classList.remove('active');
 
 }
 
-function showPromptPage(){
+function activeCenterBtn(btn){
 
-document.getElementById(
-"homePage"
-).style.display="none";
+document
+.querySelectorAll('.nav-item')
+.forEach(item=>{
+item.classList.remove('active');
+});
 
-document.getElementById(
-"toolsPage"
-).style.display="none";
+document
+.querySelector('.ai-btn')
+.classList.remove('active');
 
-document.getElementById(
-"expertPage"
-).style.display="none";
-
-document.getElementById(
-"profilePage"
-).style.display="none";
-
-document.getElementById(
-"promptPage"
-).style.display="block";
+btn.classList.add('active');
 
 }
 
@@ -6066,7 +6058,7 @@ onclick="showToolsPage(this)">
 
 <div
 class="ai-btn"
-onclick="showPromptPage()">
+onclick="activeCenterBtn(this)">
 
 <svg
 class="gemini-icon"
