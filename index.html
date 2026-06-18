@@ -5198,7 +5198,9 @@ aiBtn.classList.remove('active');
 function showPromptPage(){
 
 showExpertPage(
-document.querySelectorAll('.nav-item')[3]
+document.querySelector(
+'.bottom-nav .nav-item:nth-child(4)'
+)
 );
 
 }
@@ -5239,10 +5241,6 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
-"promptPage"
-).style.display="none";
-
-document.getElementById(
 "expertPage"
 ).style.display="none";
 
@@ -5261,10 +5259,6 @@ document.getElementById(
 
 document.getElementById(
 "profilePage"
-).style.display="none";
-
-document.getElementById(
-"promptPage"
 ).style.display="none";
 
 document.getElementById(
@@ -5290,10 +5284,6 @@ document.getElementById(
 ).style.display="none";
 
 document.getElementById(
-"promptPage"
-).style.display="none";
-
-document.getElementById(
 "expertPage"
 ).style.display="none";
 
@@ -5313,10 +5303,6 @@ document.getElementById(
 
 document.getElementById(
 "toolsPage"
-).style.display="none";
-
-document.getElementById(
-"promptPage"
 ).style.display="none";
 
 document.getElementById(
