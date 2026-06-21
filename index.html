@@ -2315,6 +2315,75 @@ font-size:11px;
 
 }
 
+/* 基础词库新UI */
+
+.prompt-list{
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+}
+
+.prompt-item{
+
+background:white;
+
+border-radius:22px;
+
+padding:18px 20px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+box-shadow:
+0 6px 16px rgba(0,0,0,.04);
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.prompt-item:active{
+
+transform:scale(.98);
+
+}
+
+.prompt-cn{
+
+font-size:17px;
+
+font-weight:700;
+
+color:#111;
+
+}
+
+.prompt-en{
+
+font-size:13px;
+
+color:#888;
+
+margin-top:4px;
+
+}
+
+.prompt-arrow{
+
+font-size:22px;
+
+color:#999;
+
+}
+
 }
 </style>
 </head>
@@ -3241,56 +3310,226 @@ cursor:pointer;
 分类词库
 </h2>
 
-<div class="grid">
+<div class="prompt-list">
 
-<div class="card" onclick="openTrending()">
-<div class="cn">热门推荐</div>
-<div class="en">Trending Search</div>
+<div
+class="prompt-item"
+onclick="openTrending()">
+
+<div>
+
+<div class="prompt-cn">
+热门推荐
 </div>
 
-<div class="card" onclick="openCategory('quality')">
-<div class="cn">画质描述</div>
-<div class="en">Quality</div>
+<div class="prompt-en">
+Trending Search
 </div>
 
-<div class="card" onclick="openCategory('style')">
-<div class="cn">风格描述</div>
-<div class="en">Style</div>
 </div>
 
-<div class="card" onclick="openCategory('action')">
-<div class="cn">动作描述</div>
-<div class="en">Action</div>
+<div class="prompt-arrow">
+›
 </div>
 
-<div class="card" onclick="openCategory('character')">
-<div class="cn">人物描述</div>
-<div class="en">Character</div>
 </div>
 
-<div class="card" onclick="openCategory('scene')">
-<div class="cn">场景描述</div>
-<div class="en">Scene</div>
+<div
+class="prompt-item"
+onclick="openCategory('quality')">
+
+<div>
+
+<div class="prompt-cn">
+画质描述
 </div>
 
-<div class="card" onclick="openCategory('effect')">
-<div class="cn">特效描述</div>
-<div class="en">Effects</div>
+<div class="prompt-en">
+Quality
 </div>
 
-<div class="card" onclick="openCategory('camera')">
-<div class="cn">运镜描述</div>
-<div class="en">Camera</div>
 </div>
 
-<div class="card" onclick="openCategory('Lighting')">
-<div class="cn">灯光描述</div>
-<div class="en">Lighting</div>
+<div class="prompt-arrow">
+›
 </div>
 
-<div class="card" onclick="openCategory('negative')">
-<div class="cn">负面提示</div>
-<div class="en">Negative Prompt</div>
+</div>
+
+<div
+class="prompt-item"
+onclick="openCategory('Style')">
+
+<div>
+
+<div class="prompt-cn">
+风格描述
+</div>
+
+<div class="prompt-en">
+Style
+</div>
+
+</div>
+
+<div class="prompt-arrow">
+›
+</div>
+
+</div>
+
+<div
+class="prompt-item"
+onclick="openCategory('Action')">
+
+<div>
+
+<div class="prompt-cn">
+动作描述
+</div>
+
+<div class="prompt-en">
+Action
+</div>
+
+</div>
+
+<div class="prompt-arrow">
+›
+</div>
+
+</div>
+
+<div
+class="prompt-item"
+onclick="openCategory('character')">
+
+<div>
+
+<div class="prompt-cn">
+人物描述
+</div>
+
+<div class="prompt-en">
+character
+</div>
+
+</div>
+
+<div class="prompt-arrow">
+›
+</div>
+
+</div>
+
+<div
+class="prompt-item"
+onclick="openCategory('Scene')">
+
+<div>
+
+<div class="prompt-cn">
+场景描述
+</div>
+
+<div class="prompt-en">
+Scene
+</div>
+
+</div>
+
+<div class="prompt-arrow">
+›
+</div>
+
+</div>
+
+<div
+class="prompt-item"
+onclick="openCategory('effect')">
+
+<div>
+
+<div class="prompt-cn">
+特效描述
+</div>
+
+<div class="prompt-en">
+effect
+</div>
+
+</div>
+
+<div class="prompt-arrow">
+›
+</div>
+
+</div>
+
+<div
+class="prompt-item"
+onclick="openCategory('camera')">
+
+<div>
+
+<div class="prompt-cn">
+运镜描述
+</div>
+
+<div class="prompt-en">
+camera
+</div>
+
+</div>
+
+<div class="prompt-arrow">
+›
+</div>
+
+</div>
+
+<div
+class="prompt-item"
+onclick="openCategory('Lighting')">
+
+<div>
+
+<div class="prompt-cn">
+灯光描述
+</div>
+
+<div class="prompt-en">
+Lighting
+</div>
+
+</div>
+
+<div class="prompt-arrow">
+›
+</div>
+
+</div>
+
+<div
+class="prompt-item"
+onclick="openCategory('negative')">
+
+<div>
+
+<div class="prompt-cn">
+防负描述
+</div>
+
+<div class="prompt-en">
+negative
+</div>
+
+</div>
+
+<div class="prompt-arrow">
+›
+</div>
+
 </div>
 
 </div>
