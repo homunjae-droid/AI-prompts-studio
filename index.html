@@ -818,52 +818,103 @@ border-bottom:1px solid #eee;
 
 }
 
-.menu-list{
+.profile-group-title{
 
-display:flex;
+font-size:14px;
 
-flex-direction:column;
+font-weight:700;
 
-gap:12px;
+color:#888;
+
+margin-top:24px;
+
+margin-bottom:12px;
+
+padding-left:4px;
 
 }
 
-.menu-list button{
-
-width:100%;
+.profile-group-card{
 
 background:white;
 
-border:none;
+border-radius:24px;
 
-border-radius:20px;
+overflow:hidden;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.05);
+
+}
+
+.profile-group-item{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
 
 padding:18px 20px;
 
 font-size:16px;
 
-font-weight:500;
+font-weight:600;
 
-text-align:left;
+cursor:pointer;
+
+}
+
+.profile-group-divider{
+
+height:1px;
+
+background:#eee;
+
+margin:0 20px;
+
+}
+
+.content-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:12px;
+
+}
+
+.content-card{
+
+background:white;
+
+border-radius:24px;
+
+padding:24px 16px;
+
+text-align:center;
 
 cursor:pointer;
 
 box-shadow:
 0 8px 20px rgba(0,0,0,.05);
 
-transition:.2s;
+}
+
+.content-icon{
+
+font-size:28px;
+
+margin-bottom:10px;
 
 }
 
-.menu-list button:hover{
+.content-name{
 
-transform:translateY(-2px);
+font-size:14px;
 
-}
-
-.menu-list button:active{
-
-transform:scale(.98);
+font-weight:600;
 
 }
 
@@ -6161,58 +6212,84 @@ color:#8A63FF;
 
 </div>
 
-<div class="profile-card">
-
-<div class="profile-row">
-<span>账号</span>
-<span id="profileUserAccount">
-未登录
-</span>
+<div class="profile-group-title">
+账户管理
 </div>
 
-<div class="profile-row">
-<span>会员状态</span>
-<span id="profileUserStatus">
-普通用户
-</span>
-</div>
+<div class="profile-group-card">
 
-
-</div>
-
-<div class="menu-list">
-
-<button
-id="loginBtn"
-onclick="openVipModal()">
-
-🔑 立即登录
-
-</button>
-
-<button onclick="openFavorites()">
-❤️ 我的收藏
-</button>
-
-<button onclick="openHistory()">
-🕘 最近浏览
-</button>
-
-<button
+<div
+class="profile-group-item"
 id="vipBtn"
 onclick="checkVipStatus()">
 
-👑 会员中心
+<span>👑 会员中心</span>
 
-</button>
+<span>›</span>
 
-<button
+</div>
+
+<div
+class="profile-group-divider">
+</div>
+
+<div
+class="profile-group-item"
+id="loginBtn"
+onclick="openVipModal()">
+
+<span>🔑 立即登录</span>
+
+<span>›</span>
+
+</div>
+
+<div
+class="profile-group-item"
 id="logoutBtn"
 onclick="logoutUser()">
 
-🚪 退出登录
+<span>🚪 退出登录</span>
 
-</button>
+<span>›</span>
+
+</div>
+
+</div>
+
+<div class="profile-group-title">
+内容管理
+</div>
+
+<div class="content-grid">
+
+<div
+class="content-card"
+onclick="openFavorites()">
+
+<div class="content-icon">
+❤️
+</div>
+
+<div class="content-name">
+我的收藏
+</div>
+
+</div>
+
+<div
+class="content-card"
+onclick="openHistory()">
+
+<div class="content-icon">
+🕘
+</div>
+
+<div class="content-name">
+最近浏览
+</div>
+
+</div>
 
 </div>
 
