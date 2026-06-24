@@ -381,6 +381,60 @@ color:red;
 transform:scale(1.2);
 }
 
+.favorite-tabs{
+
+display:flex;
+gap:10px;
+
+margin-top:12px;
+margin-bottom:16px;
+
+flex-wrap:wrap;
+
+}
+
+.favorite-tab{
+
+height:36px;
+
+padding:0 14px;
+
+border:none;
+
+border-radius:999px;
+
+background:#f5f5f7;
+
+font-size:14px;
+
+font-weight:600;
+
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+gap:6px;
+
+}
+
+.favorite-tab.active{
+
+background:#111;
+
+color:white;
+
+}
+
+.favorite-tab span{
+
+opacity:.7;
+
+font-size:13px;
+
+}
+
 @keyframes heartPop{
 
 0%{
@@ -5076,7 +5130,7 @@ getFavorites();
 document.getElementById(
 "favoritesTitle"
 ).innerText =
-`❤️ 我的收藏（${favorites.length}）`;
+`❤️ 我的资源库（${favorites.length}）`;
 
 
 
@@ -5090,10 +5144,12 @@ favorites.length === 0
 
 `
 
-<div class="card"
-style="
-grid-column:1/3;
+<div style="
+grid-column:1/-1;
 text-align:center;
+padding:40px 20px;
+font-size:14px;
+color:#999;
 ">
 
 暂无收藏内容
@@ -5109,8 +5165,11 @@ favorites
 .map(item=>`
 
 <div style="
-padding:4px 0;
-border-bottom:1px dashed #ddd;
+background:white;
+border-radius:16px;
+padding:12px;
+margin-bottom:10px;
+box-shadow:0 4px 12px rgba(0,0,0,.04);
 ">
 
 <div style="
@@ -6436,7 +6495,7 @@ onclick="closeUserCenter()">
 <div class="modal-header">
 
 <h2 id="favoritesTitle">
-❤️ 我的收藏
+❤️ 我的资源库
 </h2>
 
 <input
@@ -6458,6 +6517,22 @@ onclick="closeFavorites()">
 &times;
 
 </span>
+
+</div>
+
+<div class="favorite-tabs">
+
+<button class="favorite-tab active">
+✨ 基础提示词 <span id="promptCount">0</span>
+</button>
+
+<button class="favorite-tab">
+⚙️ 流程 <span id="workflowCount">0</span>
+</button>
+
+<button class="favorite-tab">
+👤 专家 <span id="expertCount">0</span>
+</button>
 
 </div>
 
