@@ -274,6 +274,22 @@ gap:8px;
 
 }
 
+#historyList{
+
+display:grid;
+
+grid-template-columns:repeat(5,1fr);
+
+grid-template-rows:repeat(5,1fr);
+
+gap:6px;
+
+align-items:start;
+
+margin-top:8px;
+
+}
+
 @media(min-width:768px){
 
 #favoritesList{
@@ -321,12 +337,20 @@ z-index:9999;
 .modal-content{
 background:#fff;
 width:90%;
-max-width:900px;
-height:90%;
-overflow:auto;
-border-radius:12px;
+max-width:1180px;
+height:auto;
+max-height:92vh;
+overflow:hidden;
+border-radius:20px;
 padding:20px;
 }
+
+#favoritesModal .modal-content{
+
+overflow-y:auto;
+
+}
+
 .pagination{
 display:flex;
 justify-content:center;
@@ -364,10 +388,11 @@ gap:10px;
 .favorite-btn{
 background:none;
 border:none;
-font-size:24px;
+font-size:16px;
 cursor:pointer;
 color:#ccc;
 padding:0;
+line-height:1;
 
 transition:all .25s ease;
 }
@@ -378,7 +403,7 @@ transform:scale(1.15);
 
 .favorite-btn.active{
 color:red;
-transform:scale(1.2);
+transform:scale(1.1);
 }
 
 .favorite-tabs{
@@ -2592,6 +2617,14 @@ top:10px;
 font-size:18px;
 
 color:#999;
+
+}
+
+#historyList{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:6px;
 
 }
 
@@ -5111,7 +5144,7 @@ mode:currentMode,
 page:currentPage
 });
 
-history = history.slice(0,10);
+history = history.slice(0,25);
 
 localStorage.setItem(
 "history",
@@ -5509,14 +5542,42 @@ text-align:center;
 
 :
 
-history.map(item=>`
+history
+.slice(0,25)
+.map(item=>`
 
-<div class="card">
+<div class="card"
+style="
+height:74px;
+padding:6px 8px;
+border-radius:12px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+box-shadow:none;
+">
+<div
+style="
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:2px;
+margin-bottom:1px;
+">
 
-<div class="card-top">
+<div
+style="
+font-size:12px;
+font-weight:700;
+line-height:1.1;
+flex:1;
+overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis;
+">
 
-<div class="cn">
 ${item.cn}
+
 </div>
 
 <button
@@ -5539,12 +5600,23 @@ event,
 
 </div>
 
-<div class="en">
+<div
+style="
+font-size:9px;
+color:#888;
+line-height:1.1;
+height:18px;
+overflow:hidden;
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+">
+
 ${item.en}
+
 </div>
 
-<button
-class="copy-btn"
+<div
 onclick="
 copyHistoryPrompt(
 '${item.cn}',
@@ -5552,11 +5624,20 @@ copyHistoryPrompt(
 ${item.page || 1},
 '${item.mode || ""}'
 )
+"
+style="
+margin-top:2px;
+font-size:9px;
+text-align:center;
+cursor:pointer;
+color:#007AFF;
+font-weight:500;
+line-height:1;
 ">
 
 复制 Copy
 
-</button>
+</div>
 
 </div>
 
@@ -6624,7 +6705,10 @@ style="width:16px;height:16px;fill:currentColor;">
 
 <div
 id="historyList"
-class="prompt-grid">
+class="prompt-grid"
+style="
+overflow:hidden;
+">
 
 </div>
 
