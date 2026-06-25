@@ -141,34 +141,39 @@ transform:translateY(-3px);
 }
 
 .cn{
-font-size:17px;
-font-weight:600;
 
-line-height:1.5;
+font-size:12px;
+
+font-weight:700;
+
+line-height:1.15;
 
 display:-webkit-box;
 
--webkit-line-clamp:2;
+-webkit-line-clamp:1;
 
 -webkit-box-orient:vertical;
 
 overflow:hidden;
+
 }
 
-.en{
-font-size:13px;
-color:#777;
-margin-top:6px;
+.cn{
+
+font-size:12px;
+
+font-weight:700;
+
+line-height:1.15;
 
 display:-webkit-box;
 
--webkit-line-clamp:2;
+-webkit-line-clamp:1;
 
 -webkit-box-orient:vertical;
 
 overflow:hidden;
 
-min-height:34px;
 }
 
 .update{
@@ -278,15 +283,17 @@ gap:8px;
 
 display:grid;
 
-grid-template-columns:repeat(5,1fr);
+grid-template-columns:repeat(5,minmax(0,1fr));
 
-grid-template-rows:repeat(5,1fr);
+grid-template-rows:repeat(5,72px);
 
 gap:6px;
 
-align-items:start;
+margin-top:10px;
 
-margin-top:8px;
+align-items:stretch;
+
+overflow:hidden;
 
 }
 
@@ -2622,7 +2629,9 @@ color:#999;
 
 #historyList{
 
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:repeat(2,minmax(0,1fr));
+
+grid-auto-rows:68px;
 
 gap:6px;
 
@@ -4275,6 +4284,9 @@ let currentQualityPage = 1;
 const perPage = 10;
 
 let favoritesVisibleCount = 100;
+
+let historyFilter = "prompt";
+
 function getCurrentData(){
 
 return promptData[currentMode] || [];
@@ -5511,12 +5523,62 @@ document.getElementById(
 
 }
 
+function openPromptDetail(cn,en,page,mode){
+
+closeHistory();
+
+if(mode){
+
+currentMode = mode;
+
+}
+
+if(page){
+
+currentPage = page;
+
+}
+
+showPromptDetail(cn,en);
+
+}
+
 function openHistory(){
 
-const history =
-JSON.parse(
+let history = JSON.parse(
 localStorage.getItem("history") || "[]"
 );
+
+if(historyFilter==="prompt"){
+
+history = history.filter(item=>
+
+!item.mode ||
+
+[
+"quality",
+"style",
+"action",
+"character",
+"scene",
+"effect",
+"camera",
+"Lighting",
+"negative",
+"trending"
+].includes(item.mode)
+
+);
+
+}else if(historyFilter==="workflow"){
+
+history = [];
+
+}else if(historyFilter==="expert"){
+
+history = [];
+
+}
 
 document.getElementById(
 "historyList"
@@ -5544,33 +5606,39 @@ text-align:center;
 
 history
 .slice(0,25)
-.map(item=>`
+.map((item,index)=>`
 
-<div class="card"
+<div
 style="
-height:74px;
 padding:6px 8px;
-border-radius:12px;
+border-bottom:1px solid #f2f2f2;
 display:flex;
 flex-direction:column;
-justify-content:space-between;
-box-shadow:none;
+justify-content:center;
+min-height:58px;
 ">
 <div
+onclick="
+openPromptDetail(
+'${item.cn}',
+'${item.en}',
+${item.page || 1},
+'${item.mode || ""}'
+)
+"
 style="
 display:flex;
 align-items:center;
-justify-content:space-between;
-gap:2px;
-margin-bottom:1px;
+gap:4px;
+cursor:pointer;
 ">
 
 <div
 style="
+flex:1;
 font-size:12px;
 font-weight:700;
-line-height:1.1;
-flex:1;
+line-height:1.15;
 overflow:hidden;
 white-space:nowrap;
 text-overflow:ellipsis;
@@ -5602,16 +5670,14 @@ event,
 
 <div
 style="
+margin-top:1px;
 font-size:9px;
 color:#888;
-line-height:1.1;
-height:18px;
+line-height:1.15;
 overflow:hidden;
-display:-webkit-box;
--webkit-line-clamp:2;
--webkit-box-orient:vertical;
+white-space:nowrap;
+text-overflow:ellipsis;
 ">
-
 ${item.en}
 
 </div>
@@ -5626,13 +5692,12 @@ ${item.page || 1},
 )
 "
 style="
-margin-top:2px;
+margin-top:3px;
 font-size:9px;
 text-align:center;
 cursor:pointer;
 color:#007AFF;
-font-weight:500;
-line-height:1;
+font-weight:600;
 ">
 
 复制 Copy
@@ -5646,6 +5711,20 @@ line-height:1;
 document.getElementById(
 "historyModal"
 ).style.display="flex";
+
+}
+
+function switchHistoryTab(type,btn){
+
+historyFilter = type;
+
+document
+.querySelectorAll("#historyModal .favorite-tab")
+.forEach(tab=>tab.classList.remove("active"));
+
+btn.classList.add("active");
+
+openHistory();
 
 }
 
@@ -6671,13 +6750,17 @@ onclick="closeHistory()">
 
 <div class="favorite-tabs">
 
-<button class="favorite-tab active">
+<button
+class="favorite-tab active"
+onclick="switchHistoryTab('prompt',this)">
 
 📚 基础提示词
 
 </button>
 
-<button class="favorite-tab">
+<button
+class="favorite-tab"
+onclick="switchHistoryTab('workflow',this)">
 
 <svg viewBox="0 0 24 24"
 style="width:16px;height:16px;fill:currentColor;">
@@ -6688,7 +6771,9 @@ style="width:16px;height:16px;fill:currentColor;">
 
 </button>
 
-<button class="favorite-tab">
+<button
+class="favorite-tab"
+onclick="switchHistoryTab('expert',this)">
 
 <svg viewBox="0 0 24 24"
 style="width:16px;height:16px;fill:currentColor;">
@@ -6708,6 +6793,7 @@ id="historyList"
 class="prompt-grid"
 style="
 overflow:hidden;
+align-content:start;
 ">
 
 </div>
