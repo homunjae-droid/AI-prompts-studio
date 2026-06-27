@@ -5359,9 +5359,7 @@ color:#888;
 
 );
 
-document.getElementById(
-"favoritesModal"
-).style.display="flex";
+renderFavoriteList(favorites);
 
 }
 function searchFavorites(){
@@ -6064,6 +6062,22 @@ document.getElementById(
 
 }
 
+function showFavoritesPage(){
+
+switchTab(document.querySelectorAll(".nav-item")[4]);
+
+document.getElementById("homePage").style.display="none";
+document.getElementById("toolsPage").style.display="none";
+document.getElementById("promptPage").style.display="none";
+document.getElementById("expertPage").style.display="none";
+document.getElementById("profilePage").style.display="none";
+
+document.getElementById("favoritesPage").style.display="block";
+
+openFavorites();
+
+}
+
 function showExpertPage(el){
 
 switchTab(el);
@@ -6550,7 +6564,7 @@ onclick="logoutUser()">
 
 <div
 class="content-card"
-onclick="openFavorites()">
+onclick="showFavoritesPage()">
 
 <div class="content-icon">
 ❤️
@@ -6648,10 +6662,17 @@ onclick="closeUserCenter()">
 
 </div>
 
-<div id="favoritesModal" class="modal">
+<div
+id="favoritesPage"
+class="profile-page"
+style="display:none;">
 
-<div class="modal-content">
-
+<div
+style="
+max-width:900px;
+margin:0 auto;
+padding-bottom:120px;
+">
 <div class="modal-header">
 
 <h2 id="favoritesTitle">
@@ -6669,14 +6690,6 @@ padding:10px;
 border:1px solid #ddd;
 border-radius:10px;
 ">
-
-<span
-class="close-btn"
-onclick="closeFavorites()">
-
-&times;
-
-</span>
 
 </div>
 
