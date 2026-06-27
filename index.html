@@ -5088,7 +5088,7 @@ openFavorites();
 
 }
 else if(
-document.getElementById("historyModal").style.display==="flex"
+document.getElementById("historyPage").style.display==="block"
 ){
 
 openHistory();
@@ -5146,10 +5146,9 @@ openFavorites();
 
 }
 else if(
-document.getElementById("historyModal")
-.style.display==="flex"
+document.getElementById("historyPage")
+.style.display==="block"
 ){
-
 openHistory();
 
 }
@@ -5760,14 +5759,11 @@ openHistory();
 
 function closeHistory(){
 
-document.getElementById(
-"historyModal"
-).style.display="none";
+document.getElementById("historyPage").style.display="none";
+
+document.getElementById("profilePage").style.display="block";
 
 }
-
-function openVipUpgrade(){
-
 if(!currentUserEmail){
 
 openVipModal();
