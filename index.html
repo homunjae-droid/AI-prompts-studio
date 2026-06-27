@@ -3955,6 +3955,16 @@ currentMode = "camera";
 
 currentPage = 1;
 
+document.getElementById(
+"cameraMovementModal"
+).style.display = "flex";
+
+document.querySelector(
+".bottom-nav"
+).style.display = "none";
+
+renderPrompts();
+
 }
 function openSearchResult(mode,page){
 
@@ -6122,7 +6132,7 @@ document.getElementById("toolsPage").style.display="none";
 document.getElementById("promptPage").style.display="none";
 document.getElementById("expertPage").style.display="none";
 document.getElementById("profilePage").style.display="none";
-
+document.getElementById("historyPage").style.display="none";
 document.getElementById("favoritesPage").style.display="block";
 
 openFavorites();
