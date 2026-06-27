@@ -5733,9 +5733,14 @@ font-weight:600;
 
 `).join("");
 
-document.getElementById(
-"historyModal"
-).style.display="flex";
+document.getElementById("homePage").style.display="none";
+document.getElementById("toolsPage").style.display="none";
+document.getElementById("promptPage").style.display="none";
+document.getElementById("expertPage").style.display="none";
+document.getElementById("profilePage").style.display="none";
+document.getElementById("favoritesPage").style.display="none";
+
+document.getElementById("historyPage").style.display="block";
 
 }
 
@@ -5744,7 +5749,7 @@ function switchHistoryTab(type,btn){
 historyFilter = type;
 
 document
-.querySelectorAll("#historyModal .favorite-tab")
+.querySelectorAll("#historyPage .favorite-tab")
 .forEach(tab=>tab.classList.remove("active"));
 
 btn.classList.add("active");
@@ -6063,6 +6068,8 @@ document.getElementById(
 
 document.getElementById("favoritesPage").style.display="none";
 
+document.getElementById("historyPage").style.display="none";
+
 document.getElementById(
 "profilePage"
 ).style.display="block";
@@ -6106,6 +6113,23 @@ document.getElementById("profilePage").style.display="none";
 document.getElementById("favoritesPage").style.display="block";
 
 openFavorites();
+
+}
+
+function showHistoryPage(){
+
+switchTab(document.querySelectorAll(".nav-item")[4]);
+
+document.getElementById("homePage").style.display="none";
+document.getElementById("toolsPage").style.display="none";
+document.getElementById("promptPage").style.display="none";
+document.getElementById("expertPage").style.display="none";
+document.getElementById("profilePage").style.display="none";
+document.getElementById("favoritesPage").style.display="none";
+
+document.getElementById("historyPage").style.display="block";
+
+openHistory();
 
 }
 
@@ -6609,7 +6633,7 @@ onclick="showFavoritesPage()">
 
 <div
 class="content-card"
-onclick="openHistory()">
+onclick="showHistoryPage()">
 
 <div class="content-icon">
 🕘
@@ -6673,7 +6697,7 @@ onclick="closeUserCenter()">
 我的收藏
 </button>
 
-<button onclick="openHistory()">
+<button onclick="showHistoryPage()">
 最近浏览
 </button>
 
@@ -6790,21 +6814,55 @@ class="prompt-grid">
 
 </div>
 
-<div id="historyModal" class="modal">
+<div
+id="historyPage"
+class="profile-page"
+style="display:none;">
 
-<div class="modal-content">
+<div
+style="
+max-width:900px;
+margin:0 auto;
+padding-bottom:120px;
+">
 
 <div class="modal-header">
 
-<h2>🕘 最近浏览</h2>
+<button
+onclick="showProfilePage(document.querySelectorAll('.nav-item')[4])"
+style="
+width:42px;
+height:42px;
+border:none;
+border-radius:50%;
+background:#f5f5f7;
+font-size:20px;
+cursor:pointer;
+">
 
-<span
-class="close-btn"
-onclick="closeHistory()">
+←
 
-&times;
+</button>
 
-</span>
+<h2
+id="historyTitle"
+style="margin:0;">
+
+🕘 最近浏览
+
+</h2>
+
+<input
+id="historySearch"
+type="text"
+placeholder="搜索浏览记录..."
+onkeyup="searchHistory()"
+style="
+flex:1;
+padding:10px;
+border:1px solid #ddd;
+border-radius:10px;
+">
 
 </div>
 
