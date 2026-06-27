@@ -5079,6 +5079,31 @@ favoritesCache.filter(
 item=>item.en!==en
 );
 
+if(
+document.getElementById("favoritesPage") &&
+document.getElementById("favoritesPage").style.display==="block"
+){
+
+openFavorites();
+
+}
+else if(
+document.getElementById("historyModal").style.display==="flex"
+){
+
+openHistory();
+
+}
+else if(currentMode==="trending"){
+
+renderTrending();
+
+}else{
+
+renderPrompts();
+
+}
+
 }else{
 
 const { data, error } =
@@ -5983,6 +6008,8 @@ document.getElementById(
 "expertPage"
 ).style.display="none";
 
+document.getElementById("favoritesPage").style.display="none";
+
 document.getElementById(
 "homePage"
 ).style.display="block";
@@ -6033,6 +6060,8 @@ document.getElementById(
 document.getElementById(
 "expertPage"
 ).style.display="none";
+
+document.getElementById("favoritesPage").style.display="none";
 
 document.getElementById(
 "profilePage"
