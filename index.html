@@ -352,13 +352,12 @@ border-radius:20px;
 padding:20px;
 }
 
-#favoritesPage{
-
-height:100vh;
+#favoritesModal .modal-content{
 
 overflow-y:auto;
 
 }
+
 .pagination{
 display:flex;
 justify-content:center;
@@ -3955,16 +3954,6 @@ currentMode = "camera";
 
 currentPage = 1;
 
-document.getElementById(
-"cameraMovementModal"
-).style.display = "flex";
-
-document.querySelector(
-".bottom-nav"
-).style.display = "none";
-
-renderPrompts();
-
 }
 function openSearchResult(mode,page){
 
@@ -5089,38 +5078,6 @@ favoritesCache.filter(
 item=>item.en!==en
 );
 
-const favoritesPage =
-document.getElementById("favoritesPage");
-
-const historyPage =
-document.getElementById("historyPage");
-
-if(
-favoritesPage &&
-favoritesPage.style.display==="block"
-){
-
-openFavorites();
-
-}
-else if(
-historyPage &&
-historyPage.style.display==="block"
-){
-
-openHistory();
-
-}
-else if(currentMode==="trending"){
-
-renderTrending();
-
-}
-else{
-
-renderPrompts();
-
-}
 }else{
 
 const { data, error } =
@@ -5151,23 +5108,19 @@ page:currentPage,
 mode:currentMode
 });
 
-const favoritesPage =
-document.getElementById("favoritesPage");
-
-const historyPage =
-document.getElementById("historyPage");
+}
 
 if(
-favoritesPage &&
-favoritesPage.style.display==="block"
+document.getElementById("favoritesModal")
+.style.display==="flex"
 ){
 
 openFavorites();
 
 }
 else if(
-historyPage &&
-historyPage.style.display==="block"
+document.getElementById("historyModal")
+.style.display==="flex"
 ){
 
 openHistory();
@@ -5185,7 +5138,6 @@ renderPrompts();
 }
 
 }
-
 function addHistory(cn,en){
 
 let history =
@@ -5407,15 +5359,9 @@ color:#888;
 
 );
 
-document.getElementById("homePage").style.display="none";
-document.getElementById("toolsPage").style.display="none";
-document.getElementById("promptPage").style.display="none";
-document.getElementById("expertPage").style.display="none";
-document.getElementById("profilePage").style.display="none";
-
-document.getElementById("favoritesPage").style.display="block";
-
-renderFavoriteList(favorites);
+document.getElementById(
+"favoritesModal"
+).style.display="flex";
 
 }
 function searchFavorites(){
@@ -5569,6 +5515,13 @@ openFavorites();
 
 }
 
+function closeFavorites(){
+
+document.getElementById(
+"favoritesModal"
+).style.display="none";
+
+}
 
 function openPromptDetail(cn,en,page,mode){
 
@@ -5755,14 +5708,9 @@ font-weight:600;
 
 `).join("");
 
-document.getElementById("homePage").style.display="none";
-document.getElementById("toolsPage").style.display="none";
-document.getElementById("promptPage").style.display="none";
-document.getElementById("expertPage").style.display="none";
-document.getElementById("profilePage").style.display="none";
-document.getElementById("favoritesPage").style.display="none";
-
-document.getElementById("historyPage").style.display="block";
+document.getElementById(
+"historyModal"
+).style.display="flex";
 
 }
 
@@ -5771,7 +5719,7 @@ function switchHistoryTab(type,btn){
 historyFilter = type;
 
 document
-.querySelectorAll("#historyPage .favorite-tab")
+.querySelectorAll("#historyModal .favorite-tab")
 .forEach(tab=>tab.classList.remove("active"));
 
 btn.classList.add("active");
@@ -5782,9 +5730,9 @@ openHistory();
 
 function closeHistory(){
 
-document.getElementById("historyPage").style.display="none";
-
-document.getElementById("profilePage").style.display="block";
+document.getElementById(
+"historyModal"
+).style.display="none";
 
 }
 
@@ -5798,15 +5746,14 @@ return;
 
 }
 
-alert("这里后面改成VIP开通页面");
+alert("这里后面改成VIP开通弹窗");
 
 }
 
 function openVipModal(){
-
 document.getElementById("vipModal").style.display="flex";
-
 }
+
 
 </script>
 
@@ -6036,8 +5983,6 @@ document.getElementById(
 "expertPage"
 ).style.display="none";
 
-document.getElementById("favoritesPage").style.display="none";
-
 document.getElementById(
 "homePage"
 ).style.display="block";
@@ -6089,10 +6034,6 @@ document.getElementById(
 "expertPage"
 ).style.display="none";
 
-document.getElementById("favoritesPage").style.display="none";
-
-document.getElementById("historyPage").style.display="none";
-
 document.getElementById(
 "profilePage"
 ).style.display="block";
@@ -6120,39 +6061,6 @@ document.getElementById(
 document.getElementById(
 "promptPage"
 ).style.display="block";
-
-}
-
-function showFavoritesPage(){
-
-switchTab(document.querySelectorAll(".nav-item")[4]);
-
-document.getElementById("homePage").style.display="none";
-document.getElementById("toolsPage").style.display="none";
-document.getElementById("promptPage").style.display="none";
-document.getElementById("expertPage").style.display="none";
-document.getElementById("profilePage").style.display="none";
-document.getElementById("historyPage").style.display="none";
-document.getElementById("favoritesPage").style.display="block";
-
-openFavorites();
-
-}
-
-function showHistoryPage(){
-
-switchTab(document.querySelectorAll(".nav-item")[4]);
-
-document.getElementById("homePage").style.display="none";
-document.getElementById("toolsPage").style.display="none";
-document.getElementById("promptPage").style.display="none";
-document.getElementById("expertPage").style.display="none";
-document.getElementById("profilePage").style.display="none";
-document.getElementById("favoritesPage").style.display="none";
-
-document.getElementById("historyPage").style.display="block";
-
-openHistory();
 
 }
 
@@ -6642,7 +6550,7 @@ onclick="logoutUser()">
 
 <div
 class="content-card"
-onclick="showFavoritesPage()">
+onclick="openFavorites()">
 
 <div class="content-icon">
 ❤️
@@ -6656,7 +6564,7 @@ onclick="showFavoritesPage()">
 
 <div
 class="content-card"
-onclick="showHistoryPage()">
+onclick="openHistory()">
 
 <div class="content-icon">
 🕘
@@ -6716,11 +6624,11 @@ onclick="closeUserCenter()">
 
 <div class="user-actions">
 
-<button onclick="showFavoritesPage()">
+<button onclick="openFavorites()">
 我的收藏
 </button>
 
-<button onclick="showHistoryPage()">
+<button onclick="openHistory()">
 最近浏览
 </button>
 
@@ -6740,38 +6648,13 @@ onclick="closeUserCenter()">
 
 </div>
 
-<div
-id="favoritesPage"
-class="profile-page"
-style="display:none;">
+<div id="favoritesModal" class="modal">
 
-<div
-style="
-max-width:900px;
-margin:0 auto;
-padding-bottom:120px;
-">
+<div class="modal-content">
+
 <div class="modal-header">
 
-<button
-onclick="showProfilePage(document.querySelectorAll('.nav-item')[4])"
-style="
-width:42px;
-height:42px;
-border:none;
-border-radius:50%;
-background:#f5f5f7;
-font-size:20px;
-cursor:pointer;
-">
-
-←
-
-</button>
-
-<h2
-id="favoritesTitle"
-style="margin:0;">
+<h2 id="favoritesTitle">
 ❤️ 我的资源库
 </h2>
 
@@ -6786,6 +6669,14 @@ padding:10px;
 border:1px solid #ddd;
 border-radius:10px;
 ">
+
+<span
+class="close-btn"
+onclick="closeFavorites()">
+
+&times;
+
+</span>
 
 </div>
 
@@ -6837,54 +6728,21 @@ class="prompt-grid">
 
 </div>
 
-<div
-id="historyPage"
-class="profile-page"
-style="display:none;">
+<div id="historyModal" class="modal">
 
-<div
-style="
-max-width:900px;
-margin:0 auto;
-padding-bottom:120px;
-">
+<div class="modal-content">
 
 <div class="modal-header">
 
-<button
-onclick="showProfilePage(document.querySelectorAll('.nav-item')[4])"
-style="
-width:42px;
-height:42px;
-border:none;
-border-radius:50%;
-background:#f5f5f7;
-font-size:20px;
-cursor:pointer;
-">
+<h2>🕘 最近浏览</h2>
 
-←
+<span
+class="close-btn"
+onclick="closeHistory()">
 
-</button>
+&times;
 
-<h2
-id="historyTitle"
-style="margin:0;">
-
-🕘 最近浏览
-
-</h2>
-
-<input
-id="historySearch"
-type="text"
-placeholder="搜索浏览记录..."
-style="
-flex:1;
-padding:10px;
-border:1px solid #ddd;
-border-radius:10px;
-">
+</span>
 
 </div>
 
@@ -7024,4 +6882,3 @@ onclick="showProfilePage(this)">
 
 </body>
 </html>
-
