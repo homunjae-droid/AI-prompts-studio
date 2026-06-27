@@ -5079,16 +5079,23 @@ favoritesCache.filter(
 item=>item.en!==en
 );
 
+const favoritesPage =
+document.getElementById("favoritesPage");
+
+const historyPage =
+document.getElementById("historyPage");
+
 if(
-document.getElementById("favoritesPage") &&
-document.getElementById("favoritesPage").style.display==="block"
+favoritesPage &&
+favoritesPage.style.display==="block"
 ){
 
 openFavorites();
 
 }
 else if(
-document.getElementById("historyPage").style.display==="block"
+historyPage &&
+historyPage.style.display==="block"
 ){
 
 openHistory();
@@ -5098,12 +5105,12 @@ else if(currentMode==="trending"){
 
 renderTrending();
 
-}else{
+}
+else{
 
 renderPrompts();
 
 }
-
 }else{
 
 const { data, error } =
@@ -5137,6 +5144,9 @@ mode:currentMode
 const favoritesPage =
 document.getElementById("favoritesPage");
 
+const historyPage =
+document.getElementById("historyPage");
+
 if(
 favoritesPage &&
 favoritesPage.style.display==="block"
@@ -5146,9 +5156,10 @@ openFavorites();
 
 }
 else if(
-document.getElementById("historyPage")
-.style.display==="block"
+historyPage &&
+historyPage.style.display==="block"
 ){
+
 openHistory();
 
 }
@@ -5156,13 +5167,15 @@ else if(currentMode==="trending"){
 
 renderTrending();
 
-}else{
+}
+else{
 
 renderPrompts();
 
 }
 
 }
+
 function addHistory(cn,en){
 
 let history =
@@ -6856,7 +6869,6 @@ style="margin:0;">
 id="historySearch"
 type="text"
 placeholder="搜索浏览记录..."
-onkeyup="searchHistory()"
 style="
 flex:1;
 padding:10px;
